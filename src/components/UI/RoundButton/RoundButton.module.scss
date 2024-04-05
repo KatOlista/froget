@@ -1,0 +1,18 @@
+.round {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--primary400Color);
+  transition: all .3s ease;
+
+  &:active {
+    background-color: var(--primary600Color);
+  }
+
+  &:disabled {
+    background-color: var(--primary300Color);
+  }
+}

@@ -1,0 +1,25 @@
+.bets {
+  padding: 6px;
+}
+
+.slide[data-swiper-slide-index='1'],
+.slide[data-swiper-slide-index='2'] {
+  div {
+    background-color: var(--danger100Color);
+    color: var(--danger200Color);
+  }
+}
+
+.slide[data-swiper-slide-index='3'],
+.slide[data-swiper-slide-index='4'] {
+  div {
+    background-color: var(--primary300Color);
+  }
+}
+
+.slide {
+  div {
+    background-color: var(--primary500Color);
+    color: var(--primeTextColor);
+  }
+}

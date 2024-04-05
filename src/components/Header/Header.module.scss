@@ -1,0 +1,33 @@
+.header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0 0 20px 20px;
+  background-color: var(--primary400Color);
+
+  &__dropdown {
+  }
+
+  // &__dropdown-button {
+  //   height: 44px;
+  //   width: 160px;
+  //   border-radius: 16px;
+  //   background-color: var(--primary300Color);
+  //   text-align: right;
+  // }
+
+  // &__dropdown-icon {
+  //   transition: all 0.3s ease;
+  // }
+
+  // &__dropdown-open {
+  //   transform: rotate(90deg);
+  // }
+
+  &__buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: end;
+  }
+}
+

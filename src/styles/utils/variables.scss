@@ -1,0 +1,135 @@
+:root {
+  --primeTextColor: #fff;
+
+  --primary100Color: #e9f8ff;
+
+  --secondary100Color: #bfff0a;
+
+  --success100Color: #cdffd5;
+
+  --danger100Color: #ffcdcd;
+  --danger200Color: #ff3535;
+  --danger300Color: #e30f0f;
+
+  --warning100Color: #ffffe9;
+  --warning200Color: #ffd748;
+  --warning300Color: #ebbc17;
+
+  --gameColor: linear-gradient(0deg, #1456ff 0%, #0085ff 100%);
+  --gameColor: -moz-linear-gradient(0deg, #1456ff  0%, #0085ff 100%);
+  --gameColor: -webkit-linear-gradient(0deg, #1456ff  0%, #0085ff 100%);
+
+  //  #ffd235; #f79400
+
+  --secondary300Color: linear-gradient(90deg, #f79400 0%, #ffd235 100%);
+  --secondary300Color: -moz-linear-gradient(90deg, #f79400 0%, #ffd235 100%);
+  --secondary300Color: -webkit-linear-gradient(90deg, #f79400 0%, #ffd235 100%);
+
+
+
+    --dropdownAmountColor: #095681;
+    --dropdownBalanceColor: #5E6970;
+    --tabMenuTextColorPassive: #60717e;
+    --tabMenuTextColorActive: #0a2737;
+
+    --neutral500TextColor: #555b6b;
+    --danger200Color: #ff3535;
+
+    --neutral100Color: #fff;
+    --neutral200Color: #f0f2f7;
+    --neutral300Color: #d7dce9;
+    --neutral400Color: #bbc2d4;
+    --neutral450Color: #8a94ae;
+    --neutral500Color: #555b6b;
+    --neutral600Color: #202329;
+
+    --primary200Color: #6ab4ff;
+    --primary300Color: #519df8;
+    --primary400Color: #0075ff;
+    --primary500Color: #0056d6;
+    --primary600Color: #0044ab;
+
+    --secondary200Color: #9ad100;
+
+    --success200Color: #2edf40;
+    --success300Color: #00c908;
+
+    --checkboxShevronColor: #148eff;
+}
+
+// :root[data-theme='light'] {
+//   --neutral600TextColor: #202329;
+
+//   --tabMenuTextColorPassive: #60717e;
+//   --tabMenuTextColorActive: #0a2737;
+
+//   --primary200TextColor: #6ab4ff
+
+//   --idTextColor: #8a94ae;
+//   --neutral500TextColor: #555b6b;
+//   --danger200TextColor: #ff3535;
+
+//   --neutral100Color: #fff;
+//   --neutral200BgColor: #f0f2f7;
+//   --neutral300BgColor: #d7dce9;
+//   --neutral400BgColor: #bbc2d4;
+
+//   // --neutral500BgColor: #555b6b;
+//   // --neutral600BgColor: #202329;
+//   // --primary200BgColor: #6ab4ff;
+
+//   --primary300Color: #519df8;
+//   --primary400Color: #0075ff;
+//   --primary500Color: #0056d6;
+//   --primary600Color: #0044ab;
+
+//   --secondary200BgColor: #9ad100;
+
+//   --success200BgColor: #2edf40;
+//   --success300BgColor: #00c908;
+
+//   --checkboxShevronTextColor: #148eff;
+// }
+
+// :root[data-theme='dark'] {
+//   // --secondaryTextColor: #ff5f5f;
+
+//   // --bodyBgColor: #080b37;
+
+
+//   --neutral600TextColor: #202329;
+
+//   --tabMenuTextColorPassive: #60717e;
+//   --tabMenuTextColorActive: #0a2737;
+
+//   --primary200TextColor: #6ab4ff;
+//   --primary300TextColor: #519df8;
+
+//   --idTextColor: #8a94ae;
+//   --neutral500TextColor: #555b6b;
+//   --danger200TextColor: #ff3535;
+
+//   --neutral100BgColor: #080B37;
+//   --neutral200BgColor: #171b59;
+//   --neutral300BgColor: #3e44a2;
+//   --neutral400BgColor: #343987;
+
+
+//   // --neutral500BgColor: #5a60ba;
+//   // --neutral600BgColor: #e0e1f0;
+//   // --primary200BgColor: #6ab4ff; ++
+//   // --primary300BgColor: #343987;
+
+
+//   --primary400BgColor: #2a74ff;
+//   --primary500BgColor: #0855e5;
+// // --primary600BgColor:;
+
+
+//   --secondary200BgColor: #afec00;
+
+//   --success200BgColor: #0fe364;
+//   --success300BgColor: #00c44e;
+
+//   --checkboxShevronTextColor: #148eff;
+// }

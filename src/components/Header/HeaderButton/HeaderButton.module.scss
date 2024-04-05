@@ -1,0 +1,13 @@
+.icon-button {
+  height: 44px;
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background-color: var(--primary300Color);
+
+  &:active {
+    background-color: var(--primary500Color);
+  }
+}
