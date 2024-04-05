@@ -11,7 +11,7 @@ import {
 } from '../../../utils/constants';
 
 export const HeaderDropdown = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(true);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(HEADER_DROPDOWN_OPTIONS[0]);
 
   const dropdownRef = useRef();

@@ -4,6 +4,8 @@ export const HALF = '÷2';
 export const MAX = 'MAX';
 export const RATE = 100;
 export const USD_SYMBOL = '$';
+export const LIGHT = 'light';
+export const DARK = 'dark';
 
 export const MESSAGES = {
   NO_BETS: 'Ставок еще не было',
