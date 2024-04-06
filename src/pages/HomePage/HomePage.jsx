@@ -4,9 +4,11 @@ import styles from './HomePage.module.scss';
 export const HomePage = () => {
   return (
     <section className={styles.home}>
-      <LastBetsSlider />
+      <div className={styles.home__main}>
+        <LastBetsSlider />
 
-      <GameItem />
+        <GameItem />
+      </div>
 
       <Footer />
     </section>

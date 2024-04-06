@@ -6,6 +6,7 @@ export const SecondaryButton = ({ content, onClick, isDisabled }) => {
       className={styles['secondary-button']}
       onClick={onClick}
       disabled={isDisabled}
+      type='button'
     >
       {content}
     </button>

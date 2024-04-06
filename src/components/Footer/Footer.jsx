@@ -10,6 +10,8 @@ import PlusIcon from '../../assets/icons/plus-icon.svg?react';
 
 export const Footer = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [rateInputValue, setRateInputValue] = useState(RATE);
+  const [multiplierInputValue, setMultiplierInputValue] = useState(2.5);
 
   const increaseHandler = () => {};
   const decreaseHandler = () => {};
@@ -18,64 +20,83 @@ export const Footer = () => {
   const halfHandler = () => {};
   const maxHandler = () => {};
   const makeBetHandler = () => {};
+  const formSubmitHandler = () => {};
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.footer__rate}>
-        <div className={styles['footer__rate-management']}>
+      <form onSubmit={formSubmitHandler}>
+        <div className={styles['footer__rate-section']}>
+          <div className={styles['footer__rate-management']}>
 
-    {/* input */}
-          <div className={styles['footer__add-substract']}>
-            <RoundButton icon={(<MinusIcon />)} onClick={increaseHandler} />
+            <div className={styles['footer__add-substract']}>
+              <RoundButton icon={(<MinusIcon />)} onClick={increaseHandler} />
 
-            <span>{RATE}</span>
+              <label className={styles.footer__label}>
+                <input
+                  type="number"
+                  value={rateInputValue}
+                  onChange={(e) => setRateInputValue(e.target.value)}
+                  className={styles.footer__input}
+                />
+              </label>
 
-            <RoundButton icon={(<PlusIcon />)} onClick={decreaseHandler} />
-          </div>
-
-          <div className={styles['footer__multiple-divide-section']}>
-            <div className={styles['footer__math-buttons-container']}>
-              <SecondaryButton content={DOUBLE} onClick={doubleHandler} />
-
-              <SecondaryButton content={ONE_AND_A_HALF} onClick={oneAndAHalfHandler} />
-
-              <SecondaryButton content={HALF} onClick={halfHandler} />
+              <RoundButton icon={(<PlusIcon />)} onClick={decreaseHandler} />
             </div>
 
-            <SecondaryButton content={MAX} onClick={maxHandler} />
+            <div className={styles['footer__multiple-divide-section']}>
+              <div className={styles['footer__math-buttons-container']}>
+                <SecondaryButton content={DOUBLE} onClick={doubleHandler} />
+
+                <SecondaryButton content={ONE_AND_A_HALF} onClick={oneAndAHalfHandler} />
+
+                <SecondaryButton content={HALF} onClick={halfHandler} />
+              </div>
+
+              <SecondaryButton content={MAX} onClick={maxHandler} />
+            </div>
+          </div>
+
+          <button
+            className={styles['footer__rate-amount']}
+            onClick={makeBetHandler}
+            type='submit'
+          >
+            СТАВКА
+          </button>
+        </div>
+
+        <div className={styles.footer__withdrawal}>
+          <div className={styles.footer__multiplier}>
+            <span className={styles['footer__accent-color']}>X</span>
+
+            <label className={styles.footer__label}>
+              <input
+                type="number"
+                value={multiplierInputValue}
+                onChange={(e) => setMultiplierInputValue(e.target.value)}
+                className={`${styles.footer__input} ${styles['footer__input-multiplier']}`}
+              />
+            </label>
+          </div>
+
+          <div className={styles.footer__checkbox}>
+            <label
+              className={cn(
+                styles['footer__checkbox-label'],
+                { [styles.footer__checked]: isChecked },
+              )}
+            >
+              <input
+                id='withdrawal'
+                type="checkbox"
+                className={styles['footer__input-checkbox']}
+                onClick={() => setIsChecked(!isChecked)}
+              />
+            </label>
+            <span>Авто-вывод</span>
           </div>
         </div>
-
-        <button className={styles['footer__rate-amount']} onClick={makeBetHandler}>
-          СТАВКА
-        </button>
-      </div>
-
-      <div className={styles.footer__withdrawal}>
-        {/* input */}
-        <button className='withdrawal-btn'>
-          <span className='accent-color'>X</span>
-          <span>2.5</span>
-        </button>
-
-        <div className={styles['footer__withdrawal-input']}>
-          <label
-            className={cn(
-              styles['footer__withdrawal-label'],
-              { [styles.footer__checked]: isChecked },
-            )}
-          >
-            <input
-              id='withdrawal'
-              type="checkbox"
-              className={styles.footer__checkbox}
-              onClick={() => setIsChecked(!isChecked)}
-            />
-          </label>
-
-          <span>Авто-вывод</span>
-        </div>
-      </div>
+      </form>
     </footer>
   )
 };

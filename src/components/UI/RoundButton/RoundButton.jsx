@@ -6,6 +6,7 @@ export const RoundButton = ({ icon, onClick, isDisabled }) => {
       className={styles.round}
       onClick={onClick}
       disabled={isDisabled}
+      type='button'
     >
       {icon}
     </button>
