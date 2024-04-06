@@ -1,5 +1,5 @@
-import { Footer } from './components';
-import { Header } from './components/Header/Header';
+import { Header } from './components';
+import { HomePage } from './pages';
 // import { useTheme } from './hooks';
 
 export const App = () => {
@@ -8,11 +8,10 @@ export const App = () => {
   return (
     <div className='app'>
       <Header />
-      
-      <main className='main'>
-      </main>
 
-      <Footer />
+      <main className='main'>
+        <HomePage />
+      </main>
     </div>
   );
 };

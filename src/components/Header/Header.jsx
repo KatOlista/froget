@@ -48,8 +48,8 @@ export const Header = () => {
 
             {
               isLightTheme
-              ? (<HeaderButton icon={<SunIcon />} onClick={() => setTheme(LIGHT)} />)
-              : (<HeaderButton icon={<MoonIcon />} onClick={() => setTheme(LIGHT)} />)
+              ? (<HeaderButton icon={<MoonIcon />} onClick={() => setTheme(LIGHT)} />)
+              : (<HeaderButton icon={<SunIcon />} onClick={() => setTheme(LIGHT)} />)
             }
           </header>
         )}

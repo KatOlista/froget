@@ -1,0 +1,24 @@
+.game {
+  height: 100%;
+  width: 100%;
+  border-radius: 36px;
+
+  background: var(--gameColor);
+
+  &__info {
+    margin: 11px 19px auto auto;
+    width: 100px;
+  }
+
+  &__ratio {
+    font-weight: 700;
+    font-size: 36px;
+    color: #efeff4;
+  }
+
+  &__addition {
+    font-weight: 500;
+    font-size: 11px;
+    color: #ecf7fb;
+  }
+}

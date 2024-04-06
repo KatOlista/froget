@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import { RoundButton, SecondaryButton } from '../';
 import { DOUBLE, HALF, MAX, ONE_AND_A_HALF, RATE } from '../../utils/constants';
-import './Footer.css';
+import styles from './Footer.module.scss';
 
 import MinusIcon from '../../assets/icons/minus-icon.svg?react';
 import PlusIcon from '../../assets/icons/plus-icon.svg?react';
@@ -17,12 +17,15 @@ export const Footer = () => {
   const oneAndAHalfHandler = () => {};
   const halfHandler = () => {};
   const maxHandler = () => {};
+  const makeBetHandler = () => {};
 
   return (
-    <footer className='footer'>
-      <div className='rate'>
-        <div className='rate-management'>
-          <div className='add-substract'>
+    <footer className={styles.footer}>
+      <div className={styles.footer__rate}>
+        <div className={styles['footer__rate-management']}>
+
+    {/* input */}
+          <div className={styles['footer__add-substract']}>
             <RoundButton icon={(<MinusIcon />)} onClick={increaseHandler} />
 
             <span>{RATE}</span>
@@ -30,8 +33,8 @@ export const Footer = () => {
             <RoundButton icon={(<PlusIcon />)} onClick={decreaseHandler} />
           </div>
 
-          <div className='multiple-divide-section'>
-            <div className='math-buttons-container'>
+          <div className={styles['footer__multiple-divide-section']}>
+            <div className={styles['footer__math-buttons-container']}>
               <SecondaryButton content={DOUBLE} onClick={doubleHandler} />
 
               <SecondaryButton content={ONE_AND_A_HALF} onClick={oneAndAHalfHandler} />
@@ -43,27 +46,29 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className='rate-amount'>
+        <button className={styles['footer__rate-amount']} onClick={makeBetHandler}>
           СТАВКА
-        </div>
+        </button>
       </div>
 
-      <div className='withdrawal'>
+      <div className={styles.footer__withdrawal}>
+        {/* input */}
         <button className='withdrawal-btn'>
           <span className='accent-color'>X</span>
           <span>2.5</span>
         </button>
 
-        <div className='withdrawal-input'>
+        <div className={styles['footer__withdrawal-input']}>
           <label
             className={cn(
-              'withdrawal-label',
-              { checked: isChecked },
+              styles['footer__withdrawal-label'],
+              { [styles.footer__checked]: isChecked },
             )}
           >
             <input
               id='withdrawal'
               type="checkbox"
+              className={styles.footer__checkbox}
               onClick={() => setIsChecked(!isChecked)}
             />
           </label>
