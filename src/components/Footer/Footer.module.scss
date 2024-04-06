@@ -15,6 +15,7 @@
   }
 
   &__rate-management {
+    position: relative;
     flex: 50%;
     display: flex;
     flex-direction: column;
@@ -28,7 +29,18 @@
     align-items: center;
     border-radius: 18px;
     background-color: #489cff;
+
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
   }
+
+  // &__message {
+  //   position: absolute;
+  //   opacity: 0;
+  //   font-size: 8px;
+  //   z-index: -1;
+  // }
 
   &__input {
     width: 100%;
@@ -40,6 +52,15 @@
     color: var(--primeTextColor);
     font-weight: 700;
     font-size: 20px;
+
+    &::placeholder {
+      color: var(--primary200Color);
+      opacity: 1;
+    }
+
+    &::-ms-input-placeholder {
+      color: var(--primary200Color);
+    }
 }
 
   &__multiple-divide-section {
@@ -53,7 +74,7 @@
     gap: 5px;
   }
 
-  &__rate-amount {
+  &__submit-btn {
     flex: 50%;
     display: flex;
     justify-content: center;
@@ -63,6 +84,14 @@
     color: #1e1e1e;
     font-weight: 600;
     font-size: 18px;
+
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+
+    &:active {
+      background-color: var(--secondary200Color);
+    }
   }
 
   &__withdrawal {
@@ -141,4 +170,54 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.error {
+  &__message {
+    position: absolute;
+    top: -11px;
+    left: 5px;
+    font-size: 8px;
+  }
+
+  &__no-money {
+    background-color: var(--danger200Color);
+  }
+
+  &__submit-btn {
+    background-color: var(--checkboxShevronColor);
+  }
+}
+
+.success {
+  &__add-substract {
+    padding: 10px 12px;
+    display: block;
+    background-color: var(--winInputBbColor);
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__submit-btn {
+    background-color: var(--winInputBbColor);
+
+    &:active {
+      background-color: var(--success300Color);
+    }
+  }
+}
+
+.loading {
+  background-color: var(--checkboxShevronColor);
+  color: var(--primeTextColor);
 }

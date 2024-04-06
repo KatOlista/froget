@@ -2,10 +2,11 @@ export const DOUBLE = '×2';
 export const ONE_AND_A_HALF = '×1,5';
 export const HALF = '÷2';
 export const MAX = 'MAX';
-export const RATE = 100;
+export const RATE = 2.5;
 export const USD_SYMBOL = '$';
 export const LIGHT = 'light';
 export const DARK = 'dark';
+export const WIN_AMOUNT = 1000;
 
 export const MESSAGES = {
   NO_BETS: 'Ставок еще не было',

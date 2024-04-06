@@ -24,6 +24,10 @@
   --secondary300Color: -moz-linear-gradient(90deg, #f79400 0%, #ffd235 100%);
   --secondary300Color: -webkit-linear-gradient(90deg, #f79400 0%, #ffd235 100%);
 
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+
   --checkboxShevronColor: #148eff;
 
     // --dropdownAmountColor: #095681;
@@ -47,15 +51,19 @@
     // --primary500Color: #0056d6;
     // --primary600Color: #0044ab;
 
-    // --secondary200Color: #9ad100;
 
-    // --success200Color: #2edf40;
-    // --success300Color: #00c908;
+    --success200Color: #2edf40;
+    --success300Color: #00c908;
+    --secondary200Color: #9ad100;
 
     // --checkboxShevronColor: #148eff;
 }
 
 :root[data-theme='light'] {
+  --winInputBbColor: var(--success200Color);
+
+
+  ////////////////
   --dropdownAmountColor: #095681;
   --dropdownBalanceColor: #5E6970;
   --tabMenuTextColorPassive: #60717e;
@@ -79,12 +87,14 @@
   --primary600Color: #0044ab;
 
   --secondary200Color: #9ad100;
-
-  --success200Color: #2edf40;
-  --success300Color: #00c908;
 }
 
 :root[data-theme='dark'] {
+  --winInputBbColor: var(--success300Color);
+
+
+
+  //////////////////////////// not sinc
   --dropdownAmountColor: #095681;
   --dropdownBalanceColor: #5E6970;
   --tabMenuTextColorPassive: #60717e;

@@ -1,17 +1,23 @@
 import { useState } from 'react';
 import cn from 'classnames';
+import 'animate.css';
 
 import { RoundButton, SecondaryButton } from '../';
-import { DOUBLE, HALF, MAX, ONE_AND_A_HALF, RATE } from '../../utils/constants';
+import { DOUBLE, HALF, MAX, ONE_AND_A_HALF, RATE, WIN_AMOUNT } from '../../utils/constants';
 import styles from './Footer.module.scss';
-
-import MinusIcon from '../../assets/icons/minus-icon.svg?react';
-import PlusIcon from '../../assets/icons/plus-icon.svg?react';
 
 export const Footer = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const [rateInputValue, setRateInputValue] = useState(RATE);
-  const [multiplierInputValue, setMultiplierInputValue] = useState(2.5);
+  const [rateInputValue, setRateInputValue] = useState('');
+  const [multiplierInputValue, setMultiplierInputValue] = useState(RATE);
+  const [isNoMoneyError, setIsNoMoneyError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  setInterval(() => {
+    setIsNoMoneyError(true);
+  }, 2000);
 
   const increaseHandler = () => {};
   const decreaseHandler = () => {};
@@ -22,25 +28,56 @@ export const Footer = () => {
   const makeBetHandler = () => {};
   const formSubmitHandler = () => {};
 
+  // const validateRateValue = () => {
+  //   setIsNoMoneyError(true);
+  // }
+
   return (
     <footer className={styles.footer}>
       <form onSubmit={formSubmitHandler}>
         <div className={styles['footer__rate-section']}>
           <div className={styles['footer__rate-management']}>
+            {isNoMoneyError && (<p className={cn(
+              'animate__animated',
+              'animate__fadeInLeft',
+              // styles.footer__message,
+              { [styles.error__message]: isNoMoneyError }
+              )}>
+              У вас недостаточно средств
+            </p>)}
 
-            <div className={styles['footer__add-substract']}>
-              <RoundButton icon={(<MinusIcon />)} onClick={increaseHandler} />
+            <div className={cn(
+              styles['footer__add-substract'],
+              { [styles['error__no-money']]: isNoMoneyError },
+              { [styles['success__add-substract']]: isSuccess }
+            )}
+            >
+              {isSuccess
+                ? (
+                    <div>
+                      <p>Выигрыш</p>
 
-              <label className={styles.footer__label}>
-                <input
-                  type="number"
-                  value={rateInputValue}
-                  onChange={(e) => setRateInputValue(e.target.value)}
-                  className={styles.footer__input}
-                />
-              </label>
+                      <span>{WIN_AMOUNT}</span>
+                    </div>
+                  )
+                : (
+                  <>
+                    <RoundButton onClick={increaseHandler} />
 
-              <RoundButton icon={(<PlusIcon />)} isPlus onClick={decreaseHandler} />
+                    <label className={styles.footer__label}>
+                      <input
+                        type="number"
+                        value={rateInputValue}
+                        placeholder='0'
+                        onChange={(e) => setRateInputValue(e.target.value)}
+                        className={styles.footer__input}
+                      />
+                    </label>
+
+                    <RoundButton isPlus onClick={decreaseHandler} />
+                  </>
+                )
+              }
             </div>
 
             <div className={styles['footer__multiple-divide-section']}>
@@ -57,11 +94,19 @@ export const Footer = () => {
           </div>
 
           <button
-            className={styles['footer__rate-amount']}
+            className={cn(
+              styles['footer__submit-btn'],
+              { [styles['success__submit-btn']]: isSuccess },
+              { [styles.loading]: isLoading },
+              { [styles['error__submit-btn']]: isError },
+            )}
             onClick={makeBetHandler}
             type='submit'
           >
-            СТАВКА
+            {isLoading
+              ? (<p>Ожидание..</p>)
+              : (<p>СТАВКА</p>)
+            }
           </button>
         </div>
 

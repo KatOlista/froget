@@ -2,7 +2,7 @@ import cn from 'classnames';
 
 import styles from './RoundButton.module.scss';
 
-export const RoundButton = ({ icon, onClick, isDisabled, isPlus }) => {
+export const RoundButton = ({ onClick, isDisabled, isPlus }) => {
   return (
     <button
       className={cn(
@@ -13,8 +13,6 @@ export const RoundButton = ({ icon, onClick, isDisabled, isPlus }) => {
       onClick={onClick}
       disabled={isDisabled}
       type='button'
-    >
-      {/* {icon} */}
-    </button>
+    />
   );
 };

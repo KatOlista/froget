@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';import
 cn from 'classnames';
+import 'animate.css';
 
 import styles from './HeaderDropdown.module.scss';
 
@@ -61,7 +62,7 @@ export const HeaderDropdown = () => {
       </button>
 
       {isDropdownOpen && (
-        <ul className={styles.dropdown__options}>
+        <ul className={`${styles.dropdown__options} animate__animated animate__fadeInLeft`}>
           {HEADER_DROPDOWN_OPTIONS.map(option => {
             const isSelected = option.balance === selectedOption.balance;
 
