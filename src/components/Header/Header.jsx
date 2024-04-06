@@ -9,7 +9,7 @@ import InfoIcon from '../../assets/icons/info-icon.svg?react';
 import ShevronIcon from '../../assets/icons/chevron-right-white.svg?react';
 import MoonIcon from '../../assets/icons/moon1.svg?react';
 import SunIcon from '../../assets/icons/sun.svg?react';
-import { LIGHT } from '../../utils/constants';
+import { DARK, LIGHT } from '../../utils/constants';
 import { useTheme } from '../../hooks/useTheme';
 
 export const Header = () => {
@@ -48,7 +48,7 @@ export const Header = () => {
 
             {
               isLightTheme
-              ? (<HeaderButton icon={<MoonIcon />} onClick={() => setTheme(LIGHT)} />)
+              ? (<HeaderButton icon={<MoonIcon />} onClick={() => setTheme(DARK)} />)
               : (<HeaderButton icon={<SunIcon />} onClick={() => setTheme(LIGHT)} />)
             }
           </header>

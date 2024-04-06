@@ -5,8 +5,6 @@ export const getSlidesPerView = (slideWidth, spaceBetween, slidesAmount) => {
 
   let slidesPerView = width / (slideWidth + spaceBetween);
 
-  console.log('userDeviceWidth', width);
-
   if (slidesPerView > slidesAmount) {
     return slidesAmount;
   }

@@ -24,9 +24,9 @@
   --secondary300Color: -moz-linear-gradient(90deg, #f79400 0%, #ffd235 100%);
   --secondary300Color: -webkit-linear-gradient(90deg, #f79400 0%, #ffd235 100%);
 
-    -webkit-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    // -webkit-transition: all 0.3s ease;
+    // -o-transition: all 0.3s ease;
+    // transition: all 0.3s ease;
 
   --checkboxShevronColor: #148eff;
 
@@ -48,7 +48,7 @@
     // --primary200Color: #6ab4ff;
     // --primary300Color: #519df8;
     // --primary400Color: #0075ff;
-    // --primary500Color: #0056d6;
+    --primary500Color: #0056d6;
     // --primary600Color: #0044ab;
 
 
@@ -61,6 +61,9 @@
 
 :root[data-theme='light'] {
   --winInputBbColor: var(--success200Color);
+  --footerWithdravalSectionBgColor: var(--primary500Color);
+  --footerMultipleBtnBgColor: var(--primary400Color);
+  --dropdownNotSelectedElement: rgba(20, 142, 255, 0.43);
 
 
   ////////////////
@@ -83,7 +86,7 @@
   --primary300Color: #519df8;
   --primary400Color: #0075ff;
   --primary400BgColor: #0075ff;
-  --primary500Color: #0056d6;
+
   --primary600Color: #0044ab;
 
   --secondary200Color: #9ad100;
@@ -137,4 +140,9 @@
 
   --success200Color: #0fe364;
   --success300Color: #00c44e;
+
+  --footerWithdravalSectionBgColor: var(--primary300Color);
+  --footerMultipleBtnBgColor: var(--primary400BgColor);
+  --dropdownNotSelectedElement: var(--neutral600Color);
+  --dropdownAmountColor: var(--neutral600Color);
 }
