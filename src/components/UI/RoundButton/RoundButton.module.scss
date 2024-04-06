@@ -1,11 +1,13 @@
 .round {
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 13px;
   border-radius: 50%;
   background-color: var(--primary400Color);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
   transition: all .3s ease;
 
   &:active {
@@ -14,5 +16,15 @@
 
   &:disabled {
     background-color: var(--primary300Color);
+  }
+
+  &__plus {
+    // -webkit-background-image: url(../../../assets/icons/plus.png);
+    background-image: url(../../../assets/icons/plus-icon.svg);
+  }
+
+  &__minus {
+    // -webkit-background-image: url(../../../assets/icons/minus.png);
+    background-image: url(../../../assets/icons/minus-icon.svg);
   }
 }

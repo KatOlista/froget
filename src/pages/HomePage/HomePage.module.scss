@@ -1,5 +1,10 @@
 .home {
+  display: flex;
+  flex-direction: column;
+
+
   &__main {
-    padding: 0 6px;
+    flex: auto;
+    padding: 0 6px 15px;
   }
 }

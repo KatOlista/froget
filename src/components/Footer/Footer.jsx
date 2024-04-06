@@ -40,7 +40,7 @@ export const Footer = () => {
                 />
               </label>
 
-              <RoundButton icon={(<PlusIcon />)} onClick={decreaseHandler} />
+              <RoundButton icon={(<PlusIcon />)} isPlus onClick={decreaseHandler} />
             </div>
 
             <div className={styles['footer__multiple-divide-section']}>
