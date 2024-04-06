@@ -7,6 +7,7 @@ import { Bet } from './Bet';
 import styles from './LastBetsSlider.module.scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss';
+import { getSlidesPerView } from '../../../utils/getSlidesPerView';
 
 export const LastBetsSlider = ({
   // bets,
@@ -16,6 +17,9 @@ export const LastBetsSlider = ({
 }) => {
   // const hasErrorMessage = hasError && !isLoading;
   // const hasNoItemsOnServer = !bets.length && !hasError && !isLoading;
+
+  const slideWidth = 64;
+  const spaceBetween = 6;
 
   return (
     <section className={styles.bets}>
@@ -38,8 +42,8 @@ export const LastBetsSlider = ({
           nextEl: `.${moverClass}-next`,
           prevEl: `.${moverClass}-prev`,
         }}
-        spaceBetween={6}
-        slidesPerView={4.5}
+        spaceBetween={spaceBetween}
+        slidesPerView={getSlidesPerView(slideWidth, spaceBetween, BETS.length)}
       >
         {BETS.map(bet => {
           return (

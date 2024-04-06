@@ -11,6 +11,7 @@ export const WIN_AMOUNT = 1000;
 export const MESSAGES = {
   NO_BETS: 'Ставок еще не было',
   NO_SERVER_RESPONSE: 'Что-то пошло не так...',
+  NO_MONEY: 'У вас недостаточно средств',
 };
 
 export const HEADER_DROPDOWN_OPTIONS = [
@@ -18,6 +19,7 @@ export const HEADER_DROPDOWN_OPTIONS = [
   {balance: 'bonusBalance', title: 'Бонусный'}
 ];
 
+export const userDeviceWidth = window.innerWidth;
 
 
 
@@ -27,7 +29,8 @@ export const HEADER_DROPDOWN_OPTIONS = [
 
 
 
-export const BETS = ['1.00', '2.00', '5.00', '1.25', '1.5', '1.8', '2.5'];
+
+export const BETS = ['1.00', '2.00', '5.00', '1.25', '1.5', '1.8', '2.5', '3.00', '5.01', '1.27', '1.55', '1.85', '2.55'];
 
 export const USER = {
   userName: 'userName',
@@ -46,4 +49,6 @@ export const USERS = [
   { userName: 'userName4', avatar: '', bet: '1.25', id: '4', },
   { userName: 'userName5', avatar: '', bet: '1.25', id: '5', },
   { userName: 'userName6', avatar: '', bet: '1.25', id: '6', },
+  { userName: 'userName6', avatar: '', bet: '1.25', id: '7', },
+  { userName: 'userName6', avatar: '', bet: '1.25', id: '8', },
 ];

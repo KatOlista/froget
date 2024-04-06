@@ -8,6 +8,7 @@ import 'swiper/scss/navigation';
 import 'swiper/scss';
 
 import { USERS } from '../../../utils/constants';
+import { getSlidesPerView } from '../../../utils/getSlidesPerView';
 
 const users = USERS;
 
@@ -19,6 +20,9 @@ export const UserSlider = ({
 }) => {
   // const hasErrorMessage = hasError && !isLoading;
   // const hasNoItemsOnServer = !users.length && !hasError && !isLoading;
+
+  const slideWidth = 88;
+  const spaceBetween = 7;
 
   return (
     <section className={styles.slider}>
@@ -41,8 +45,8 @@ export const UserSlider = ({
           nextEl: `.${moverClass}-next`,
           prevEl: `.${moverClass}-prev`,
         }}
-        spaceBetween={7}
-        slidesPerView={3.25}
+        spaceBetween={spaceBetween}
+        slidesPerView={getSlidesPerView(slideWidth, spaceBetween, users.length)}
       >
         {users.map(user => {
           return (

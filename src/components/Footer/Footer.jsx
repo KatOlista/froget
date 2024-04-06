@@ -3,7 +3,7 @@ import cn from 'classnames';
 import 'animate.css';
 
 import { RoundButton, SecondaryButton } from '../';
-import { DOUBLE, HALF, MAX, ONE_AND_A_HALF, RATE, WIN_AMOUNT } from '../../utils/constants';
+import { DOUBLE, HALF, MAX, MESSAGES, ONE_AND_A_HALF, RATE, WIN_AMOUNT } from '../../utils/constants';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -43,7 +43,7 @@ export const Footer = () => {
               // styles.footer__message,
               { [styles.error__message]: isNoMoneyError }
               )}>
-              У вас недостаточно средств
+              {MESSAGES.NO_MONEY}
             </p>)}
 
             <div className={cn(
