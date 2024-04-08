@@ -5,73 +5,99 @@ import 'animate.css';
 import { RoundButton, SecondaryButton } from '../';
 
 import {
+  DECREASE,
+  DIVIDE,
   DOUBLE,
   HALF,
+  INCREASE,
   INITIAL_RATE_VALUE,
   MAX,
   MESSAGES,
   MIN_RATE_INPUT_VALUE,
+  MULTIPLY_ONE_AND_A_HALF,
   ONE_AND_A_HALF,
-  STEP_MINUS,
-  STEP_PLUS,
+  MULTIPLY_TWICE,
   USER,
   WIN_AMOUNT,
+  MAKE_MAX,
+  SET_BY_USER,
 } from '../../utils/constants';
 
 import styles from './Footer.module.scss';
-import { increaseOrDecrease, validateInputValue } from '../../utils';
+import { validateInputValue } from '../../utils';
 import { useSelector } from 'react-redux';
 
 export const Footer = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [rateInputValue, setRateInputValue] = useState('');
   const [multiplierInputValue, setMultiplierInputValue] = useState(INITIAL_RATE_VALUE);
-  const [isNoMoneyError, setIsNoMoneyError] = useState(false);
+  const [isNotEnoughMoneyError, setIsNotEnoughMoneyError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const { selectedBalance } = useSelector(state => state.selectedBalance);
+  const userCurrentBalance = USER[selectedBalance.balance];
 
-  const increaseInputHandler = () => {
-    const inputValue = increaseOrDecrease(Number(rateInputValue), STEP_PLUS);
+  const inputRateHandler = (option, customValue) => {
+    setIsNotEnoughMoneyError(false);
+    let inputValue = Number(rateInputValue);
 
-    setRateInputValue(validateInputValue(inputValue, MIN_RATE_INPUT_VALUE, USER[selectedBalance.balance]))
+    switch (option) {
+      case INCREASE:
+        inputValue++;
+        break;
+      case DECREASE:
+        inputValue--;
+        break;
+      case DIVIDE:
+        inputValue = (inputValue / 2).toFixed(2);
+        break;
+      case MULTIPLY_ONE_AND_A_HALF:
+        inputValue = (inputValue * 1.5).toFixed(2);
+        break;
+      case MULTIPLY_TWICE:
+        inputValue = inputValue * 2;
+        break;
+      case MAKE_MAX:
+        inputValue = userCurrentBalance;
+        break;
+      case SET_BY_USER:
+        inputValue = Number(customValue);
+        break;
+      default:
+        return inputValue;
+    }
+
+    const validInput = validateInputValue(
+      inputValue,
+      MIN_RATE_INPUT_VALUE,
+      userCurrentBalance,
+      setIsNotEnoughMoneyError,
+    );
+
+    setRateInputValue(validInput);
   };
 
-  const decreaseInputHandler = () => {
-    const inputValue = increaseOrDecrease(Number(rateInputValue), STEP_MINUS);
-
-    setRateInputValue(validateInputValue(inputValue, MIN_RATE_INPUT_VALUE, USER[selectedBalance.balance]))
-  };
-
-  const doubleHandler = () => {};
-  const oneAndAHalfHandler = () => {};
-  const halfHandler = () => {};
-  const maxHandler = () => {};
   const makeBetHandler = () => {};
   const formSubmitHandler = () => {};
-
-  // const validateRateValue = () => {
-  //   setIsNoMoneyError(true);
-  // }
 
   return (
     <footer className={styles.footer}>
       <form onSubmit={formSubmitHandler}>
         <div className={styles['footer__rate-section']}>
           <div className={styles['footer__rate-management']}>
-            {isNoMoneyError && (<p className={cn(
+            {isNotEnoughMoneyError && (<p className={cn(
               'animate__animated',
               'animate__fadeInLeft',
-              { [styles.error__message]: isNoMoneyError }
+              { [styles.error__message]: isNotEnoughMoneyError }
               )}>
-              {MESSAGES.NO_MONEY}
+              {MESSAGES.NOT_ENOUGH_MONEY}
             </p>)}
 
             <div className={cn(
               styles['footer__add-substract'],
-              { [styles['error__no-money']]: isNoMoneyError },
+              { [styles['error__no-money']]: isNotEnoughMoneyError },
               { [styles['success__add-substract']]: isSuccess }
             )}
             >
@@ -85,19 +111,19 @@ export const Footer = () => {
                   )
                 : (
                   <>
-                    <RoundButton onClick={decreaseInputHandler} />
+                    <RoundButton onClick={() => inputRateHandler(DECREASE)} />
 
                     <label className={styles.footer__label}>
                       <input
                         type="number"
                         value={rateInputValue}
                         placeholder='0'
-                        onChange={(e) => setRateInputValue(e.target.value)}
+                        onChange={(e) => inputRateHandler(SET_BY_USER, e.target.value)}
                         className={styles.footer__input}
                       />
                     </label>
 
-                    <RoundButton isPlus onClick={increaseInputHandler} />
+                    <RoundButton isPlus onClick={() => inputRateHandler(INCREASE)} />
                   </>
                 )
               }
@@ -105,14 +131,14 @@ export const Footer = () => {
 
             <div className={styles['footer__multiple-divide-section']}>
               <div className={styles['footer__math-buttons-container']}>
-                <SecondaryButton content={DOUBLE} onClick={doubleHandler} />
+                <SecondaryButton content={DOUBLE} onClick={() => inputRateHandler(MULTIPLY_TWICE)} />
 
-                <SecondaryButton content={ONE_AND_A_HALF} onClick={oneAndAHalfHandler} />
+                <SecondaryButton content={ONE_AND_A_HALF} onClick={() => inputRateHandler(MULTIPLY_ONE_AND_A_HALF)} />
 
-                <SecondaryButton content={HALF} onClick={halfHandler} />
+                <SecondaryButton content={HALF} onClick={() => inputRateHandler(DIVIDE)} />
               </div>
 
-              <SecondaryButton content={MAX} onClick={maxHandler} />
+              <SecondaryButton content={MAX} onClick={() => inputRateHandler(MAKE_MAX)} />
             </div>
           </div>
 

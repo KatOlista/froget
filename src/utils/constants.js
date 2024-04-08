@@ -5,18 +5,27 @@ export const MAX = 'MAX';
 export const USD_SYMBOL = '$';
 export const LIGHT = 'light';
 export const DARK = 'dark';
-export const STEP_PLUS = 1;
-export const STEP_MINUS = -1;
 export const MIN_RATE_INPUT_VALUE = 0;
 export const MIN_MULTIPLIER_INPUT_VALUE = 1.1;
 export const INITIAL_RATE_VALUE = 2.5;
+
+export const INCREASE = 'increase';
+export const DECREASE = 'decrease';
+export const DIVIDE = 'divide';
+export const MULTIPLY_TWICE = 'twice';
+export const MULTIPLY_ONE_AND_A_HALF = 'multiply_one_and_a_half';
+export const MAKE_MAX = 'make_max';
+export const SET_BY_USER = 'set_by_user';
+
+export const CUSTOM_MULTIPLY = 'custom_multiply';
+
 
 export const userDeviceWidth = window.innerWidth;
 
 export const MESSAGES = {
   NO_BETS: 'Ставок еще не было',
   NO_SERVER_RESPONSE: 'Что-то пошло не так...',
-  NO_MONEY: 'У вас недостаточно средств',
+  NOT_ENOUGH_MONEY: 'У вас недостаточно средств',
 };
 
 export const HEADER_DROPDOWN_OPTIONS = [
