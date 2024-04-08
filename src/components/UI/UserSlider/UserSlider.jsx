@@ -8,7 +8,7 @@ import 'swiper/scss/navigation';
 import 'swiper/scss';
 
 import { USERS } from '../../../utils/constants';
-import { getSlidesPerView } from '../../../utils/getSlidesPerView';
+import { getSlidesPerView } from '../../../utils/';
 
 const users = USERS;
 

@@ -2,20 +2,20 @@ import { useState } from 'react';
 
 import { HeaderDropdown } from './HeaderDropdown';
 import { HeaderButton } from './HeaderButton';
-import styles from './Header.module.scss';
-
 import UserIcon from '../../assets/icons/white-user-icon.svg?react';
 import InfoIcon from '../../assets/icons/info-icon.svg?react';
 import ShevronIcon from '../../assets/icons/chevron-right-white.svg?react';
 import MoonIcon from '../../assets/icons/moon1.svg?react';
 import SunIcon from '../../assets/icons/sun.svg?react';
-import { DARK, LIGHT } from '../../utils/constants';
+import { DARK, HEADER_DROPDOWN_OPTIONS, LIGHT } from '../../utils/constants';
 import { useTheme } from '../../hooks/useTheme';
+
+import styles from './Header.module.scss';
 
 export const Header = () => {
   const [isUserPageOpen, setIsUserPageOpen] = useState(false);
-
   const { theme, setTheme } = useTheme(LIGHT);
+
   const isLightTheme = theme === LIGHT;
 
   const showInfoHandler = () => {};
@@ -27,7 +27,9 @@ export const Header = () => {
     <>
       {!isUserPageOpen && (
         <header className={styles.header}>
-          <HeaderDropdown />
+          <HeaderDropdown
+            options={HEADER_DROPDOWN_OPTIONS}
+          />
 
           <div className={styles.header__buttons}>
             <HeaderButton icon={<InfoIcon />} onClick={showInfoHandler} />

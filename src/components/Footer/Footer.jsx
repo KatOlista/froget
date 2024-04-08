@@ -3,24 +3,48 @@ import cn from 'classnames';
 import 'animate.css';
 
 import { RoundButton, SecondaryButton } from '../';
-import { DOUBLE, HALF, MAX, MESSAGES, ONE_AND_A_HALF, RATE, WIN_AMOUNT } from '../../utils/constants';
+
+import {
+  DOUBLE,
+  HALF,
+  INITIAL_RATE_VALUE,
+  MAX,
+  MESSAGES,
+  MIN_RATE_INPUT_VALUE,
+  ONE_AND_A_HALF,
+  STEP_MINUS,
+  STEP_PLUS,
+  USER,
+  WIN_AMOUNT,
+} from '../../utils/constants';
+
 import styles from './Footer.module.scss';
+import { increaseOrDecrease, validateInputValue } from '../../utils';
+import { useSelector } from 'react-redux';
 
 export const Footer = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [rateInputValue, setRateInputValue] = useState('');
-  const [multiplierInputValue, setMultiplierInputValue] = useState(RATE);
+  const [multiplierInputValue, setMultiplierInputValue] = useState(INITIAL_RATE_VALUE);
   const [isNoMoneyError, setIsNoMoneyError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  setInterval(() => {
-    setIsNoMoneyError(true);
-  }, 2000);
+  const { selectedBalance } = useSelector(state => state.selectedBalance);
 
-  const increaseHandler = () => {};
-  const decreaseHandler = () => {};
+  const increaseInputHandler = () => {
+    const inputValue = increaseOrDecrease(Number(rateInputValue), STEP_PLUS);
+
+    setRateInputValue(validateInputValue(inputValue, MIN_RATE_INPUT_VALUE, USER[selectedBalance.balance]))
+  };
+
+  const decreaseInputHandler = () => {
+    const inputValue = increaseOrDecrease(Number(rateInputValue), STEP_MINUS);
+
+    setRateInputValue(validateInputValue(inputValue, MIN_RATE_INPUT_VALUE, USER[selectedBalance.balance]))
+  };
+
   const doubleHandler = () => {};
   const oneAndAHalfHandler = () => {};
   const halfHandler = () => {};
@@ -40,7 +64,6 @@ export const Footer = () => {
             {isNoMoneyError && (<p className={cn(
               'animate__animated',
               'animate__fadeInLeft',
-              // styles.footer__message,
               { [styles.error__message]: isNoMoneyError }
               )}>
               {MESSAGES.NO_MONEY}
@@ -62,7 +85,7 @@ export const Footer = () => {
                   )
                 : (
                   <>
-                    <RoundButton onClick={increaseHandler} />
+                    <RoundButton onClick={decreaseInputHandler} />
 
                     <label className={styles.footer__label}>
                       <input
@@ -74,7 +97,7 @@ export const Footer = () => {
                       />
                     </label>
 
-                    <RoundButton isPlus onClick={decreaseHandler} />
+                    <RoundButton isPlus onClick={increaseInputHandler} />
                   </>
                 )
               }

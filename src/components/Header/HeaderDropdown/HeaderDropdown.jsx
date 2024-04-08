@@ -1,19 +1,23 @@
-import { useEffect, useRef, useState } from 'react';import
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';import
 cn from 'classnames';
 import 'animate.css';
 
-import styles from './HeaderDropdown.module.scss';
+import { selectBalance } from '../../../redux/features/balanceSlice';
 
 import ShevronIcon from '../../../assets/icons/chevron-right-white.svg?react';
 import {
-  HEADER_DROPDOWN_OPTIONS,
   USD_SYMBOL,
   USER,
 } from '../../../utils/constants';
 
-export const HeaderDropdown = () => {
+import styles from './HeaderDropdown.module.scss';
+
+export const HeaderDropdown = ({ options }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(HEADER_DROPDOWN_OPTIONS[0]);
+
+  const { selectedBalance } = useSelector(state => state.selectedBalance);
+  const dispatch = useDispatch();
 
   const dropdownRef = useRef();
 
@@ -22,7 +26,7 @@ export const HeaderDropdown = () => {
   };
 
   const selectOptionHandler = (option) => {
-    setSelectedOption(option);
+    dispatch(selectBalance(option));
 
     toggleDropdown();
   }
@@ -51,7 +55,7 @@ export const HeaderDropdown = () => {
         <p>
           <span>{USD_SYMBOL}</span>
 
-          {USER[selectedOption.balance]}
+          {USER[selectedBalance.balance]}
         </p>
 
         {<ShevronIcon className={cn(
@@ -62,9 +66,15 @@ export const HeaderDropdown = () => {
       </button>
 
       {isDropdownOpen && (
-        <ul className={`${styles.dropdown__options} animate__animated animate__fadeInLeft`}>
-          {HEADER_DROPDOWN_OPTIONS.map(option => {
-            const isSelected = option.balance === selectedOption.balance;
+        <ul
+          className={cn(
+            styles.dropdown__options,
+            'animate__animated',
+            'animate__fadeInLeft',
+          )}
+        >
+          {options.map(option => {
+            const isSelected = option.balance === selectedBalance.balance;
 
             return (
             <li key={option.balance}>

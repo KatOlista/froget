@@ -1,4 +1,4 @@
-import { userDeviceWidth } from "./constants";
+import { userDeviceWidth } from "../constants";
 
 export const getSlidesPerView = (slideWidth, spaceBetween, slidesAmount) => {
   const width = userDeviceWidth > 640 ? 640 : userDeviceWidth;

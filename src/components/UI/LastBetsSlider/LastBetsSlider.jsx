@@ -7,7 +7,7 @@ import { Bet } from './Bet';
 import styles from './LastBetsSlider.module.scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss';
-import { getSlidesPerView } from '../../../utils/getSlidesPerView';
+import { getSlidesPerView } from '../../../utils/';
 
 export const LastBetsSlider = ({
   // bets,
