@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import cn from 'classnames';
 import 'animate.css';
 
 import { RoundButton, SecondaryButton } from '../';
+import { setRateInput } from '../../utils';
 
 import {
   DECREASE,
@@ -13,7 +15,7 @@ import {
   INITIAL_RATE_VALUE,
   MAX,
   MESSAGES,
-  MIN_RATE_INPUT_VALUE,
+
   MULTIPLY_ONE_AND_A_HALF,
   ONE_AND_A_HALF,
   MULTIPLY_TWICE,
@@ -24,8 +26,6 @@ import {
 } from '../../utils/constants';
 
 import styles from './Footer.module.scss';
-import { validateInputValue } from '../../utils';
-import { useSelector } from 'react-redux';
 
 export const Footer = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -40,44 +40,15 @@ export const Footer = () => {
   const userCurrentBalance = USER[selectedBalance.balance];
 
   const inputRateHandler = (option, customValue) => {
-    setIsNotEnoughMoneyError(false);
-    let inputValue = Number(rateInputValue);
-
-    switch (option) {
-      case INCREASE:
-        inputValue++;
-        break;
-      case DECREASE:
-        inputValue--;
-        break;
-      case DIVIDE:
-        inputValue = (inputValue / 2).toFixed(2);
-        break;
-      case MULTIPLY_ONE_AND_A_HALF:
-        inputValue = (inputValue * 1.5).toFixed(2);
-        break;
-      case MULTIPLY_TWICE:
-        inputValue = inputValue * 2;
-        break;
-      case MAKE_MAX:
-        inputValue = userCurrentBalance;
-        break;
-      case SET_BY_USER:
-        inputValue = Number(customValue);
-        break;
-      default:
-        return inputValue;
-    }
-
-    const validInput = validateInputValue(
-      inputValue,
-      MIN_RATE_INPUT_VALUE,
-      userCurrentBalance,
+    return setRateInput(
+      option,
+      rateInputValue,
       setIsNotEnoughMoneyError,
+      setRateInputValue,
+      userCurrentBalance,
+      customValue,
     );
-
-    setRateInputValue(validInput);
-  };
+  }
 
   const makeBetHandler = () => {};
   const formSubmitHandler = () => {};
