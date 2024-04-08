@@ -15,6 +15,10 @@ export const GameItem = () => {
         <span className={styles.game__addition}>Коэффицент</span>
       </div>
 
+      <div>
+        
+      </div>
+
       <UserSlider />
     </section>
   );

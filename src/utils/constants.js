@@ -16,6 +16,7 @@ export const MULTIPLY_TWICE = 'twice';
 export const MULTIPLY_ONE_AND_A_HALF = 'multiply_one_and_a_half';
 export const MAKE_MAX = 'make_max';
 export const SET_BY_USER = 'set_by_user';
+export const CHANGE_USER_BALANCE = 'change_user_balance';
 
 export const CUSTOM_MULTIPLY = 'custom_multiply';
 

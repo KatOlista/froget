@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import cn from 'classnames';
 import 'animate.css';
@@ -15,7 +15,6 @@ import {
   INITIAL_RATE_VALUE,
   MAX,
   MESSAGES,
-
   MULTIPLY_ONE_AND_A_HALF,
   ONE_AND_A_HALF,
   MULTIPLY_TWICE,
@@ -23,6 +22,7 @@ import {
   WIN_AMOUNT,
   MAKE_MAX,
   SET_BY_USER,
+  CHANGE_USER_BALANCE,
 } from '../../utils/constants';
 
 import styles from './Footer.module.scss';
@@ -30,14 +30,18 @@ import styles from './Footer.module.scss';
 export const Footer = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [rateInputValue, setRateInputValue] = useState('');
-  const [multiplierInputValue, setMultiplierInputValue] = useState(INITIAL_RATE_VALUE);
   const [isNotEnoughMoneyError, setIsNotEnoughMoneyError] = useState(false);
+
+  //////
+  const [userCurrentBalance, setUserCurrentBalance] = useState(0);
+  const [multiplierInputValue, setMultiplierInputValue] = useState(INITIAL_RATE_VALUE);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  //////
 
   const { selectedBalance } = useSelector(state => state.selectedBalance);
-  const userCurrentBalance = USER[selectedBalance.balance];
+  // const userCurrentBalance = USER[selectedBalance.balance];
 
   const inputRateHandler = (option, customValue) => {
     return setRateInput(
@@ -49,6 +53,11 @@ export const Footer = () => {
       customValue,
     );
   }
+
+  useEffect(() => {
+    setUserCurrentBalance(() => USER[selectedBalance.balance]);
+    inputRateHandler(CHANGE_USER_BALANCE);
+  }, [selectedBalance]);
 
   const makeBetHandler = () => {};
   const formSubmitHandler = () => {};

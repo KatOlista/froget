@@ -1,4 +1,4 @@
-import { DECREASE, DIVIDE, INCREASE, MAKE_MAX, MIN_RATE_INPUT_VALUE, MULTIPLY_ONE_AND_A_HALF, MULTIPLY_TWICE, SET_BY_USER } from "../constants";
+import { CHANGE_USER_BALANCE, DECREASE, DIVIDE, INCREASE, MAKE_MAX, MIN_RATE_INPUT_VALUE, MULTIPLY_ONE_AND_A_HALF, MULTIPLY_TWICE, SET_BY_USER } from "../constants";
 import { validateInputValue } from "./validateInputValue";
 
 export const setRateInput = (
@@ -33,6 +33,9 @@ export const setRateInput = (
       break;
     case SET_BY_USER:
       inputValue = Number(customValue);
+      break;
+    case CHANGE_USER_BALANCE:
+      inputValue = '';
       break;
     default:
       return inputValue;
