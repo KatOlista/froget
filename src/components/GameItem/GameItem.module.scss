@@ -87,7 +87,7 @@
     left: -100px;
     background-image: url('../../assets/img/small-cloud.png');
     background-repeat: no-repeat;
-    animation: cloud5 20s ease-in 8s infinite reverse;
+    animation: cloud5 11s ease-in 8s infinite reverse;
   }
 
   &__cloud6 {
@@ -97,7 +97,7 @@
     position: relative;
     left: -100px;
     background: center / contain no-repeat url('../../assets/img/middle-cloud.png');
-    animation: cloud6 11s ease-in 3s infinite reverse;
+    animation: cloud6 20s ease-in 3s infinite reverse;
   }
 
   &__cloud7 {
