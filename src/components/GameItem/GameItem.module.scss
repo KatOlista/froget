@@ -11,6 +11,7 @@
   &__info {
     margin: 11px 19px auto auto;
     width: 100px;
+    z-index: 2;
   }
 
   &__ratio {
@@ -25,5 +26,331 @@
     color: #ecf7fb;
   }
 
-  &__visualization {}
+  &__visualization {
+    position: relative;
+    top: -320px;
+    z-index: 1;
+  }
+
+  &__clouds {
+    position: absolute;
+  }
+
+  &__cloud1 {
+    margin: 0;
+    width: 35px;
+    height: 25px;
+    position: relative;
+    left: -100px;
+    background-image: url('../../assets/img/small-cloud.png');
+    background-repeat: no-repeat;
+    animation: cloud1 16s ease-in 4s infinite reverse;
+  }
+
+  &__cloud2 {
+    margin: 0;
+    width: 95px;
+    height: 60px;
+    position: relative;
+    left: -100px;
+    background-image: url('../../assets/img/big-cloud.png');
+    background-repeat: no-repeat;
+    animation: cloud2 18s ease-in infinite reverse;
+  }
+
+  &__cloud3 {
+    margin: 0;
+    width: 35px;
+    height: 25px;
+    position: relative;
+    left: -100px;
+    background-image: url('../../assets/img/small-cloud.png');
+    background-repeat: no-repeat;
+    animation: cloud3 12s ease-in 9s infinite reverse;
+  }
+
+  &__cloud4 {
+    margin: 0;
+    width: 70px;
+    height: 40px;
+    position: relative;
+    left: -100px;
+    background: center / contain no-repeat url('../../assets/img/middle-cloud.png');
+    animation: cloud4 17s ease-in 1s infinite reverse;
+  }
+
+  &__cloud5 {
+    margin: 0;
+    width: 35px;
+    height: 25px;
+    position: relative;
+    left: -100px;
+    background-image: url('../../assets/img/small-cloud.png');
+    background-repeat: no-repeat;
+    animation: cloud5 20s ease-in 8s infinite reverse;
+  }
+
+  &__cloud6 {
+    margin: 0;
+    width: 70px;
+    height: 40px;
+    position: relative;
+    left: -100px;
+    background: center / contain no-repeat url('../../assets/img/middle-cloud.png');
+    animation: cloud6 11s ease-in 3s infinite reverse;
+  }
+
+  &__cloud7 {
+    margin: 0;
+    width: 70px;
+    height: 40px;
+    position: relative;
+    left: -100px;
+    background: center / contain no-repeat url('../../assets/img/middle-cloud.png');
+    animation: cloud7 14s ease-in 5s infinite reverse;
+  }
+
+  &__cloud8 {
+    margin: 0;
+    width: 95px;
+    height: 60px;
+    position: relative;
+    left: -100px;
+    background-image: url('../../assets/img/big-cloud.png');
+    background-repeat: no-repeat;
+    animation: cloud8 10s ease-in 2s infinite reverse;
+    // animation: name duration timing-function delay iteration-count direction fill-mode;
+  }
+}
+
+@keyframes cloud1 {
+  0% {
+    margin-left: 0%;
+  }
+  77% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  78% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  79% {
+    margin-left: 800%;
+    opacity: 0;
+  }
+  80% {
+    margin-left: -200%;
+    opacity: 0;
+  }
+  81% {
+    margin-left: -200%;
+    opacity: 1;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes cloud2 {
+  0% {
+    margin-left: 0%;
+  }
+  77% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  78% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  79% {
+    margin-left: 800%;
+    opacity: 0;
+  }
+  80% {
+    margin-left: -200%;
+    opacity: 0;
+  }
+  81% {
+    margin-left: -200%;
+    opacity: 1;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes cloud3 {
+  0% {
+    margin-left: 0%;
+  }
+  77% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  78% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  79% {
+    margin-left: 800%;
+    opacity: 0;
+  }
+  80% {
+    margin-left: -200%;
+    opacity: 0;
+  }
+  81% {
+    margin-left: -200%;
+    opacity: 1;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes cloud4 {
+  0% {
+    margin-left: 0%;
+  }
+  77% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  78% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  79% {
+    margin-left: 800%;
+    opacity: 0;
+  }
+  80% {
+    margin-left: -200%;
+    opacity: 0;
+  }
+  81% {
+    margin-left: -200%;
+    opacity: 1;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes cloud5 {
+  0% {
+    margin-left: 0%;
+  }
+  77% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  78% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  79% {
+    margin-left: 800%;
+    opacity: 0;
+  }
+  80% {
+    margin-left: -200%;
+    opacity: 0;
+  }
+  81% {
+    margin-left: -200%;
+    opacity: 1;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes cloud6 {
+  0% {
+    margin-left: 0%;
+  }
+  77% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  78% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  79% {
+    margin-left: 800%;
+    opacity: 0;
+  }
+  80% {
+    margin-left: -200%;
+    opacity: 0;
+  }
+  81% {
+    margin-left: -200%;
+    opacity: 1;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes cloud7 {
+  0% {
+    margin-left: 0%;
+  }
+  77% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  78% {
+    margin-left: 800%;
+    opacity: 1;
+  }
+  79% {
+    margin-left: 800%;
+    opacity: 0;
+  }
+  80% {
+    margin-left: -200%;
+    opacity: 0;
+  }
+  81% {
+    margin-left: -200%;
+    opacity: 1;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes cloud8 {
+    0% {
+      margin-left: 0%;
+    }
+    77% {
+      margin-left: 800%;
+      opacity: 1;
+    }
+    78% {
+      margin-left: 800%;
+      opacity: 1;
+    }
+    79% {
+      margin-left: 800%;
+      opacity: 0;
+    }
+    80% {
+      margin-left: -200%;
+      opacity: 0;
+    }
+    81% {
+      margin-left: -200%;
+      opacity: 1;
+    }
+    100% {
+      margin-left: 0%;
+    }
 }
