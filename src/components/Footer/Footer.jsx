@@ -30,10 +30,10 @@ import styles from './Footer.module.scss';
 export const Footer = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [rateInputValue, setRateInputValue] = useState('');
+  const [userCurrentBalance, setUserCurrentBalance] = useState(0);
   const [isNotEnoughMoneyError, setIsNotEnoughMoneyError] = useState(false);
 
   //////
-  const [userCurrentBalance, setUserCurrentBalance] = useState(0);
   const [multiplierInputValue, setMultiplierInputValue] = useState(INITIAL_RATE_VALUE);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +41,6 @@ export const Footer = () => {
   //////
 
   const { selectedBalance } = useSelector(state => state.selectedBalance);
-  // const userCurrentBalance = USER[selectedBalance.balance];
 
   const inputRateHandler = (option, customValue) => {
     return setRateInput(
