@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 import 'animate.css';
 
 import { RoundButton, SecondaryButton } from '../';
 import { setRateInput } from '../../utils';
+import { setStart } from '../../redux/features/startGameSlice';
 
 import {
   DECREASE,
@@ -42,6 +43,8 @@ export const Footer = () => {
 
   const { selectedBalance } = useSelector(state => state.selectedBalance);
 
+  const dispatch = useDispatch();
+
   const inputRateHandler = (option, customValue) => {
     return setRateInput(
       option,
@@ -59,11 +62,15 @@ export const Footer = () => {
   }, [selectedBalance]);
 
   const makeBetHandler = () => {};
-  const formSubmitHandler = () => {};
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+
+    dispatch(setStart(true));
+  };
 
   return (
     <footer className={styles.footer}>
-      <form onSubmit={formSubmitHandler}>
+      <form onSubmit={(event) => formSubmitHandler(event)}>
         <div className={styles['footer__rate-section']}>
           <div className={styles['footer__rate-management']}>
             {isNotEnoughMoneyError && (<p className={cn(

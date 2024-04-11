@@ -7,7 +7,6 @@
   overflow: hidden;
 
   position: relative;
-  // top: -320px;
   z-index: 1;
 
   background: var(--gameColor);
@@ -29,12 +28,6 @@
     font-size: 11px;
     color: #ecf7fb;
   }
-
-  // &__visualization {
-  //   position: relative;
-  //   top: -320px;
-  //   z-index: 1;
-  // }
 
   &__clouds {
     position: absolute;
@@ -119,6 +112,10 @@
     background: center / contain no-repeat url('../../assets/img/big-cloud.png');
     animation: cloud 10s ease-in 2s infinite reverse;
   }
+
+  &__start {
+    animation: start 3s ease-out, playing 2s ease-out 2s infinite;
+  }
 }
 
 @keyframes cloud {
@@ -147,5 +144,71 @@
   }
   100% {
     margin-left: 0%;
+  }
+}
+
+@keyframes start {
+  0% {
+    margin-top: 0%;
+    margin-left: 0%;
+  }
+
+  97% {
+    margin-top: 150%;
+    margin-left: -200%;
+    opacity: 1;
+  }
+
+  98% {
+    margin-top: 150%;
+    margin-left: -200%;
+    opacity: 0;
+  }
+
+  99% {
+    margin-top: -100%;
+    margin-left: 0%;
+    opacity: 1;
+  }
+
+  100% {
+    margin-top: -100%;
+    margin-left: 0%;
+  }
+}
+
+@keyframes playing {
+  0% {
+    margin-left: 200%;
+    margin-top: -100%;
+  }
+  87% {
+    margin-left: -300%;
+    margin-top: 100%;
+    opacity: 1;
+  }
+  88% {
+    margin-left: -300%;
+    margin-top: 100%;
+    opacity: 1;
+  }
+  89% {
+    margin-left: -300%;
+    margin-top: 100%;
+    opacity: 0;
+  }
+  90% {
+    margin-left: 200%;
+    margin-top: -100%;
+    opacity: 0;
+  }
+  91% {
+    margin-left: 200%;
+    margin-top: -100%;
+    opacity: 1;
+  }
+  100% {
+    margin-left: 200%;
+    margin-top: -100%;
   }
 }
