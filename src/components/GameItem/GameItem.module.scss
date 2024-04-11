@@ -114,7 +114,11 @@
   }
 
   &__start {
-    animation: start 3s ease-out, playing 2s ease-out 2s infinite;
+    animation: start 2s ease-out, playing ease-out 2s infinite;
+  }
+
+  &__start2 {
+    animation: start 2s ease-out, stay ease-out 3s, playing 2s ease-out 3s infinite;
   }
 }
 
@@ -177,38 +181,52 @@
   }
 }
 
-@keyframes playing {
+@keyframes stay {
   0% {
-    margin-left: 200%;
+    margin-left: 300%;
     margin-top: -100%;
   }
+
+  100% {
+    margin-left: 300%;
+    margin-top: -100%;
+  }
+}
+
+@keyframes playing {
+  0% {
+    margin-left: 300%;
+    margin-top: -100%;
+    opacity: 1;
+  }
   87% {
-    margin-left: -300%;
+    margin-left: -200%;
     margin-top: 100%;
     opacity: 1;
   }
   88% {
-    margin-left: -300%;
+    margin-left: -200%;
     margin-top: 100%;
     opacity: 1;
   }
   89% {
-    margin-left: -300%;
+    margin-left: -200%;
     margin-top: 100%;
     opacity: 0;
   }
   90% {
-    margin-left: 200%;
+    margin-left: 300%;
     margin-top: -100%;
     opacity: 0;
   }
   91% {
-    margin-left: 200%;
+    margin-left: 300%;
     margin-top: -100%;
     opacity: 1;
   }
   100% {
-    margin-left: 200%;
+    margin-left: 300%;
     margin-top: -100%;
+    opacity: 1;
   }
 }

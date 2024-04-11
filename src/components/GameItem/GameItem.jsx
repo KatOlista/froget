@@ -25,21 +25,28 @@ export const GameItem = () => {
           { [styles.game__start]: startGame }
         )}
       >
-        <div className={styles.game__cloud1}></div>
+        <div className={styles.game__cloud1} />
 
-        <div className={styles.game__cloud2}></div>
+        <div className={styles.game__cloud2} />
 
-        <div className={styles.game__cloud3}></div>
+        <div className={styles.game__cloud3} />
 
-        <div className={styles.game__cloud4}></div>
+        </div>
 
-        <div className={styles.game__cloud5}></div>
+        <div className={cn(
+          styles.game__clouds,
+          { [styles.game__start2]: startGame }
+        )}
+      >
+        <div className={styles.game__cloud4} />
 
-        <div className={styles.game__cloud6}></div>
+        <div className={styles.game__cloud5} />
 
-        <div className={styles.game__cloud7}></div>
+        <div className={styles.game__cloud6} />
 
-        <div className={styles.game__cloud8}></div>
+        <div className={styles.game__cloud7} />
+
+        <div className={styles.game__cloud8} />
       </div>
 
       <UserSlider />
