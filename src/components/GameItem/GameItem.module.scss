@@ -23,12 +23,6 @@
     color: #efeff4;
   }
 
-  &__addition {
-    font-weight: 500;
-    font-size: 11px;
-    color: #ecf7fb;
-  }
-
   &__clouds {
     position: absolute;
   }
@@ -114,11 +108,11 @@
   }
 
   &__start {
-    animation: start 2s ease-out, playing ease-out 2s infinite;
+    animation: start 2s ease-out, playing ease-out 6s infinite;
   }
 
   &__start2 {
-    animation: start 2s ease-out, stay ease-out 3s, playing 2s ease-out 3s infinite;
+    animation: start 2s ease-out, stay 2s ease-out 1s, playing 6s ease-out 3s infinite;
   }
 }
 
@@ -155,6 +149,7 @@
   0% {
     margin-top: 0%;
     margin-left: 0%;
+    opacity: 1;
   }
 
   97% {
@@ -172,61 +167,62 @@
   99% {
     margin-top: -100%;
     margin-left: 0%;
-    opacity: 1;
+    opacity: 0;
   }
 
   100% {
     margin-top: -100%;
-    margin-left: 0%;
+    margin-left: 300%;
+    opacity: 0;
   }
 }
 
 @keyframes stay {
   0% {
-    margin-left: 300%;
+    margin-left: 200%;
     margin-top: -100%;
   }
 
   100% {
-    margin-left: 300%;
+    margin-left: 200%;
     margin-top: -100%;
   }
 }
 
 @keyframes playing {
   0% {
-    margin-left: 300%;
-    margin-top: -100%;
+    margin-left: 250%;
+    margin-top: -200%;
     opacity: 1;
   }
   87% {
-    margin-left: -200%;
-    margin-top: 100%;
+    margin-left: -100%;
+    margin-top: 200%;
     opacity: 1;
   }
   88% {
-    margin-left: -200%;
-    margin-top: 100%;
+    margin-left: -100%;
+    margin-top: 200%;
     opacity: 1;
   }
   89% {
-    margin-left: -200%;
-    margin-top: 100%;
+    margin-left: -100%;
+    margin-top: 200%;
     opacity: 0;
   }
   90% {
-    margin-left: 300%;
-    margin-top: -100%;
+    margin-left: 250%;
+    margin-top: -200%;
     opacity: 0;
   }
   91% {
-    margin-left: 300%;
-    margin-top: -100%;
+    margin-left: 250%;
+    margin-top: -200%;
     opacity: 1;
   }
   100% {
-    margin-left: 300%;
-    margin-top: -100%;
+    margin-left: 250%;
+    margin-top: -200%;
     opacity: 1;
   }
 }

@@ -70,7 +70,7 @@ export const HeaderDropdown = ({ options }) => {
           className={cn(
             styles.dropdown__options,
             'animate__animated',
-            'animate__fadeInLeft',
+            'animate__fadeInDown',
           )}
         >
           {options.map(option => {

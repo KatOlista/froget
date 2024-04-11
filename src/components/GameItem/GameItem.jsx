@@ -16,8 +16,6 @@ export const GameItem = () => {
           {ratio}
           <span>x</span>
         </p>
-
-        <span className={styles.game__addition}>Коэффицент</span>
       </div>
 
       <div className={cn(
