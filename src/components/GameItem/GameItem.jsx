@@ -15,7 +15,7 @@ export const GameItem = () => {
         <span className={styles.game__addition}>Коэффицент</span>
       </div>
 
-      <div className={styles.game__visualization}>
+      {/* <div className={styles.game__visualization}> */}
         <div className={styles.game__clouds}>
           <div className={styles.game__cloud1}></div>
 
@@ -33,7 +33,7 @@ export const GameItem = () => {
 
           <div className={styles.game__cloud8}></div>
         </div>
-      </div>
+      {/* </div> */}
 
       <UserSlider />
     </section>
