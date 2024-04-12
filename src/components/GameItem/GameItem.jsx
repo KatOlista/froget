@@ -1,13 +1,21 @@
 import { useSelector } from 'react-redux';
-import cn from 'classnames';
+import { useState } from 'react';
 
-import { UserSlider } from '../';
+import {
+  Circle,
+  UserSlider,
+  WinLoseBoard,
+} from '../';
+
 import styles from './GameItem.module.scss';
 
 export const GameItem = () => {
   const ratio = 1.02;
+  const [isCircleVisible, setIsCircleVisible] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
 
-  const { startGame } = useSelector(state => state.startGame);
+  // const { startGame } = useSelector(state => state.startGame);
+  const { endGame } = useSelector(state => state.endGame);
 
   return (
     <section className={styles.game}>
@@ -18,7 +26,15 @@ export const GameItem = () => {
         </p>
       </div>
 
-      <div className={cn(
+
+      <div className={styles['game__modale-container']}>
+        {isCircleVisible && (<Circle />)}
+
+        {endGame && (<WinLoseBoard isSuccess={isSuccess} rate={ratio} />)}
+      </div>
+
+
+      {/* <div className={cn(
           styles.game__clouds,
           { [styles.game__start]: startGame }
         )}
@@ -29,12 +45,12 @@ export const GameItem = () => {
 
         <div className={styles.game__cloud3} />
 
-        </div>
+      </div> */}
 
-        <div className={cn(
-          styles.game__clouds,
-          { [styles.game__start2]: startGame }
-        )}
+      {/* <div className={cn(
+        styles.game__clouds,
+        { [styles.game__start2]: startGame }
+      )}
       >
         <div className={styles.game__cloud4} />
 
@@ -45,7 +61,7 @@ export const GameItem = () => {
         <div className={styles.game__cloud7} />
 
         <div className={styles.game__cloud8} />
-      </div>
+      </div> */}
 
       <UserSlider />
     </section>

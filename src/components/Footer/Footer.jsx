@@ -135,7 +135,7 @@ export const Footer = () => {
               { [styles.loading]: isLoading },
               { [styles['error__submit-btn']]: isError },
             )}
-            onClick={makeBetHandler}
+            onClick={() => makeBetHandler()}
             type='submit'
           >
             {isLoading

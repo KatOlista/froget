@@ -1,0 +1,52 @@
+.circle {
+  padding: 13px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: center / contain no-repeat url('../../../assets/img/ellipse.png'), rgba(255, 255, 255, 0.2);
+  transform: rotate(1800deg);
+
+  transition: transform 6s ease-out;
+
+  &__circle {
+    width: 147px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gameColor);
+  }
+
+  &__number {
+    transition: --num 6s;
+    counter-set: num var(--num);
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--primeTextColor);
+    transform: rotate(-1800deg);
+
+    transition: transform 6s ease-out;
+
+    &:before {
+      content: counter(num);
+    }
+
+    animation: count 6s ease-out;
+  }
+}
+
+@property --num {
+  syntax: "<integer>";
+  initial-value: 100;
+  inherits: false;
+}
+
+@keyframes count {
+  0% {
+    --num: 0;
+  }
+
+  100% {
+    --num: 100;
+  }
+}

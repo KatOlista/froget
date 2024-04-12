@@ -23,206 +23,214 @@
     color: #efeff4;
   }
 
-  &__clouds {
-    position: absolute;
-  }
-
-  &__cloud1 {
-    margin: 0;
-    width: 35px;
-    height: 25px;
+  &__modale-container {
+    margin: 45px auto 0;
+    flex: auto;
     position: relative;
-    left: -100px;
-    background: center / contain no-repeat url('../../assets/img/small-cloud.png');
-    animation: cloud 16s ease-in 4s infinite reverse;
+
+    z-index: 5;
   }
 
-  &__cloud2 {
-    margin: 0;
-    width: 95px;
-    height: 60px;
-    position: relative;
-    left: -100px;
-    background: center / contain no-repeat url('../../assets/img/big-cloud.png');
-    animation: cloud 18s ease-in 8 infinite reverse;
-  }
+  // &__clouds {
+  //   position: absolute;
+  // }
 
-  &__cloud3 {
-    margin: 0;
-    width: 35px;
-    height: 25px;
-    position: relative;
-    left: -100px;
-    background: center / contain no-repeat url('../../assets/img/small-cloud.png');
-    animation: cloud 12s ease-in 9s infinite reverse;
-  }
+  // &__cloud1 {
+  //   margin: 0;
+  //   width: 35px;
+  //   height: 25px;
+  //   position: relative;
+  //   left: -100px;
+  //   background: center / contain no-repeat url('../../assets/img/small-cloud.png');
+  //   animation: cloud 16s ease-in 4s infinite reverse;
+  // }
 
-  &__cloud4 {
-    margin: 0;
-    width: 70px;
-    height: 40px;
-    position: relative;
-    left: -100px;
-    background: center / contain no-repeat url('../../assets/img/middle-cloud.png');
-    animation: cloud 17s ease-in infinite reverse;
-  }
+  // &__cloud2 {
+  //   margin: 0;
+  //   width: 95px;
+  //   height: 60px;
+  //   position: relative;
+  //   left: -100px;
+  //   background: center / contain no-repeat url('../../assets/img/big-cloud.png');
+  //   animation: cloud 18s ease-in 8 infinite reverse;
+  // }
 
-  &__cloud5 {
-    margin: 0;
-    width: 35px;
-    height: 25px;
-    position: relative;
-    left: -100px;
-    background: center / contain no-repeat url('../../assets/img/small-cloud.png');
-    animation: cloud 11s ease-in 8s infinite reverse;
-  }
+  // &__cloud3 {
+  //   margin: 0;
+  //   width: 35px;
+  //   height: 25px;
+  //   position: relative;
+  //   left: -100px;
+  //   background: center / contain no-repeat url('../../assets/img/small-cloud.png');
+  //   animation: cloud 12s ease-in 9s infinite reverse;
+  // }
 
-  &__cloud6 {
-    margin: 0;
-    width: 70px;
-    height: 40px;
-    position: relative;
-    left: -100px;
-    background: center / contain no-repeat url('../../assets/img/middle-cloud.png');
-    animation: cloud 20s ease-in 3s infinite reverse;
-  }
+  // &__cloud4 {
+  //   margin: 0;
+  //   width: 70px;
+  //   height: 40px;
+  //   position: relative;
+  //   left: -100px;
+  //   background: center / contain no-repeat url('../../assets/img/middle-cloud.png');
+  //   animation: cloud 17s ease-in infinite reverse;
+  // }
 
-  &__cloud7 {
-    margin: 0;
-    width: 70px;
-    height: 40px;
-    position: relative;
-    left: -100px;
-    background: center / contain no-repeat url('../../assets/img/middle-cloud.png');
-    animation: cloud 14s ease-in 5s infinite reverse;
-  }
+  // &__cloud5 {
+  //   margin: 0;
+  //   width: 35px;
+  //   height: 25px;
+  //   position: relative;
+  //   left: -100px;
+  //   background: center / contain no-repeat url('../../assets/img/small-cloud.png');
+  //   animation: cloud 11s ease-in 8s infinite reverse;
+  // }
 
-  &__cloud8 {
-    margin: 0;
-    width: 95px;
-    height: 60px;
-    position: relative;
-    left: -100px;
-    background: center / contain no-repeat url('../../assets/img/big-cloud.png');
-    animation: cloud 10s ease-in 2s infinite reverse;
-  }
+  // &__cloud6 {
+  //   margin: 0;
+  //   width: 70px;
+  //   height: 40px;
+  //   position: relative;
+  //   left: -100px;
+  //   background: center / contain no-repeat url('../../assets/img/middle-cloud.png');
+  //   animation: cloud 20s ease-in 3s infinite reverse;
+  // }
 
-  &__start {
-    animation: start 2s ease-out, playing ease-out 6s infinite;
-  }
+  // &__cloud7 {
+  //   margin: 0;
+  //   width: 70px;
+  //   height: 40px;
+  //   position: relative;
+  //   left: -100px;
+  //   background: center / contain no-repeat url('../../assets/img/middle-cloud.png');
+  //   animation: cloud 14s ease-in 5s infinite reverse;
+  // }
 
-  &__start2 {
-    animation: start 2s ease-out, stay 2s ease-out 1s, playing 6s ease-out 3s infinite;
-  }
+  // &__cloud8 {
+  //   margin: 0;
+  //   width: 95px;
+  //   height: 60px;
+  //   position: relative;
+  //   left: -100px;
+  //   background: center / contain no-repeat url('../../assets/img/big-cloud.png');
+  //   animation: cloud 10s ease-in 2s infinite reverse;
+  // }
+
+  // &__start {
+  //   animation: start 2s ease-out, playing ease-out 6s infinite;
+  // }
+
+  // &__start2 {
+  //   animation: start 2s ease-out, stay 2s ease-out 1s, playing 6s ease-out 3s infinite;
+  // }
 }
 
-@keyframes cloud {
-  0% {
-    margin-left: 0%;
-  }
-  77% {
-    margin-left: 800%;
-    opacity: 1;
-  }
-  78% {
-    margin-left: 800%;
-    opacity: 1;
-  }
-  79% {
-    margin-left: 800%;
-    opacity: 0;
-  }
-  80% {
-    margin-left: -200%;
-    opacity: 0;
-  }
-  81% {
-    margin-left: -200%;
-    opacity: 1;
-  }
-  100% {
-    margin-left: 0%;
-  }
-}
+// @keyframes cloud {
+//   0% {
+//     margin-left: 0%;
+//   }
+//   77% {
+//     margin-left: 800%;
+//     opacity: 1;
+//   }
+//   78% {
+//     margin-left: 800%;
+//     opacity: 1;
+//   }
+//   79% {
+//     margin-left: 800%;
+//     opacity: 0;
+//   }
+//   80% {
+//     margin-left: -200%;
+//     opacity: 0;
+//   }
+//   81% {
+//     margin-left: -200%;
+//     opacity: 1;
+//   }
+//   100% {
+//     margin-left: 0%;
+//   }
+// }
 
-@keyframes start {
-  0% {
-    margin-top: 0%;
-    margin-left: 0%;
-    opacity: 1;
-  }
+// @keyframes start {
+//   0% {
+//     margin-top: 0%;
+//     margin-left: 0%;
+//     opacity: 1;
+//   }
 
-  97% {
-    margin-top: 150%;
-    margin-left: -200%;
-    opacity: 1;
-  }
+//   97% {
+//     margin-top: 150%;
+//     margin-left: -200%;
+//     opacity: 1;
+//   }
 
-  98% {
-    margin-top: 150%;
-    margin-left: -200%;
-    opacity: 0;
-  }
+//   98% {
+//     margin-top: 150%;
+//     margin-left: -200%;
+//     opacity: 0;
+//   }
 
-  99% {
-    margin-top: -100%;
-    margin-left: 0%;
-    opacity: 0;
-  }
+//   99% {
+//     margin-top: -100%;
+//     margin-left: 0%;
+//     opacity: 0;
+//   }
 
-  100% {
-    margin-top: -100%;
-    margin-left: 300%;
-    opacity: 0;
-  }
-}
+//   100% {
+//     margin-top: -100%;
+//     margin-left: 300%;
+//     opacity: 0;
+//   }
+// }
 
-@keyframes stay {
-  0% {
-    margin-left: 200%;
-    margin-top: -100%;
-  }
+// @keyframes stay {
+//   0% {
+//     margin-left: 200%;
+//     margin-top: -100%;
+//   }
 
-  100% {
-    margin-left: 200%;
-    margin-top: -100%;
-  }
-}
+//   100% {
+//     margin-left: 200%;
+//     margin-top: -100%;
+//   }
+// }
 
-@keyframes playing {
-  0% {
-    margin-left: 250%;
-    margin-top: -200%;
-    opacity: 1;
-  }
-  87% {
-    margin-left: -100%;
-    margin-top: 200%;
-    opacity: 1;
-  }
-  88% {
-    margin-left: -100%;
-    margin-top: 200%;
-    opacity: 1;
-  }
-  89% {
-    margin-left: -100%;
-    margin-top: 200%;
-    opacity: 0;
-  }
-  90% {
-    margin-left: 250%;
-    margin-top: -200%;
-    opacity: 0;
-  }
-  91% {
-    margin-left: 250%;
-    margin-top: -200%;
-    opacity: 1;
-  }
-  100% {
-    margin-left: 250%;
-    margin-top: -200%;
-    opacity: 1;
-  }
-}
+// @keyframes playing {
+//   0% {
+//     margin-left: 250%;
+//     margin-top: -200%;
+//     opacity: 1;
+//   }
+//   87% {
+//     margin-left: -100%;
+//     margin-top: 200%;
+//     opacity: 1;
+//   }
+//   88% {
+//     margin-left: -100%;
+//     margin-top: 200%;
+//     opacity: 1;
+//   }
+//   89% {
+//     margin-left: -100%;
+//     margin-top: 200%;
+//     opacity: 0;
+//   }
+//   90% {
+//     margin-left: 250%;
+//     margin-top: -200%;
+//     opacity: 0;
+//   }
+//   91% {
+//     margin-left: 250%;
+//     margin-top: -200%;
+//     opacity: 1;
+//   }
+//   100% {
+//     margin-left: 250%;
+//     margin-top: -200%;
+//     opacity: 1;
+//   }
+// }

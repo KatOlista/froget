@@ -27,6 +27,8 @@ export const MESSAGES = {
   NO_BETS: 'Ставок еще не было',
   NO_SERVER_RESPONSE: 'Что-то пошло не так...',
   NOT_ENOUGH_MONEY: 'У вас недостаточно средств',
+  WIN_TEXT: 'Вы выиграли',
+  LOSE_TEXT: 'Вы проиграли',
 };
 
 export const HEADER_DROPDOWN_OPTIONS = [
