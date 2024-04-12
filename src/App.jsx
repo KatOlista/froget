@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 // import { socket } from './socket';
 
 import { Header } from './components';
-import { HomePage } from './pages';
+import { HomePage, Screensaver } from './pages';
 
 /////////////////////////
 import { USER } from './utils/constants';
@@ -18,11 +18,14 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsConnected(true);
+    // setIsConnected(true);
 
     dispatch(setUser(USER));
   }, []);
 
+  setTimeout(() => {
+    setIsConnected(true)
+  }, 3000);
 
   // const [isConnected, setIsConnected] = useState(socket.connected);
 
@@ -60,14 +63,16 @@ export const App = () => {
 
   return (
     <div className='app'>
-      {isConnected && (
-        <>
-          <Header />
+      {!isConnected
+        ? (<Screensaver />)
+        : (
+            <>
+              <Header />
 
-          <main className='main'>
-            <HomePage />
-          </main>
-        </>
+              <main className='main'>
+                <HomePage />
+              </main>
+            </>
       )}
     </div>
   );
