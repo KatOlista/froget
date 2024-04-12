@@ -5,6 +5,7 @@ import betsReducer from '../features/betsSlice';
 import usersReducer from '../features/usersSlice';
 import startGameReducer from '../features/startGameSlice';
 import endGameReducer from '../features/endGameSlice';
+import hasUserPageReducer from '../features/userPageSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     users: usersReducer,
     startGame: startGameReducer,
     endGame: endGameReducer,
+    hasUserPage: hasUserPageReducer,
   },
 });

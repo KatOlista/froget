@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { setHasUserPage } from '../../redux/features/userPageSlice';
 import { useTheme } from '../../hooks/useTheme';
 import { HeaderDropdown } from './HeaderDropdown';
 import { HeaderButton } from './HeaderButton';
@@ -15,24 +16,24 @@ import ShevronIcon from '../../assets/icons/chevron-right-white.svg?react';
 import MoonIcon from '../../assets/icons/moon1.svg?react';
 import SunIcon from '../../assets/icons/sun.svg?react';
 
-
-
 import styles from './Header.module.scss';
 
 export const Header = () => {
-  const [isUserPageOpen, setIsUserPageOpen] = useState(false);
   const { theme, setTheme } = useTheme(LIGHT);
+
+  const { hasUserPage } = useSelector(state => state.hasUserPage);
+  const dispatch = useDispatch();
 
   const isLightTheme = theme === LIGHT;
 
   // const showInfoHandler = () => {};
   const showUserPageHandler = () => {
-    setIsUserPageOpen(prev => !prev);
+    dispatch(setHasUserPage(!hasUserPage));
   };
 
   return (
     <>
-      {!isUserPageOpen && (
+      {!hasUserPage && (
         <header className={styles.header}>
           <HeaderDropdown
             options={HEADER_DROPDOWN_OPTIONS}
@@ -41,12 +42,15 @@ export const Header = () => {
           <div className={styles.header__buttons}>
             {/* <HeaderButton icon={<InfoIcon />} onClick={showInfoHandler} /> */}
 
-            <HeaderButton icon={<UserIcon />} onClick={showUserPageHandler} />
+            <HeaderButton
+              icon={<UserIcon />}
+              onClick={showUserPageHandler}
+            />
           </div>
         </header>
       )}
 
-      {isUserPageOpen && (
+      {hasUserPage && (
           <header  className={styles.header}>
             <HeaderButton
               icon={<ShevronIcon className={styles.header__back} />}

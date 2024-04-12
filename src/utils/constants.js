@@ -29,6 +29,7 @@ export const MESSAGES = {
   NOT_ENOUGH_MONEY: 'У вас недостаточно средств',
   WIN_TEXT: 'Вы выиграли',
   LOSE_TEXT: 'Вы проиграли',
+  COPIED: 'Скопировано!',
 };
 
 export const HEADER_DROPDOWN_OPTIONS = [

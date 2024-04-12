@@ -1,0 +1,50 @@
+.profile {
+  padding: 20px 16px 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__id {
+    display: flex;
+    justify-content: end;
+    font-weight: 500;
+    font-size: 10px;
+
+    p {
+      padding: 4px 8px;
+      max-width: 40%;
+      display: flex;
+      gap: 5px;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 35px;
+      background-color: #e9eaf0;
+      color: #5a5f72;
+
+      span {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      button {
+        padding: 8px;
+        background: center / cover url('../../assets/icons/copy-dark.svg');
+
+        transition: all 0.3s ease;
+
+        &:active {
+          background: center / cover url('../../assets/icons/copy-light.svg');
+        }
+      }
+    }
+  }
+
+  &__message {
+    position: absolute;
+    top:7px;
+    right: 20px;
+    font-size: 8px;
+    color: #5a5f72;
+  }
+}
