@@ -23,12 +23,16 @@
     color: #efeff4;
   }
 
-  &__modale-container {
+  &__circle-container {
     margin: 45px auto 0;
     flex: auto;
     position: relative;
 
     z-index: 5;
+  }
+
+  &__modale-container {
+    margin: 0 14px 8px;
   }
 
   // &__clouds {
