@@ -1,18 +1,19 @@
 .profile {
-  padding: 20px 16px 0;
+  padding: 32px 16px 0;
   display: flex;
   flex-direction: column;
   position: relative;
 
   &__id {
-    display: flex;
-    justify-content: end;
+    position: absolute;
+    width: 124px;
+    top: 20px;
+    right: 16px;
     font-weight: 500;
     font-size: 10px;
 
     p {
       padding: 4px 8px;
-      max-width: 40%;
       display: flex;
       gap: 5px;
       justify-content: space-between;
@@ -40,11 +41,52 @@
     }
   }
 
-  &__message {
-    position: absolute;
-    top:7px;
-    right: 20px;
-    font-size: 8px;
-    color: #5a5f72;
+  &__choose-balance {
+    margin: 18px 0 20px;
+    padding: 4px;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+    background-color: #eaf0f3;
+    border-radius: 20px;
+  }
+
+  &__balance-actions {
+    margin-bottom: 28px;
+    padding: 14px 12px 12px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 24px;
+    background-color: var(--checkboxShevronColor);
+  }
+
+  &__balance {
+    text-align: center;
+
+    span {
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 36px;
+
+      span {
+        padding-left: 5px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__balance-buttons {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__options {
+    
   }
 }

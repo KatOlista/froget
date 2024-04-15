@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // import { socket } from './socket';
 
 import { Header } from './components';
-import { HomePage, Screensaver } from './pages';
+import { HomePage, Screensaver, UserPage } from './pages';
 
 /////////////////////////
 import { USER } from './utils/constants';
 import { setUser } from './redux/features/userSlice';
 
-
 ////////////////////////
 
 export const App = () => {
   const [isConnected, setIsConnected] = useState(false);
+
+  const { hasUserPage } = useSelector(state => state.hasUserPage);
 
   const dispatch = useDispatch();
 
@@ -70,7 +71,10 @@ export const App = () => {
               <Header />
 
               <main className='main'>
-                <HomePage />
+                {!hasUserPage
+                  ? (<HomePage />)
+                  : (<UserPage />)
+                }
               </main>
             </>
       )}

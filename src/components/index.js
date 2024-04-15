@@ -9,3 +9,5 @@ export { UserSlider } from './UI/UserSlider/UserSlider';
 export { RoundButton } from './UI/RoundButton/RoundButton';
 export { LastBetsSlider } from './UI/LastBetsSlider/LastBetsSlider';
 export { SecondaryButton } from './UI/SecondaryButton/SecondaryButton';
+export { BalanceButton } from './UI/BalanceButton/BalanceButton';
+export { BalanceActionButton } from './UI/BalanceActionButton/BalanceActionButton';

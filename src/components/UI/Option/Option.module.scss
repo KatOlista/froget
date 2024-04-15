@@ -1,0 +1,27 @@
+.option {
+  padding: 12px 8px;
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  color: #202329;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 20px;
+    aspect-ratio: 1;
+  }
+
+  &__title {
+    padding-left: 8px;
+  }
+
+  &__selected {
+    background-color: #e9f8ff;
+  }
+}

@@ -20,7 +20,6 @@ export const CHANGE_USER_BALANCE = 'change_user_balance';
 
 export const CUSTOM_MULTIPLY = 'custom_multiply';
 
-
 export const userDeviceWidth = window.innerWidth;
 
 export const MESSAGES = {
@@ -29,12 +28,32 @@ export const MESSAGES = {
   NOT_ENOUGH_MONEY: 'У вас недостаточно средств',
   WIN_TEXT: 'Вы выиграли',
   LOSE_TEXT: 'Вы проиграли',
-  COPIED: 'Скопировано!',
+  COPIED: 'Скопировано',
+  TOOLTIP_COPY: 'Скопировать',
 };
 
 export const HEADER_DROPDOWN_OPTIONS = [
-  {balance: 'mainBalance', title: 'Основной'},
-  {balance: 'bonusBalance', title: 'Бонусный'}
+  { balance: 'mainBalance', title: 'Основной' },
+  { balance: 'bonusBalance', title: 'Бонусный' }
+];
+
+export const BALANCE_BUTTONS = [
+  { title: 'Основной баланс', balance: 'mainBalance', id: 1 },
+  { title: 'Бонусный баланс', balance: 'bonusBalance', id: 2 },
+];
+
+export const iconTypes = {
+  giftIcon: 'gift-icon',
+  promocodeIcon: 'promocode-icon',
+  supportIcon: 'support-icon',
+  flagIcon: 'flag-icon'
+};
+
+export const USER_OPTIONS = [
+  {title: 'Реферальная программа', icon: iconTypes.giftIcon},
+  {title: 'Введите промокод', icon: iconTypes.promocodeIcon},
+  {title: 'Поддержка', icon: iconTypes.supportIcon},
+  {title: 'Язык', icon: iconTypes.flagIcon},
 ];
 
 

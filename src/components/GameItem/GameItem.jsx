@@ -11,7 +11,7 @@ import styles from './GameItem.module.scss';
 
 export const GameItem = () => {
   const ratio = 1.02;
-  const [isCircleVisible, setIsCircleVisible] = useState(true);
+  const [isCircleVisible, setIsCircleVisible] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   // const { startGame } = useSelector(state => state.startGame);
@@ -30,7 +30,7 @@ export const GameItem = () => {
       <div className={styles['game__modale-container']}>
         {isCircleVisible && (<Circle />)}
 
-        {endGame && (<WinLoseBoard isSuccess={isSuccess} rate={ratio} />)}
+        {endGame && (<WinLoseBoard isSuccess={!isSuccess} rate={ratio} />)}
       </div>
 
 
