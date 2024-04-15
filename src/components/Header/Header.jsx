@@ -13,7 +13,7 @@ import {
 import UserIcon from '../../assets/icons/white-user-icon.svg?react';
 // import InfoIcon from '../../assets/icons/info-icon.svg?react';
 import ShevronIcon from '../../assets/icons/chevron-right-white.svg?react';
-import MoonIcon from '../../assets/icons/moon1.svg?react';
+import MoonIcon from '../../assets/icons/moon.svg?react';
 import SunIcon from '../../assets/icons/sun.svg?react';
 
 import styles from './Header.module.scss';
