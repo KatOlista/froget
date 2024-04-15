@@ -66,7 +66,7 @@ export const USER_OPTIONS = [
 
 
 
-
+////////////////////////// remove after connection to database
 export const BETS = ['1.00', '2.00', '5.00', '1.25', '1.5', '1.8', '2.5', '3.00', '5.01', '1.27', '1.55', '1.85', '2.55'];
 
 export const USER = {
@@ -92,3 +92,4 @@ export const USERS = [
 
 
 export const WIN_AMOUNT = 1000;
+///////////////////////////////
