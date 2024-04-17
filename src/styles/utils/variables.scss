@@ -24,39 +24,12 @@
   --secondary300Color: -moz-linear-gradient(90deg, #f79400 0%, #ffd235 100%);
   --secondary300Color: -webkit-linear-gradient(90deg, #f79400 0%, #ffd235 100%);
 
-    // -webkit-transition: all 0.3s ease;
-    // -o-transition: all 0.3s ease;
-    // transition: all 0.3s ease;
-
   --checkboxShevronColor: #148eff;
-
-    // --dropdownAmountColor: #095681;
-    // --dropdownBalanceColor: #5E6970;
-    // --tabMenuTextColorPassive: #60717e;
-    // --tabMenuTextColorActive: #0a2737;
-
-    // --neutral500TextColor: #555b6b;
-
-    // --neutral100Color: #fff;
-    // --neutral200Color: #f0f2f7;
-    // --neutral300Color: #d7dce9;
-    // --neutral400Color: #bbc2d4;
-    // --neutral450Color: #8a94ae;
-    // --neutral500Color: #555b6b;
-    // --neutral600Color: #202329;
-
-    // --primary200Color: #6ab4ff;
-    // --primary300Color: #519df8;
-    // --primary400Color: #0075ff;
     --primary500Color: #0056d6;
-    // --primary600Color: #0044ab;
-
 
     --success200Color: #2edf40;
     --success300Color: #00c908;
     --secondary200Color: #9ad100;
-
-    // --checkboxShevronColor: #148eff;
 }
 
 :root[data-theme='light'] {
@@ -64,9 +37,10 @@
   --footerWithdravalSectionBgColor: var(--primary500Color);
   --footerMultipleBtnBgColor: var(--primary400Color);
   --dropdownNotSelectedElement: rgba(20, 142, 255, 0.43);
+  --balanceButtonWrapperBgColor: #eaf0f3;
+  --balanceButtonBgColor: var(--neutral100Color);
+  --userIdBgColor: #e9eaf0;
 
-
-  ////////////////
   --dropdownAmountColor: #095681;
   --dropdownBalanceColor: #5E6970;
   --tabMenuTextColorPassive: #60717e;
@@ -94,20 +68,16 @@
 
 :root[data-theme='dark'] {
   --winInputBbColor: var(--success300Color);
+  --balanceButtonBgColor: var(--checkboxShevronColor);
+  --balanceButtonWrapperBgColor: rgba(20, 142, 255, 0.1);
+  --userIdBgColor: var(--balanceButtonWrapperBgColor);
 
-
-
-  //////////////////////////// not sinc
   --dropdownAmountColor: #095681;
   --dropdownBalanceColor: #5E6970;
   --tabMenuTextColorPassive: #60717e;
   --tabMenuTextColorActive: #0a2737;
 
   --neutral500TextColor: #555b6b;
-  ///////////////////////
-
-  ///////////////////////////////////////////////
-  // --secondaryTextColor: #ff5f5f;
 
   --neutral600TextColor: #202329;
 
@@ -118,7 +88,6 @@
   --primary300TextColor: #519df8;
 
   --idTextColor: #8a94ae;
-  ////////////////////
 
 
   --primary400BgColor: #171b59;
@@ -127,14 +96,12 @@
   --neutral200Color: #171b59;
   --neutral300Color: #3e44a2;
   --neutral400Color: #343987;
-  // --neutral450Color:
   --neutral500Color: #5a60ba;
   --neutral600Color: #e0e1f0;
 
   --primary300Color: #343987;
   --primary400Color: #2a74ff;
   --primary500Color: #0855e5;
-  // --primary600Color:
 
   --secondary200Color: #afec00;
 
