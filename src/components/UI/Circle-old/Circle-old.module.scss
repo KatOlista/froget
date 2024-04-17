@@ -1,60 +1,16 @@
-.box {
+.circle {
+  padding: 13px;
+  width: 185px;
+  aspect-ratio: 1;
   border-radius: 50%;
   position: relative;
   background: rgba(255, 255, 255, 0.2);
-  -webkit-mask: radial-gradient(transparent 67px,#fff 68px);
-          mask: radial-gradient(transparent 67px,#fff 68px);
 
-  &:before {
-    content: "";
-    display: block;
-    padding-top: 100%;
-  }
-}
-
-.container {
-  margin: 0 auto;
-  width: 160px;
-}
-
-.innerBox {
-  position: absolute;
-  top: 0;
-  width: 160px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  -webkit-mask: radial-gradient(transparent 67px,#fff 68px);
-  mask: radial-gradient(transparent 67px,#fff 68px);
-
-  animation: load 4s linear;
-}
-
-.ellipse {
-  width: 160px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: url('../../../assets/img/ellipse.png') center / cover no-repeat;
-  transform: rotate(0deg);
-
-  animation: rotation 3s linear 0.05s;
-}
-
-.ellipse2 {
-  position: absolute;
-  top: 0;
-  width: 160px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: url('../../../assets/img/ellipse.png') center / cover no-repeat;
-  transform: rotate(95deg);
-  opacity: 1;
-
-  animation: rotation2 4s linear 0.05s;
-}
-
-.circle {
-  position: absolute;
-    width: 160px;
+  &__circle {
+    position: absolute;
+    width: 150px;
+    left: 17px;
+    top: 17px;
     aspect-ratio: 1;
     border-radius: 50%;
     display: -webkit-box;
@@ -66,20 +22,38 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
             align-items: center;
-}
-
-.number {
-  transition: --num 4s;
-  counter-set: num var(--num);
-  font-weight: 700;
-  font-size: 36px;
-  color: var(--primeTextColor);
-
-  &:before {
-    content: counter(num);
+    background: var(--gameColor);
+    z-index: 5;
   }
 
-  animation: count 4s linear;
+  &__filler {
+    position: absolute;
+    width: 100%;
+    padding: 13px;
+    top: 0;
+    left: 0;
+    aspect-ratio: 1;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 1;
+
+    -webkit-animation: load 6s linear;
+    animation: load 6s linear;
+  }
+
+  &__number {
+    transition: --num 6s;
+    counter-set: num var(--num);
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--primeTextColor);
+
+    &:before {
+      content: counter(num);
+    }
+
+    animation: count 6s linear;
+  }
 }
 
 @property --num {
@@ -105,36 +79,6 @@
 
   100% {
     --num: 100;
-  }
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(-270deg);
-  }
-
-  to {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes rotation2 {
-  0% {
-    opacity: 0;
-    transform: rotate(-270deg);
-  }
-
-  74% {
-    opacity: 0;
-  }
-
-  75% {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 1;
-    transform: rotate(90deg);
   }
 }
 
