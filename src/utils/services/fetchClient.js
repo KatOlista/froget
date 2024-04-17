@@ -1,4 +1,4 @@
-const BASE_URL = '';
+const BASE_URL = 'http://127.0.0.1:5000/';
 
 function request(
   url,
@@ -14,15 +14,18 @@ function request(
     };
   }
 
-  return new Promise()
-    .then(() => fetch(BASE_URL + url, options))
-    .then(response => {
-      if (!response.ok) {
-        throw new Error();
-      }
-
-      return response.json();
-    });
+  return new Promise((resolve, reject) => {
+    fetch(BASE_URL + url, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error();
+        }
+  
+        resolve(response.json());
+      })
+      .catch(error => reject(error));
+  });
+  
 }
 
 export const client = {

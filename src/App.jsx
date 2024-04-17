@@ -1,32 +1,51 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-// import { socket } from './socket';
-
+import { useDispatch } from 'react-redux';
+/* import { socket } from './socket'; */
+import { authorise } from './api/authorise';
 import { Header } from './components';
-import { HomePage, Screensaver, UserPage } from './pages';
-
+import { HomePage , Screensaver, UserPage} from './pages';
+import { useSelector } from 'react-redux';
 /////////////////////////
 import { USER } from './utils/constants';
 import { setUser } from './redux/features/userSlice';
+
 
 ////////////////////////
 
 export const App = () => {
   const [isConnected, setIsConnected] = useState(false);
-
   const { hasUserPage } = useSelector(state => state.hasUserPage);
-
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // setIsConnected(true);
-
-    dispatch(setUser(USER));
-  }, []);
-
   setTimeout(() => {
     setIsConnected(true)
   }, 3000);
+
+
+  useEffect(() => {
+    
+
+    
+    var WebApp = window.Telegram.WebApp; 
+  /*   const tgUsername =    WebApp.initDataUnsafe.user.first_name;
+    const tgId =  WebApp.initDataUnsafe.user.id;  */
+  const tgUsername = 'someUsername';
+  const tgId = 'someId';
+  
+  authorise(tgUsername, tgId)
+    .then(response => {
+
+    response['user']['deposit_balance'] = response['user']['deposit_balance'].toFixed(2)
+    response['user']['bonus_balance'] = response['user']['bonus_balance'].toFixed(2)
+      dispatch(setUser(response['user']));
+ setIsConnected(true); 
+    })
+    .catch(error => {
+      console.error('Error occurred:', error);
+    });
+  
+  }, []);
+
+
 
   // const [isConnected, setIsConnected] = useState(socket.connected);
 
@@ -63,7 +82,7 @@ export const App = () => {
   // }, []);
 
   return (
-    <div className='app'>
+<div className='app'>
       {!isConnected
         ? (<Screensaver />)
         : (
@@ -71,7 +90,7 @@ export const App = () => {
               <Header />
 
               <main className='main'>
-                {!hasUserPage
+              {!hasUserPage
                   ? (<HomePage />)
                   : (<UserPage />)
                 }

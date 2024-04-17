@@ -5,8 +5,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
-  color: var(--dropdownAmountColor);
-  background-color: var(--neutral100Color);
+  color: #202329;
 
   &__container {
     display: flex;
@@ -23,6 +22,6 @@
   }
 
   &__selected {
-    background-color: rgba(20, 142, 255, 0.1);
+    background-color: #e9f8ff;
   }
 }

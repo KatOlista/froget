@@ -2,11 +2,15 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 import 'animate.css';
-
+import { makeBet } from '../../api/makeBet';
 import { RoundButton, SecondaryButton } from '../';
 import { setRateInput } from '../../utils';
 import { setStart } from '../../redux/features/startGameSlice';
-
+import { setGameId } from '../../redux/features/gameSlice';
+import { useRef } from 'react';
+import { setCurrentBet, deleteCurrentBet } from '../../redux/features/currentBetSlice';
+import { setBonusBalance, setDepositBalance } from '../../redux/features/userSlice';
+import { setResultsOfgame } from '../../redux/features/resultsOfGameSlice';
 import {
   DECREASE,
   DIVIDE,
@@ -27,22 +31,36 @@ import {
 } from '../../utils/constants';
 
 import styles from './Footer.module.scss';
+import socket from '../../api/socket';
+import { pickUpWinning } from '../../api/pickUpWinning';
 
 export const Footer = () => {
+  const [coeffToAutoWithdraw, setCoeffToAutoWithdraw] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
   const [rateInputValue, setRateInputValue] = useState('');
   const [userCurrentBalance, setUserCurrentBalance] = useState(0);
   const [isNotEnoughMoneyError, setIsNotEnoughMoneyError] = useState(false);
-
-  //////
+  const [impossibleToMakeBet, setimpossibleToMakeBet] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('')
+  const [succesMsg, setSuccessMsg] = useState('')
   const [multiplierInputValue, setMultiplierInputValue] = useState(INITIAL_RATE_VALUE);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   //////
+const user = useRef();
+const game = useRef();
+const isGameStarted = useRef();
+isGameStarted.current = useSelector(state=>state.startGame.startGame)
+game.current = useSelector(state=>state.game.game)
+var resultsOfGame = useRef()
+resultsOfGame.current = useSelector(state=>state.resultsOfGame.resultsOfGame)
+var betFromUser= useRef()
+betFromUser.current= useSelector(state=>state.currentBet.currentBet)
 
-  const { selectedBalance } = useSelector(state => state.selectedBalance);
-
+user.current = useSelector(state=>state.user.user);
+  var { selectedBalance } = useSelector(state => state.selectedBalance);
+  let timerId;
   const dispatch = useDispatch();
 
   const inputRateHandler = (option, customValue) => {
@@ -57,15 +75,141 @@ export const Footer = () => {
   }
 
   useEffect(() => {
-    setUserCurrentBalance(() => USER[selectedBalance.balance]);
-    inputRateHandler(CHANGE_USER_BALANCE);
-  }, [selectedBalance]);
+    setUserCurrentBalance(() => {
+      if (user.current){
+      if (selectedBalance.balance == 'mainBalance'){
 
-  const makeBetHandler = () => {};
+        return user.current.deposit_balance
+      }
+      else{
+        
+        return user.current.bonus_balance
+      }
+    }
+    else{
+      return 0
+    }
+    });
+    timerId = setTimeout(() => {
+      setIsError(false);
+      setErrorMsg('');
+      setIsSuccess(false);
+      
+    }, 3000);
+
+    function timeRemainingHandler(data){
+      dispatch(setGameId(data['for_game']))
+    }
+    function currentGameHandler(data){
+      
+
+      dispatch(setStart(true));
+      if (betFromUser.current){
+      if (coeffToAutoWithdraw){
+        console.log(coeffToAutoWithdraw)
+        if (data.current_multiplier >= coeffToAutoWithdraw){
+          pickUpWinningHandler()
+        }
+        console.log(data)}}
+    }
+    function crashHandler(){
+      setCoeffToAutoWithdraw(null)
+      if (betFromUser.current && !betFromUser.current.isSuccess){
+        dispatch(setResultsOfgame({isSuccess:false, amount:betFromUser.current.price}))
+      }
+      dispatch(setStart(false))
+     
+    }
+function startGameHandler(){
+  dispatch(setStart(true))
+}
+
+
+
+socket.on('crash', crashHandler)
+
+socket.on('current_game',currentGameHandler )
+
+socket.on('time_remaining',timeRemainingHandler )
+dispatch(setStart(false));
+  
+    inputRateHandler(CHANGE_USER_BALANCE);
+
+return()=>{
+  socket.off('time_remaining',timeRemainingHandler )
+  socket.off('current_game',currentGameHandler )
+  socket.off('crash', crashHandler)
+  clearTimeout(timerId);
+}
+
+  }, [selectedBalance, isError, isSuccess, user.current.deposit_balance, user.current.bonus_balance]);
+  var selectedB = useSelector(state => state.selectedBalance.selectedBalance);
+/*   console.log(selectedB) */
+
+
+const pickUpWinningHandler = ()=>{
+  var response = pickUpWinning(betFromUser.current.id)
+  response.then((json)=>{
+    if (json['status']=='error'){
+      setIsError(true);
+      setErrorMsg(json['message'])
+    }
+    else{
+      setCoeffToAutoWithdraw(null)
+     dispatch(setResultsOfgame({isSuccess:true, amount:json.amount}))
+      
+      dispatch(setDepositBalance(json['user']['deposit_balance'].toFixed(2)))
+      dispatch(setBonusBalance(json['user']['bonus_balance'].toFixed(2)))
+     
+    }
+
+  })
+}
+
+  const makeBetHandler = () => {
+let baltype = (balance)=>{
+  if (balance=='mainBalance'){
+    return 'deposit'
+  }
+  return 'bonus'
+}
+
+if (inputRateHandler() == 0){
+  return setIsNotEnoughMoneyError(true)
+}
+
+
+var response = makeBet(game.current.id, user.current.id, inputRateHandler(), baltype(selectedB.balance))
+if (response){
+response.then((json)=>{
+  if (json.status == 'impossible_to_make_a_bet'){
+setErrorMsg(json.message)
+return setIsError(true)
+  }
+  else{
+    if (isChecked){
+      if (multiplierInputValue){
+        setCoeffToAutoWithdraw(multiplierInputValue)
+      }
+    }
+    dispatch(setDepositBalance( json.balances['deposit_balance'].toFixed(2)))
+    dispatch(setBonusBalance(json.balances['bonus_balance'].toFixed(2)))
+    dispatch(setCurrentBet(json))
+    setSuccessMsg('Вы успешно поставили ставку')
+    return  setIsSuccess(true)
+  }
+})
+
+
+
+}
+setIsNotEnoughMoneyError(true)
+    
+  };
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    dispatch(setStart(true));
+   /*  dispatch(setStart(true)); */
   };
 
   return (
@@ -73,12 +217,12 @@ export const Footer = () => {
       <form onSubmit={(event) => formSubmitHandler(event)}>
         <div className={styles['footer__rate-section']}>
           <div className={styles['footer__rate-management']}>
-            {isNotEnoughMoneyError && (<p className={cn(
+            {isError && (<p className={cn(
               'animate__animated',
               'animate__fadeInLeft',
               { [styles.error__message]: isNotEnoughMoneyError }
               )}>
-              {MESSAGES.NOT_ENOUGH_MONEY}
+              {errorMsg}
             </p>)}
 
             <div className={cn(
@@ -90,9 +234,9 @@ export const Footer = () => {
               {isSuccess
                 ? (
                     <div>
-                      <p>Выигрыш</p>
+                      <p>{succesMsg}</p>
 
-                      <span>{WIN_AMOUNT}</span>
+                      {/* <span>Вы успешно поставили ставку </span> */}
                     </div>
                   )
                 : (
@@ -135,11 +279,12 @@ export const Footer = () => {
               { [styles.loading]: isLoading },
               { [styles['error__submit-btn']]: isError },
             )}
-            onClick={() => makeBetHandler()}
+            
+            onClick={ (betFromUser.current && isGameStarted.current) ? pickUpWinningHandler : makeBetHandler}
             type='submit'
           >
-            {isLoading
-              ? (<p>Ожидание..</p>)
+            {(betFromUser.current && isGameStarted.current)
+              ? (<p>ЗАБРАТЬ</p>)
               : (<p>СТАВКА</p>)
             }
           </button>

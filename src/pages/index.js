@@ -1,3 +1,4 @@
 export { HomePage } from './HomePage/HomePage';
-export { UserPage } from './UserPage/UserPage';
+export { UserProfile } from './UserProfile/UserProfile';
 export { Screensaver } from './Screensaver/Screensaver';
+export { UserPage } from './UserPage/UserPage';

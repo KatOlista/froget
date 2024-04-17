@@ -19,8 +19,14 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    setDepositBalance:(state,action)=>{
+      state.user.deposit_balance = action.payload
+    },
+    setBonusBalance:(state,action)=>{
+      state.user.bonus_balance = action.payload
+    }
   },
 });
 
 export default userSlice.reducer;
-export const { setUser, setError, setLoading } = userSlice.actions;
+export const {setBonusBalance,setDepositBalance, setUser, setError, setLoading } = userSlice.actions;

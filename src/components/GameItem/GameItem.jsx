@@ -1,48 +1,118 @@
+import { UserSlider } from '../';
+import styles from './GameItem.module.scss';
+import { useDispatch } from 'react-redux';
+import socket from '../../api/socket';
+import { useEffect, useRef, useState } from 'react';
+import { setGameId, setGameMultiplier } from '../../redux/features/gameSlice';
+import cn from 'classnames';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
-
+import { setEnd } from '../../redux/features/endGameSlice';
+import { setResultsOfgame } from '../../redux/features/resultsOfGameSlice';
+import { deleteCurrentBet, setCurrentBet } from '../../redux/features/currentBetSlice';
 import {
   Circle,
-  UserSlider,
+  
   WinLoseBoard,
 } from '../';
 
-import styles from './GameItem.module.scss';
-
 export const GameItem = () => {
-  const ratio = 1.02;
-  const [isGameInfoVisible, setIsGameInfoVisible] = useState(false);
-  const [isCircleVisible, setIsCircleVisible] = useState(true);
-  const [isSuccess, setIsSuccess] = useState(false);
 
-  // const { startGame } = useSelector(state => state.startGame);
-  const { endGame } = useSelector(state => state.endGame);
+  const dispatch = useDispatch();
 
-  return (
+const { startGame } = useSelector(state => state.startGame);
+const game= useSelector(state=>state.game.game)
+const [isCircleVisible, setIsCircleVisible] = useState(false);
+const [isDisplaying, setIsDisplaying] = useState(false)
+const [isSuccess, setIsSuccess] = useState(true);
+var resultsOfGame = useRef()
+resultsOfGame.current = useSelector(state=>state.resultsOfGame.resultsOfGame)
+
+var  endGame  = useRef()
+endGame.current = useSelector(state=>state.endGame);
+const [result, setResult] = useState(0)
+const currentBet = useRef()
+
+let timerId;
+
+useEffect(() => {
+if (resultsOfGame.current.isSuccess != null){
+  setIsDisplaying(true);
+ 
+  dispatch(deleteCurrentBet())
+
+  currentBet.current = null 
+  
+}
+  timerId = setTimeout(() => {
+    console.log(resultsOfGame.current)
+    setIsDisplaying(false)
+    dispatch(setResultsOfgame({isSuccess:null}))
+  }, 3000);
+
+  function currentGameHandler(newData){
+
+    setIsCircleVisible(false)
+    dispatch(setGameId(newData.game_id))
+    dispatch(setEnd(false))
+    dispatch( setGameMultiplier( newData.current_multiplier.toFixed(2)));
+
+   
+  }
+socket.on('current_game', currentGameHandler) 
+function timeRemainingHandler(data){
+  setIsCircleVisible(true)
+
+
+}
+
+socket.on('time_remaining',timeRemainingHandler)
+
+function crashHandler(){
+  if(currentBet.current){
+    
+    setResult(currentBet.price)
+   
+    setIsSuccess(false)
+
+  }
+  dispatch(setEnd(true))
+}
+
+socket.on('crash', crashHandler)
+return ()=>{
+  socket.off('current_game', currentGameHandler) 
+  
+socket.off('crash', crashHandler)
+  socket.off('time_remaining',timeRemainingHandler)
+  clearTimeout(timerId)
+}
+},[resultsOfGame.current.isSuccess])
+currentBet.current =  useSelector(state=>state.currentBet.currentBet)
+
+return (
     <section className={styles.game}>
-      {isGameInfoVisible && (
-        <div className={styles.game__info}>
-          <p className={styles.game__ratio}>
-            {ratio}
-            <span>x</span>
-          </p>
-        </div>
-      )}
-
-      {isCircleVisible && (
-        <div className={styles['game__circle-container']}>
-          <Circle />
-        </div>
-      )}
-
-      {endGame && (
-        <div className={styles['game__modale-container']}>
-          <WinLoseBoard isSuccess={isSuccess} rate={ratio} />
-        </div>
-      )}
+      <div className={styles.game__info}>
+        <p className={styles.game__ratio}>
+          { game.currentMultiplier}
+          <span>{ 'x'}</span>
+        </p>
 
 
-      {/* <div className={cn(
+      </div>
+      {
+  isCircleVisible && !isDisplaying && (
+    <div className={styles['game__circle-container']}>
+      <Circle />
+    </div>
+  )
+}
+
+
+      <div className={styles['game__modale-container']}>
+        
+        {(isDisplaying || (currentBet.current && game && currentBet.current.round_id == game.id &&( resultsOfGame.current.isSuccess)) )&& (<WinLoseBoard isSuccess={resultsOfGame.current.isSuccess} rate={resultsOfGame.current.amount.toFixed(2)} />)}
+      </div>
+      <div className={cn(
           styles.game__clouds,
           { [styles.game__start]: startGame }
         )}
@@ -53,12 +123,12 @@ export const GameItem = () => {
 
         <div className={styles.game__cloud3} />
 
-      </div> */}
+        </div>
 
-      {/* <div className={cn(
-        styles.game__clouds,
-        { [styles.game__start2]: startGame }
-      )}
+        <div className={cn(
+          styles.game__clouds,
+          { [styles.game__start2]: startGame }
+        )}
       >
         <div className={styles.game__cloud4} />
 
@@ -69,8 +139,7 @@ export const GameItem = () => {
         <div className={styles.game__cloud7} />
 
         <div className={styles.game__cloud8} />
-      </div> */}
-
+      </div>
       <UserSlider />
     </section>
   );

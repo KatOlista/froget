@@ -8,7 +8,7 @@ import { selectBalance } from '../../../redux/features/balanceSlice';
 import ShevronIcon from '../../../assets/icons/chevron-right-white.svg?react';
 import {
   USD_SYMBOL,
-  USER,
+  
 } from '../../../utils/constants';
 
 import styles from './HeaderDropdown.module.scss';
@@ -17,6 +17,7 @@ export const HeaderDropdown = ({ options }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const { selectedBalance } = useSelector(state => state.selectedBalance);
+  
   const dispatch = useDispatch();
 
   const dropdownRef = useRef();
@@ -26,13 +27,21 @@ export const HeaderDropdown = ({ options }) => {
   };
 
   const selectOptionHandler = (option) => {
+    console.log(selectedBalance)
     dispatch(selectBalance(option));
 
     toggleDropdown();
   }
 
+  const user = useSelector(state => state.user.user);
+  var deposit_balance;
+  var bonus_balance;
+  if (user){
+    bonus_balance = user.bonus_balance;
+    deposit_balance = user.deposit_balance;
+  } 
   useEffect(() => {
-    function handleClickOutside(event) {
+ function handleClickOutside(event) {
       if (dropdownRef.current
         && !dropdownRef.current.contains(event.target)) {
           setIsDropdownOpen(false);
@@ -40,10 +49,18 @@ export const HeaderDropdown = ({ options }) => {
     }
 
     window.addEventListener('click', handleClickOutside);
-
+    
+  
+    /*  var deposit_balance = ((user['deposit_balance']))
+         var bonus_balance = (user['bonus_balance']) */
+   
+      
     return () => {
       window.removeEventListener('click', handleClickOutside);
     };
+
+
+
   }, []);
 
   return (
@@ -55,7 +72,13 @@ export const HeaderDropdown = ({ options }) => {
         <p>
           <span>{USD_SYMBOL}</span>
 
-          {USER[selectedBalance.balance]}
+          {selectedBalance.balance === 'mainBalance' ? (
+  // Если условие истинно
+  deposit_balance
+) : (
+  // Если условие не истинно
+  bonus_balance
+)}  
         </p>
 
         {<ShevronIcon className={cn(
@@ -70,7 +93,7 @@ export const HeaderDropdown = ({ options }) => {
           className={cn(
             styles.dropdown__options,
             'animate__animated',
-            'animate__fadeInDown',
+            'animate__fadeInLeft',
           )}
         >
           {options.map(option => {
@@ -88,7 +111,14 @@ export const HeaderDropdown = ({ options }) => {
                 <span>{option.title}</span>
 
                 <p>
-                  {USER[option.balance]}
+                {option.balance === 'mainBalance' ? (
+  // Если условие истинно
+  deposit_balance
+) : (
+  // Если условие не истинно
+  bonus_balance
+)}
+
                   <span>{USD_SYMBOL}</span>
                 </p>
               </button>
