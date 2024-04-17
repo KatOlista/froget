@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  endGame: true
+  endGame: false
 };
 
 export const endGameSlice = createSlice({

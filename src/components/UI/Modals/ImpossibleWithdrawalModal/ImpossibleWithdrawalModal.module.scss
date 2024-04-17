@@ -1,0 +1,29 @@
+.impossible {
+  padding: 16px;
+  width: 292px;
+  height: 154px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  gap: 32px;
+
+  &__info {
+    text-align: center;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    color: #202329;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+    font-size: 12px;
+    color: #555b6b;
+  }
+
+  &__close {
+    font-size: 12px;
+  }
+}

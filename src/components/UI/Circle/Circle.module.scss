@@ -13,9 +13,15 @@
     top: 17px;
     aspect-ratio: 1;
     border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+            align-items: center;
     background: var(--gameColor);
     z-index: 5;
   }
@@ -30,6 +36,7 @@
     background-color: #fff;
     border-radius: 50%;
     z-index: 1;
+    -webkit-animation: load 6s linear;
     animation: load 6s linear;
   }
 
@@ -54,6 +61,16 @@
   inherits: false;
 }
 
+@-webkit-keyframes count {
+  0% {
+    --num: 0;
+  }
+
+  100% {
+    --num: 100;
+  }
+}
+
 @keyframes count {
   0% {
     --num: 0;
@@ -62,6 +79,14 @@
   100% {
     --num: 100;
   }
+}
+
+@-webkit-keyframes load {
+  0% { -webkit-clip-path: polygon(50% 50%, 50% -21%, 50% -21%, 50% -21%, 50% -21%, 50% -21%); clip-path: polygon(50% 50%, 50% -21%, 50% -21%, 50% -21%, 50% -21%, 50% -21%); }
+  25% { -webkit-clip-path: polygon(50% 50%, 50% -21%, 121% 50%, 121% 50%, 121% 50%, 121% 50%); clip-path: polygon(50% 50%, 50% -21%, 121% 50%, 121% 50%, 121% 50%, 121% 50%); }
+  50% { -webkit-clip-path: polygon(50% 50%, 50% -21%, 121% 50%, 50% 121%, 50% 121%, 50% 121%); clip-path: polygon(50% 50%, 50% -21%, 121% 50%, 50% 121%, 50% 121%, 50% 121%); }
+  75% { -webkit-clip-path: polygon(50% 50%, 50% -21%, 121% 50%, 50% 121%, -21% 50%, -21% 50%); clip-path: polygon(50% 50%, 50% -21%, 121% 50%, 50% 121%, -21% 50%, -21% 50%); }
+  100% { -webkit-clip-path: polygon(50% 50%, 50% -21%, 121% 50%, 50% 121%, -21% 50%, 50% -21%); clip-path: polygon(50% 50%, 50% -21%, 121% 50%, 50% 121%, -21% 50%, 50% -21%); }
 }
 
 @keyframes load {

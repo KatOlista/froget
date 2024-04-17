@@ -11,7 +11,8 @@ import styles from './GameItem.module.scss';
 
 export const GameItem = () => {
   const ratio = 1.02;
-  const [isCircleVisible, setIsCircleVisible] = useState(false);
+  const [isGameInfoVisible, setIsGameInfoVisible] = useState(false);
+  const [isCircleVisible, setIsCircleVisible] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
 
   // const { startGame } = useSelector(state => state.startGame);
@@ -19,13 +20,14 @@ export const GameItem = () => {
 
   return (
     <section className={styles.game}>
-      <div className={styles.game__info}>
-        <p className={styles.game__ratio}>
-          {ratio}
-          <span>x</span>
-        </p>
-      </div>
-
+      {isGameInfoVisible && (
+        <div className={styles.game__info}>
+          <p className={styles.game__ratio}>
+            {ratio}
+            <span>x</span>
+          </p>
+        </div>
+      )}
 
       {isCircleVisible && (
         <div className={styles['game__circle-container']}>
