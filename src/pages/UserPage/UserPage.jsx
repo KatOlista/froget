@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Tooltip from '@mui/material/Tooltip';
 
 import { BALANCE_BUTTONS, MESSAGES, MIN_WITHDRAWAL_AMOUNT, USER_OPTIONS } from '../../utils/constants';
-import { Avatar, BalanceButton, BalanceActionButton, FailWithdrawal } from '../../components';
+import { Avatar, BalanceButton, BalanceActionButton, FailWithdrawalModal, WithdrawalModal } from '../../components';
 
 import styles from './UserPage.module.scss';
 import { Option } from '../../components/UI/Option/Option';
@@ -16,7 +16,7 @@ export const UserPage = () => {
   const [selectedOption, setSelectedOption] = useState('');
   const [isCopied, setIsCopied] = useState(false);
   const [selectedButton, setSelectedButton] = useState(BALANCE_BUTTONS[0]);
-  // const [isPageOnBlur, setIsPageOnBlur] = useState(false);
+  const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false);
   const [isFailWithdrawalModalOpen, setIsFailWithdrawalModalOpen] = useState(false);
 
   const selectBalanceHandler = (button) => {
@@ -48,10 +48,13 @@ export const UserPage = () => {
       return;
     }
 
+    setIsWithdrawalModalOpen(true);
   };
 
+  const isModalOpen = isWithdrawalModalOpen || isFailWithdrawalModalOpen;
+
   return (
-    <section className={`${styles.profile} ${isFailWithdrawalModalOpen ? styles.blur : ''}`}>
+    <section className={`${styles.profile} ${isModalOpen ? styles.blur : ''}`}>
       <div className={styles.profile__id}>
         <Tooltip title={tooltipMessage} placement="top">
           <p>
@@ -111,9 +114,14 @@ export const UserPage = () => {
         ))}
       </ul>
 
-      <FailWithdrawal
+      <FailWithdrawalModal
         setIsOpen={setIsFailWithdrawalModalOpen}
         isModalOpen={isFailWithdrawalModalOpen}
+      />
+
+      <WithdrawalModal
+        setIsOpen={setIsWithdrawalModalOpen}
+        isModalOpen={isWithdrawalModalOpen}
       />
 
     </section>

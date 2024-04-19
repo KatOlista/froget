@@ -7,25 +7,6 @@ import './Modal.scss';
 
 ModalWindow.setAppElement('#root');
 
-// const customStyles = {
-//   overlay: {
-//     background: 'rgba(0, 0, 0, 0.50)',
-//     zIndex: 10,
-//   },
-//   content: {
-//     margin: '0 auto',
-//     padding: '0',
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     transform: 'translate(-50%, -50%)',
-//     outline: 'none',
-//     border: 'none',
-//     borderRadius: '0',
-//   },
-// };
-
 export const Modal = ({
   children,
   isOpen = false,

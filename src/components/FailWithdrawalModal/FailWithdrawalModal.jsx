@@ -1,6 +1,6 @@
-import { Modal } from '../';
+import { Modal } from '..';
 
-import styles from './FailWithdrawal.module.scss';
+import styles from './FailWithdrawalModal.module.scss';
 
 const customStyles = {
   overlay: {
@@ -21,7 +21,7 @@ const customStyles = {
   },
 };
 
-export const FailWithdrawal = ({ setIsOpen, isModalOpen }) => {
+export const FailWithdrawalModal = ({ setIsOpen, isModalOpen }) => {
   return (
     <Modal
       customClassName='fail-withdrawal'

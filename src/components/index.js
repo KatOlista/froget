@@ -3,7 +3,8 @@ export { Header } from './Header/Header';
 export { GameItem } from './GameItem/GameItem';
 export { WinLoseBoard } from './WinLoseBoard/WinLoseBoard';
 export { Modal } from './Modal/Modal';
-export { FailWithdrawal } from './FailWithdrawal/FailWithdrawal';
+export { FailWithdrawalModal } from './FailWithdrawalModal/FailWithdrawalModal';
+export { WithdrawalModal } from './WithdrawalModal/WithdrawalModal';
 
 export { Avatar } from './UI/Avatar/Avatar';
 export { Circle } from './UI/Circle/Circle';

@@ -8,7 +8,7 @@ export const DARK = 'dark';
 export const MIN_RATE_INPUT_VALUE = 0;
 export const MIN_MULTIPLIER_INPUT_VALUE = 1.1;
 export const INITIAL_RATE_VALUE = 2.5;
-export const MIN_WITHDRAWAL_AMOUNT = 10;
+export const MIN_WITHDRAWAL_AMOUNT = 1;
 
 export const INCREASE = 'increase';
 export const DECREASE = 'decrease';
@@ -77,7 +77,7 @@ export const USER = {
   bet: '1.25',
   id: '1',
   mainBalance: 100,
-  bonusBalance: 5,
+  bonusBalance: 0,
 }
 
 export const USERS = [
