@@ -2,6 +2,8 @@ export { Footer } from './Footer/Footer';
 export { Header } from './Header/Header';
 export { GameItem } from './GameItem/GameItem';
 export { WinLoseBoard } from './WinLoseBoard/WinLoseBoard';
+export { Modal } from './Modal/Modal';
+export { FailWithdrawal } from './FailWithdrawal/FailWithdrawal';
 
 export { Avatar } from './UI/Avatar/Avatar';
 export { Circle } from './UI/Circle/Circle';
