@@ -3,6 +3,10 @@ import { userDeviceWidth } from '../../utils/constants';
 
 import styles from './WithdrawalModal.module.scss';
 
+import CloseIcon from '../../assets/icons/close.svg?react';
+import ArrowIcon from '../../assets/icons/arrow-left.svg?react';
+import WhiteArrowIcon from '../../assets/icons/arrow-right.svg?react';
+
 const customStyles = {
   overlay: {
     background: 'rgba(0, 0, 0, 0.50)',
@@ -17,8 +21,8 @@ const customStyles = {
     top: 'auto',
     left: '50%',
     right: 'auto',
-    bottom: '0',
-    transform: 'translate(-50%, -50%)',
+    bottom: '-20px',
+    transform: 'translate(-50%)',
     outline: 'none',
     border: 'none',
     borderRadius: '24px 24px 0 0',
@@ -36,16 +40,36 @@ export const WithdrawalModal = ({ setIsOpen, isModalOpen }) => {
       }}
     >
       <div className={styles.modal}>
+        <header className={styles.modal__header}>
+          <button
+            className={styles.modal__close}
+            type="button"
+            // onClick={}
+          >
+            <ArrowIcon />
+          </button>
+
+          <button
+            className={styles.modal__close}
+            type="button"
+            onClick={() => setIsOpen(false)}
+          >
+            <CloseIcon />
+          </button>
+        </header>
+
         <h3 className={styles.modal__title}>
           Выберите платежный метод
         </h3>
 
         <button
-          className={styles.modal__close}
+          className={styles.modal__cript}
           type="button"
-          onClick={() => setIsOpen(false)}
+          onClick={() => {}}
         >
-          Криптовалюта
+          <span className={styles.modal__text}>Криптовалюта</span>
+
+          <WhiteArrowIcon />
         </button>
       </div>
     </Modal>

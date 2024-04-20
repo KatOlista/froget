@@ -8,7 +8,7 @@ export const DARK = 'dark';
 export const MIN_RATE_INPUT_VALUE = 0;
 export const MIN_MULTIPLIER_INPUT_VALUE = 1.1;
 export const INITIAL_RATE_VALUE = 2.5;
-export const MIN_WITHDRAWAL_AMOUNT = 1;
+export const MIN_WITHDRAWAL_AMOUNT = 10;
 
 export const INCREASE = 'increase';
 export const DECREASE = 'decrease';
@@ -55,6 +55,18 @@ export const USER_OPTIONS = [
   {title: 'Введите промокод', icon: iconTypes.promocodeIcon},
   {title: 'Поддержка', icon: iconTypes.supportIcon},
   {title: 'Язык', icon: iconTypes.flagIcon},
+];
+
+export const CURRENCY = [
+  {id: 1, label: 'USDT'},
+  {id: 2, label: 'BTC'},
+  {id: 3, label: 'MATIC'}
+];
+
+export const NETWORK = [
+  {id: 1, label: 'TRC20'},
+  {id: 2, label: 'ERC20'},
+  {id: 3, label: 'USDT'}
 ];
 
 

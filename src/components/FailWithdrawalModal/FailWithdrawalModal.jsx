@@ -18,6 +18,7 @@ const customStyles = {
     outline: 'none',
     border: 'none',
     borderRadius: '24px',
+    backgroundColor: 'transparent',
   },
 };
 
@@ -38,6 +39,10 @@ export const FailWithdrawalModal = ({ setIsOpen, isModalOpen }) => {
           </h3>
           <p className={styles.modal__subtitle}>
             На вашем балансе недостаточно средств
+          </p>
+
+          <p className={styles.modal__subtitle}>
+            Минимальная сумма вывода 10$
           </p>
         </div>
 
