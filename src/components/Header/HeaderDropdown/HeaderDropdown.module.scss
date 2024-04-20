@@ -37,10 +37,9 @@
     overflow: hidden;
     border-radius: 16px;
     background-color: var(--neutral100Color);
-    opacity: 0;
     z-index: 2;
 
-    transition: padding 0.3s ease, height 0.7s ease, opacity 0.7s ease;
+    transition: all 0.7s ease;
   }
 
   &__option {
@@ -81,7 +80,5 @@
 
 .active {
   padding: 6px;
-  opacity: 1;
-  height: auto;
-  z-index: 2;
+  height: 90px;
 }
