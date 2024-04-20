@@ -96,22 +96,22 @@ export const Footer = () => {
                     </div>
                   )
                 : (
-                  <>
-                    <RoundButton onClick={() => inputRateHandler(DECREASE)} />
+                    <>
+                      <RoundButton onClick={() => inputRateHandler(DECREASE)} />
 
-                    <label className={styles.footer__label}>
-                      <input
-                        type="number"
-                        value={rateInputValue}
-                        placeholder='0'
-                        onChange={(e) => inputRateHandler(SET_BY_USER, e.target.value)}
-                        className={styles.footer__input}
-                      />
-                    </label>
+                      <label className={styles.footer__label}>
+                        <input
+                          type="number"
+                          value={rateInputValue}
+                          placeholder='0'
+                          onChange={(e) => inputRateHandler(SET_BY_USER, e.target.value)}
+                          className={styles.footer__input}
+                        />
+                      </label>
 
-                    <RoundButton isPlus onClick={() => inputRateHandler(INCREASE)} />
-                  </>
-                )
+                      <RoundButton isPlus onClick={() => inputRateHandler(INCREASE)} />
+                    </>
+                  )
               }
             </div>
 
@@ -139,7 +139,7 @@ export const Footer = () => {
             type='submit'
           >
             {isLoading
-              ? (<p>Ожидание..</p>)
+              ? (<p>Ожидание...</p>)
               : (<p>СТАВКА</p>)
             }
           </button>
