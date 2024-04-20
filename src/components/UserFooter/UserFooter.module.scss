@@ -40,6 +40,7 @@
     display: flex;
     justify-content: space-between;
     border-radius: 20px;
+    color: var(--primeTextColor);
     background-color: var(--primary300Color);
 
     transition: all 0.3s ease;
@@ -52,7 +53,6 @@
 
   &__text {
     font-size: 20px;
-    color: var(--primary300Color);
   }
 }
 

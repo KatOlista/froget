@@ -30,12 +30,17 @@
   }
 
   &__options {
-    padding: 6px;
+    padding: 0px;
     position: absolute;
+    height: 0;
     width: 100%;
+    overflow: hidden;
     border-radius: 16px;
     background-color: var(--neutral100Color);
+    opacity: 0;
     z-index: 2;
+
+    transition: padding 0.3s ease, height 0.7s ease, opacity 0.7s ease;
   }
 
   &__option {
@@ -72,4 +77,11 @@
       color: var(--checkboxShevronColor);
     }
   }
+}
+
+.active {
+  padding: 6px;
+  opacity: 1;
+  height: auto;
+  z-index: 2;
 }

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';import
 cn from 'classnames';
-import 'animate.css';
+// import 'animate.css';
 
 import { selectBalance } from '../../../redux/features/balanceSlice';
 
@@ -65,37 +65,34 @@ export const HeaderDropdown = ({ options }) => {
         />}
       </button>
 
-      {isDropdownOpen && (
-        <ul
-          className={cn(
-            styles.dropdown__options,
-            'animate__animated',
-            'animate__fadeInDown',
-          )}
-        >
-          {options.map(option => {
-            const isSelected = option.balance === selectedBalance.balance;
+      <ul
+        className={cn(
+          styles.dropdown__options,
+          { [styles.active]: isDropdownOpen }
+        )}
+      >
+        {options.map(option => {
+          const isSelected = option.balance === selectedBalance.balance;
 
-            return (
-            <li key={option.balance}>
-              <button
-                onClick={() => selectOptionHandler(option)}
-                className={cn(
-                  styles.dropdown__option,
-                  { [styles.dropdown__selected]: isSelected },
-                )}
-              >
-                <span>{option.title}</span>
+          return (
+          <li key={option.balance}>
+            <button
+              onClick={() => selectOptionHandler(option)}
+              className={cn(
+                styles.dropdown__option,
+                { [styles.dropdown__selected]: isSelected },
+              )}
+            >
+              <span>{option.title}</span>
 
-                <p>
-                  {USER[option.balance]}
-                  <span>{USD_SYMBOL}</span>
-                </p>
-              </button>
-            </li>
-          )})}
-        </ul>
-      )}
+              <p>
+                {USER[option.balance]}
+                <span>{USD_SYMBOL}</span>
+              </p>
+            </button>
+          </li>
+        )})}
+      </ul>
     </div>
   );
 };
