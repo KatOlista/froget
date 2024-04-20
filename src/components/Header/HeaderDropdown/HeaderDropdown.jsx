@@ -49,7 +49,10 @@ export const HeaderDropdown = ({ options }) => {
   return (
     <div className={styles.dropdown} ref={dropdownRef}>
       <button
-        className={styles.dropdown__button}
+        className={cn(
+          styles.dropdown__button,
+          { [styles['active-btn']]: isDropdownOpen }
+        )}
         onClick={toggleDropdown}
       >
         <p>

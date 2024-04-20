@@ -25,11 +25,11 @@
   --secondary300Color: -webkit-linear-gradient(90deg, #f79400 0%, #ffd235 100%);
 
   --checkboxShevronColor: #148eff;
-    --primary500Color: #0056d6;
+  --primary500Color: #0056d6;
 
-    --success200Color: #2edf40;
-    --success300Color: #00c908;
-    --secondary200Color: #9ad100;
+  --success200Color: #2edf40;
+  --success300Color: #00c908;
+  --secondary200Color: #9ad100;
 }
 
 :root[data-theme='light'] {
@@ -42,6 +42,7 @@
   --userIdBgColor: #e9eaf0;
   --modalBgColor: var(--neutral100Color);
   --modalSubtitleTextColor: var(--neutral500Color);
+  --dropdownCurrencySing: rgba(20, 142, 255, 0.43);
 
   --dropdownAmountColor: #095681;
   --dropdownBalanceColor: #5E6970;
@@ -80,6 +81,7 @@
   --tabMenuTextColorActive: #0a2737;
   --modalBgColor: var(--neutral500Color);
   --modalSubtitleTextColor: var(--primeTextColor);
+  --dropdownCurrencySing: var(--primeTextColor);
 
   --neutral500TextColor: #555b6b;
 
