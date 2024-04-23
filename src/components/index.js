@@ -9,6 +9,7 @@ export { WithdrawalModal } from './WithdrawalModal/WithdrawalModal';
 export { Avatar } from './UI/Avatar/Avatar';
 export { Circle } from './UI/Circle/Circle';
 export { UserSlider } from './UI/UserSlider/UserSlider';
+export { ModalForm } from './UI/ModalForm/ModalForm';
 export { RoundButton } from './UI/RoundButton/RoundButton';
 export { LastBetsSlider } from './UI/LastBetsSlider/LastBetsSlider';
 export { SecondaryButton } from './UI/SecondaryButton/SecondaryButton';

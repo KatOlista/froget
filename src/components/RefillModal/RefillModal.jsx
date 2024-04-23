@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 
-import { RefillForm } from '../RefillForm/RefillForm';
-import { HeaderSection, ModalMainButton, SuccessSection } from '../';
+import { HeaderSection, ModalMainButton, SuccessSection, ModalForm } from '../';
 import { createCopy } from '../../utils';
 import { MESSAGES } from '../../utils/constants';
 
@@ -45,6 +44,11 @@ export const RefillModal = ({ setHasFooter }) => {
     setHasSuccess(false);
   };
 
+  const sendDataToServer = () => {
+
+    //////code for sending data from ModalForm component
+  };
+
   return (
     <>
       <HeaderSection
@@ -60,9 +64,13 @@ export const RefillModal = ({ setHasFooter }) => {
       )}
 
       {hasForm && (
-        <RefillForm
+        <ModalForm
           setHasAddress={setHasAddress}
           setHasForm={setHasForm}
+          subtitle='Mинимальная сумма депозита 5$'
+          amount='Сумма пополнения в $'
+          buttonTitle='Пополнить'
+          sendDataToServer={sendDataToServer}
         />
       )}
 
