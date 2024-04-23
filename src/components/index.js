@@ -1,20 +1,22 @@
+export { Modal } from './Modal/Modal';
 export { Footer } from './Footer/Footer';
 export { Header } from './Header/Header';
 export { GameItem } from './GameItem/GameItem';
+export { RefillModal } from './RefillModal/RefillModal';
+export { ReferalModal } from './ReferalModal/ReferalModal';
 export { WinLoseBoard } from './WinLoseBoard/WinLoseBoard';
-export { Modal } from './Modal/Modal';
-export { FailWithdrawalModal } from './FailWithdrawalModal/FailWithdrawalModal';
 export { WithdrawalModal } from './WithdrawalModal/WithdrawalModal';
+export { FailWithdrawalModal } from './FailWithdrawalModal/FailWithdrawalModal';
 
 export { Avatar } from './UI/Avatar/Avatar';
 export { Circle } from './UI/Circle/Circle';
-export { UserSlider } from './UI/UserSlider/UserSlider';
 export { ModalForm } from './UI/ModalForm/ModalForm';
+export { UserSlider } from './UI/UserSlider/UserSlider';
 export { RoundButton } from './UI/RoundButton/RoundButton';
-export { LastBetsSlider } from './UI/LastBetsSlider/LastBetsSlider';
-export { SecondaryButton } from './UI/SecondaryButton/SecondaryButton';
 export { BalanceButton } from './UI/BalanceButton/BalanceButton';
 export { HeaderSection } from './UI/HeaderSection/HeaderSection';
 export { SuccessSection } from './UI/SuccessSection/SuccessSection';
+export { LastBetsSlider } from './UI/LastBetsSlider/LastBetsSlider';
 export { ModalMainButton } from './UI/ModalMainButton/ModalMainButton';
+export { SecondaryButton } from './UI/SecondaryButton/SecondaryButton';
 export { BalanceActionButton } from './UI/BalanceActionButton/BalanceActionButton';

@@ -1,11 +1,11 @@
+import { useState } from 'react';
 import cn from 'classnames';
 import 'animate.css';
 
+import { ReferalModal, WithdrawalModal, RefillModal } from '..';
 import { MODAL_TYPES } from '../../utils/constants';
-import { RefillModal } from '../RefillModal/RefillModal';
+
 import styles from './UserFooter.module.scss';
-import { useState } from 'react';
-import { WithdrawalModal } from '..';
 
 export const UserFooter = ({ setHasFooter, modalType }) => {
   const [isClose, setIsClose] = useState(false);
@@ -25,6 +25,8 @@ export const UserFooter = ({ setHasFooter, modalType }) => {
       case MODAL_TYPES.REFILL: content = (<RefillModal setHasFooter={setClose} />);
         break;
       case MODAL_TYPES.WITHDRAWAL: content = (<WithdrawalModal setHasFooter={setClose} />);
+        break;
+      case MODAL_TYPES.REFERAL: content = (<ReferalModal setHasFooter={setClose} />);
         break;
       default: return (<></>)
     }

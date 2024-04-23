@@ -12,6 +12,7 @@ export const HeaderSection = ({
   closeHandler,
   hasAddress,
   getModalTitle,
+  title,
 }) => {
   return (
     <header>
@@ -41,7 +42,10 @@ export const HeaderSection = ({
       </div>
 
       <h3 className={styles.header__title}>
-        {getModalTitle(hasForm, hasSuccess, hasAddress)}
+        {!title
+          ? getModalTitle(hasForm, hasSuccess, hasAddress)
+          : title
+        }
       </h3>
   </header>
   );

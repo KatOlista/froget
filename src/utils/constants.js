@@ -94,7 +94,11 @@ export const WITHDRAWAL_MODAL_TITLE = {
   CHOOSE_METHOD: 'Выберите платежный метод',
   REFILL: 'Вывод средств',
   SUCCESS: 'Вывод средств в обработке',
-}
+};
+
+export const REFERAL_MODAL_TITLE = {
+  TITLE: 'Реферальная программа',
+};
 
 
 
@@ -117,6 +121,7 @@ export const USER = {
   id: '1',
   mainBalance: 100,
   bonusBalance: 0,
+  invitationUrl: 'invite'
 }
 
 export const USERS = [
