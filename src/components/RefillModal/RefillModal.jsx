@@ -1,17 +1,11 @@
 import { useState } from 'react';
-import cn from 'classnames';
 import Tooltip from '@mui/material/Tooltip';
 
 import { RefillForm } from '../RefillForm/RefillForm';
+import { HeaderSection, ModalMainButton, SuccessSection } from '../';
+import { createCopy, MESSAGES } from '../../utils';
 
 import styles from './RefillModal.module.scss';
-
-import CloseIcon from '../../assets/icons/close.svg?react';
-import ArrowIcon from '../../assets/icons/arrow-left.svg?react';
-import WhiteArrowIcon from '../../assets/icons/arrow-right.svg?react';
-import { getRefillModalTitle } from '../../utils';
-import { createCopy } from '../../utils/services/createCopy';
-import { MESSAGES } from '../../utils/constants';
 
 import LoadingIcon from '../../assets/icons/loader-icon-white.svg?react';
 import InfoIcon from '../../assets/icons/info-grey.svg?react';
@@ -38,7 +32,7 @@ export const RefillModal = ({ setHasFooter }) => {
 
   const setSuccessHandler = () => {
 
-    //////send data to server, when loading setIsLoading(true), after:  setIsLoading(false) setHasSuccess(true); setHasAddress(false);
+    //////send data to server, when loading setIsLoading(true), after: setIsLoading(false) setHasSuccess(true); setHasAddress(false);
 
     setHasSuccess(true);
     setHasAddress(false);
@@ -52,47 +46,16 @@ export const RefillModal = ({ setHasFooter }) => {
 
   return (
     <>
-      <header>
-        <div className={styles.refill__buttons}>
-          <button
-            className={cn(
-              styles.refill__close,
-              { [styles.hide]: !hasForm}
-            )}
-            type="button"
-            onClick={() => setHasForm(false)}
-            disabled={!hasForm}
-          >
-            <ArrowIcon />
-          </button>
-
-          <button
-            className={cn(
-              styles.refill__close,
-              { [styles.hide]: hasSuccess}
-            )}
-            type="button"
-            onClick={closeHandler}
-          >
-            <CloseIcon />
-          </button>
-        </div>
-
-        <h3 className={styles.refill__title}>
-          {getRefillModalTitle(hasForm, hasSuccess, hasAddress)}
-        </h3>
-      </header>
+      <HeaderSection
+          hasForm={hasForm}
+          setHasForm={setHasForm}
+          hasSuccess={hasSuccess}
+          closeHandler={closeHandler}
+          hasAddress={hasAddress}
+      />
 
       {!hasForm && !hasSuccess && !hasAddress && (
-        <button
-          className={styles.refill__cript}
-          type="button"
-          onClick={() => setHasForm(true)}
-        >
-          <span className={styles.refill__text}>Криптовалюта</span>
-
-          <WhiteArrowIcon />
-        </button>
+        <ModalMainButton onClick={setHasForm} />
       )}
 
       {hasForm && (
@@ -118,16 +81,15 @@ export const RefillModal = ({ setHasFooter }) => {
             </Tooltip>
           </div>
 
-          <button
-            className={`${styles.refill__cript} ${styles.refill__final}`}
-            type="button"
+          <ModalMainButton
             onClick={setSuccessHandler}
-          >
-            {isLoading
-              ? (<LoadingIcon className={styles.refill__loader} />)
-              : 'Я оплатил (а)'
+            isDisabled={isLoading}
+            content={
+              isLoading
+                ? (<LoadingIcon className={styles.refill__loader} />)
+                : 'Я оплатил (а)'
             }
-          </button>
+          />
 
           <div className={`${styles.refill__subheader} ${styles.refill__info}`}>
             <div>
@@ -142,24 +104,7 @@ export const RefillModal = ({ setHasFooter }) => {
       )}
 
       {hasSuccess && (
-        <>
-          <h5 className={styles.refill__subheader}>
-            {/* Сумма поступит на Ваш кошелек
-
-            <br />
-
-            в течении 2 — 30 минут. */}
-            Баланс пополнится в течении 5 минут.
-          </h5>
-
-          <button
-            className={`${styles.refill__cript} ${styles.refill__final}`}
-            type="button"
-            onClick={closeHandler}
-          >
-            Закрыть
-          </button>
-        </>
+        <SuccessSection closeHandler={closeHandler} />
       )}
     </>
   );

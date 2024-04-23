@@ -12,7 +12,10 @@
   background: var(--gameColor);
 
   &__info {
-    margin: 11px 19px auto auto;
+    position: absolute;
+    top: 11px;
+    right: 19px;
+    // margin: 11px 19px auto auto;
     width: 100px;
     z-index: 2;
   }
@@ -23,9 +26,14 @@
     color: #efeff4;
   }
 
-  &__frog {
+  &__froget {
     flex: auto;
     display: flex;
+  }
+
+  &__frog {
+    height: 290px;
+    width: 100%;
     background: center / 50% no-repeat url('../../assets/img/froget.gif');
   }
 

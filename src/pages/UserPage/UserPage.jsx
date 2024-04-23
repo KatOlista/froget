@@ -10,8 +10,6 @@ import { Option } from '../../components/UI/Option/Option';
 import { UserFooter } from '../../components/UserFooter/UserFooter';
 import { createCopy } from '../../utils/services/createCopy';
 
-// import LoadIcon from '../../assets/icons/loader.svg?react';
-
 export const UserPage = () => {
   const { user } = useSelector(state => state.user);
 
@@ -47,28 +45,6 @@ export const UserPage = () => {
     setHasFooter(true);
     setModalType(modalType);
   };
-
-  // const depositHandler = (event) => {
-  //   buttonManipulate(event, MODAL_TYPES.REFILL);
-  // };
-
-  // const withdrawalHandler = (event) => {
-  //   buttonManipulate(event, MODAL_TYPES.WITHDRAWAL);
-  //   // event.stopPropagation();
-
-  //   // if (selectedButton.balance === 'bonusBalance') {
-  //   //   return;
-  //   // }
-
-  //   // if (user[selectedButton.balance] < MIN_WITHDRAWAL_AMOUNT) {
-  //   //   setIsFailWithdrawalModalOpen(true);
-
-  //   //   return;
-  //   // }
-
-  //   // setHasFooter(true);
-  //   // setModalType(MODAL_TYPES.WITHDRAWAL);
-  // };
 
   return (
     <>
@@ -138,11 +114,6 @@ export const UserPage = () => {
           setIsOpen={setIsFailWithdrawalModalOpen}
           isModalOpen={isFailWithdrawalModalOpen}
         />
-
-        {/* <WithdrawalModal
-          setIsOpen={setIsWithdrawalModalOpen}
-          isModalOpen={isWithdrawalModalOpen}
-        /> */}
 
       </section>
 

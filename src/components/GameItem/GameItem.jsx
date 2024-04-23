@@ -31,7 +31,9 @@ export const GameItem = () => {
       )}
 
       {isFroget && (
-        <div className={styles.game__frog} />
+        <div className={styles.game__froget}>
+          <div className={styles.game__frog} />
+        </div>
       )}
 
       {isCircleVisible && (

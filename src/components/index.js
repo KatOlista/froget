@@ -13,4 +13,7 @@ export { RoundButton } from './UI/RoundButton/RoundButton';
 export { LastBetsSlider } from './UI/LastBetsSlider/LastBetsSlider';
 export { SecondaryButton } from './UI/SecondaryButton/SecondaryButton';
 export { BalanceButton } from './UI/BalanceButton/BalanceButton';
+export { HeaderSection } from './UI/HeaderSection/HeaderSection';
+export { SuccessSection } from './UI/SuccessSection/SuccessSection';
+export { ModalMainButton } from './UI/ModalMainButton/ModalMainButton';
 export { BalanceActionButton } from './UI/BalanceActionButton/BalanceActionButton';

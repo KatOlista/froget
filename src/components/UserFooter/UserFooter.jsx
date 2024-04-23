@@ -6,10 +6,6 @@ import { RefillModal } from '../RefillModal/RefillModal';
 import styles from './UserFooter.module.scss';
 import { useState } from 'react';
 
-// import CloseIcon from '../../assets/icons/close.svg?react';
-// import ArrowIcon from '../../assets/icons/arrow-left.svg?react';
-// import WhiteArrowIcon from '../../assets/icons/arrow-right.svg?react';
-
 export const UserFooter = ({ setHasFooter, modalType }) => {
   const [isClose, setIsClose] = useState(false);
 
@@ -26,6 +22,8 @@ export const UserFooter = ({ setHasFooter, modalType }) => {
 
     switch(modalType) {
       case MODAL_TYPES.REFILL: content = (<RefillModal setHasFooter={setClose} />);
+        break;
+      case MODAL_TYPES.WITHDRAWAL: content = (<></>);
         break;
       default: return (<></>)
     }
