@@ -148,6 +148,7 @@ export const UserPage = () => {
 
       {hasFooter && (
         <UserFooter
+          hasFooter={hasFooter}
           setHasFooter={setHasFooter}
           modalType={modalType}
         />

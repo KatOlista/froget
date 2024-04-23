@@ -1,3 +1,6 @@
+import cn from 'classnames';
+import 'animate.css';
+
 import { MODAL_TYPES } from '../../utils/constants';
 import { RefillModal } from '../RefillModal/RefillModal';
 import styles from './UserFooter.module.scss';
@@ -6,7 +9,7 @@ import styles from './UserFooter.module.scss';
 // import ArrowIcon from '../../assets/icons/arrow-left.svg?react';
 // import WhiteArrowIcon from '../../assets/icons/arrow-right.svg?react';
 
-export const UserFooter = ({ setHasFooter, modalType }) => {
+export const UserFooter = ({ hasFooter, setHasFooter, modalType }) => {
   const actualContent = () => {
     let content = '';
 
@@ -20,7 +23,13 @@ export const UserFooter = ({ setHasFooter, modalType }) => {
   };
 
   return (
-    <footer className={styles.overlay}>
+    <footer className={cn(
+      styles.overlay,
+      'animate__animated',
+      'animate__fadeInUp',
+      { 'animate__fadeInDown': !hasFooter }
+    )}
+    >
       <div className={styles.footer}>
         {actualContent()}
       </div>
