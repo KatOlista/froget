@@ -10,7 +10,9 @@
   &__line {
     margin: 0 auto;
     padding: 0;
-    height: 3px;
+    height: 4px;
+    border-radius: 2px;
+    border: none;
     width: 20%;
     background-color: var(--primeTextColor);
   }
