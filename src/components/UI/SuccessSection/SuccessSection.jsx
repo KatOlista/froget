@@ -1,11 +1,11 @@
 import { ModalMainButton } from '../ModalMainButton/ModalMainButton';
 import styles from './SuccessSection.module.scss';
 
-export const SuccessSection = ({ closeHandler }) => {
+export const SuccessSection = ({ closeHandler, content }) => {
   return (
     <>
       <h5 className={styles.success__subheader}>
-        Баланс пополнится в течении 5 минут.
+        {content}
       </h5>
 
       <ModalMainButton onClick={closeHandler} content='Закрыть' />

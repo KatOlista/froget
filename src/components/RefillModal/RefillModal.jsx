@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 
 import { HeaderSection, ModalMainButton, SuccessSection, ModalForm } from '../';
-import { createCopy } from '../../utils';
-import { MESSAGES } from '../../utils/constants';
+import { createCopy, getRefillModalTitle } from '../../utils';
+import { MESSAGES, MIN_REFILL_AMOUNT } from '../../utils/constants';
 
 import styles from './RefillModal.module.scss';
 
@@ -57,6 +57,7 @@ export const RefillModal = ({ setHasFooter }) => {
           hasSuccess={hasSuccess}
           closeHandler={closeHandler}
           hasAddress={hasAddress}
+          getModalTitle={getRefillModalTitle}
       />
 
       {!hasForm && !hasSuccess && !hasAddress && (
@@ -71,6 +72,8 @@ export const RefillModal = ({ setHasFooter }) => {
           amount='Сумма пополнения в $'
           buttonTitle='Пополнить'
           sendDataToServer={sendDataToServer}
+          minAmount={MIN_REFILL_AMOUNT}
+          amountError={MESSAGES.EMPTY_REFIL_AMOUNT_INPUT}
         />
       )}
 
@@ -113,7 +116,10 @@ export const RefillModal = ({ setHasFooter }) => {
       )}
 
       {hasSuccess && (
-        <SuccessSection closeHandler={closeHandler} />
+        <SuccessSection
+          closeHandler={closeHandler}
+          content='Баланс пополнится в течении 5 минут.'
+        />
       )}
     </>
   );

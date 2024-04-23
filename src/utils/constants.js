@@ -37,9 +37,11 @@ export const MESSAGES = {
   NO_BETS: 'Ставок еще не было',
   NO_SERVER_RESPONSE: 'Что-то пошло не так...',
   NOT_ENOUGH_MONEY: 'У вас недостаточно средств',
-  EMPTY_AMOUNT_INPUT: 'Сумма пополнения должна быть больше 5$',
+  EMPTY_REFIL_AMOUNT_INPUT: 'Сумма должна быть больше 5$',
+  EMPTY_WITHDRAWAL_AMOUNT_INPUT: 'Сумма должна быть больше 10$',
   EMPTY_CURRENCY: 'Выберите валюту',
   EMPTY_NETWORK: 'Выберите сеть',
+  EMPTY_WITHDRAWAL_INPUT: 'Введите адрес кошелька',
   WIN_TEXT: 'Вы выиграли',
   LOSE_TEXT: 'Вы проиграли',
   COPIED: 'Скопировано',
@@ -64,22 +66,22 @@ export const iconTypes = {
 };
 
 export const USER_OPTIONS = [
-  {title: 'Реферальная программа', icon: iconTypes.giftIcon, modalType: MODAL_TYPES.REFERAL},
-  {title: 'Введите промокод', icon: iconTypes.promocodeIcon, modalType: MODAL_TYPES.PROMOCODE},
-  {title: 'Поддержка', icon: iconTypes.supportIcon, modalType: MODAL_TYPES.SUPPORT},
-  {title: 'Язык', icon: iconTypes.flagIcon, modalType: MODAL_TYPES.LANGUAGE},
+  { title: 'Реферальная программа', icon: iconTypes.giftIcon, modalType: MODAL_TYPES.REFERAL },
+  { title: 'Введите промокод', icon: iconTypes.promocodeIcon, modalType: MODAL_TYPES.PROMOCODE },
+  { title: 'Поддержка', icon: iconTypes.supportIcon, modalType: MODAL_TYPES.SUPPORT },
+  { title: 'Язык', icon: iconTypes.flagIcon, modalType: MODAL_TYPES.LANGUAGE },
 ];
 
 export const CURRENCY = [
-  {id: 1, label: 'USDT'},
-  {id: 2, label: 'BTC'},
-  {id: 3, label: 'MATIC'}
+  { id: 1, label: 'USDT' },
+  { id: 2, label: 'BTC' },
+  { id: 3, label: 'MATIC' }
 ];
 
 export const NETWORK = [
-  {id: 1, label: 'TRC20'},
-  {id: 2, label: 'ERC20'},
-  {id: 3, label: 'USDT'}
+  { id: 1, label: 'TRC20' },
+  { id: 2, label: 'ERC20' },
+  { id: 3, label: 'USDT' }
 ];
 
 export const REFILL_MODAL_TITLE = {
@@ -87,6 +89,12 @@ export const REFILL_MODAL_TITLE = {
   REFILL: 'Пополнение баланса',
   SUCCESS: 'Оплата прошла!',
 };
+
+export const WITHDRAWAL_MODAL_TITLE = {
+  CHOOSE_METHOD: 'Выберите платежный метод',
+  REFILL: 'Вывод средств',
+  SUCCESS: 'Вывод средств в обработке',
+}
 
 
 

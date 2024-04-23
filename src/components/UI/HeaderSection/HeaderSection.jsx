@@ -1,7 +1,5 @@
 import cn from 'classnames';
 
-import { getRefillModalTitle } from '../../../utils';
-
 import styles from './HeaderSection.module.scss';
 
 import CloseIcon from '../../../assets/icons/close.svg?react';
@@ -13,6 +11,7 @@ export const HeaderSection = ({
   hasSuccess,
   closeHandler,
   hasAddress,
+  getModalTitle,
 }) => {
   return (
     <header>
@@ -42,7 +41,7 @@ export const HeaderSection = ({
       </div>
 
       <h3 className={styles.header__title}>
-        {getRefillModalTitle(hasForm, hasSuccess, hasAddress)}
+        {getModalTitle(hasForm, hasSuccess, hasAddress)}
       </h3>
   </header>
   );

@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import cn from 'classnames';
 import 'animate.css';
 
-import { CURRENCY, MESSAGES, MIN_REFILL_AMOUNT, NETWORK } from '../../../utils/constants';
+import { CURRENCY, MESSAGES, NETWORK } from '../../../utils/constants';
 
 import styles from './ModalForm.module.scss';
 
@@ -16,7 +16,9 @@ export const ModalForm = ({
   subtitle,
   amount,
   buttonTitle,
-  sendDataToServer
+  sendDataToServer,
+  minAmount,
+  amountError,
 }) => {
   const [amountInputValue, setAmountInputValue] = useState('');
   const [currencyInputValue, setCurrencyInputValue] = useState('');
@@ -48,7 +50,7 @@ export const ModalForm = ({
       !!amountInputValue
       && !!currencyInputValue
       && !!networkInputValue
-      && Number(amountInputValue) >= MIN_REFILL_AMOUNT
+      && Number(amountInputValue) >= minAmount
     ) {
       const data = {
         amountInputValue,
@@ -62,7 +64,7 @@ export const ModalForm = ({
       setHasAddress(true);
     }
 
-    setHasAmountInputError( !amountInputValue || Number(amountInputValue) < MIN_REFILL_AMOUNT);
+    setHasAmountInputError( !amountInputValue || Number(amountInputValue) < minAmount);
     setHasCurrencyInputError(!currencyInputValue);
     setHasNetworkInputError(!networkInputValue);
   };
@@ -101,7 +103,7 @@ export const ModalForm = ({
           'animate__fadeInLeft',
           { [styles.error__message]: hasAmountInputError }
           )}>
-          {MESSAGES.EMPTY_AMOUNT_INPUT}
+          {amountError}
         </p>)}
       </div>
 

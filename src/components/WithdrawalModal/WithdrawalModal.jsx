@@ -1,156 +1,46 @@
-// import { useState } from 'react';
-// import Tooltip from '@mui/material/Tooltip';
-
-// import { ModalForm } from '../';
-// import { HeaderSection, ModalMainButton, SuccessSection } from '../';
-// import { createCopy } from '../../utils';
-// import { MESSAGES } from '../../utils/constants';
-
-// import styles from './WithdrawalModal.module.scss';
-
-
-// import LoadingIcon from '../../assets/icons/loader-icon-white.svg?react';
-// import InfoIcon from '../../assets/icons/info-grey.svg?react';
-
-
-// ////////////////////////////////
-
-// const address = 'ADDRESS FROM SERVER';
-// //////////////////////////////////////
-
-// export const WithdrawalModal = ({ setHasFooter }) => {
-//   const [hasForm, setHasForm] = useState(false);
-//   const [hasAddress, setHasAddress] = useState(false);
-//   const [hasSuccess, setHasSuccess] = useState(false);
-//   const [isCopied, setIsCopied] = useState(false);
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   setTimeout(() => {
-//     setIsLoading(true)
-//   }, 3000);
-
-//   const tooltipMessage = isCopied
-//   ? MESSAGES.COPIED
-//   : MESSAGES.TOOLTIP_COPY
-
-//   const setSuccessHandler = () => {
-
-//     //////send data to server, when loading setIsLoading(true), after: setIsLoading(false) setHasSuccess(true); setHasAddress(false);
-
-//     setHasSuccess(true);
-//     setHasAddress(false);
-//   };
-
-//   const closeHandler = () => {
-//     setHasFooter(false);
-//     setHasForm(false);
-//     setHasSuccess(false);
-//   };
-
-//   return (
-//     <>
-//       <HeaderSection
-//           hasForm={hasForm}
-//           setHasForm={setHasForm}
-//           hasSuccess={hasSuccess}
-//           closeHandler={closeHandler}
-//           hasAddress={hasAddress}
-//       />
-
-//       {!hasForm && !hasSuccess && !hasAddress && (
-//         <ModalMainButton onClick={setHasForm} />
-//       )}
-
-//       {hasForm && (
-//         <ModalForm
-//           setHasAddress={setHasAddress}
-//           setHasForm={setHasForm}
-//         />
-//       )}
-
-//       {hasAddress && (
-//         <div>
-//           <p className={`${styles.refill__subheader} ${styles['refill__address-subheader']}`}>
-//             Адрес кошелька для пополнения
-//           </p>
-
-//           <div className={styles.refill__address}>
-//             <Tooltip title={tooltipMessage} placement="top">
-//               <p>
-//                 <span>{address}</span>
-
-//                 <button onClick={() => createCopy(address, setIsCopied)} />
-//               </p>
-//             </Tooltip>
-//           </div>
-
-//           <ModalMainButton
-//             onClick={setSuccessHandler}
-//             isDisabled={isLoading}
-//             content={
-//               isLoading
-//                 ? (<LoadingIcon className={styles.refill__loader} />)
-//                 : 'Я оплатил (а)'
-//             }
-//           />
-
-//           <div className={`${styles.refill__subheader} ${styles.refill__info}`}>
-//             <div>
-//               <InfoIcon />
-//             </div>
-
-//             <p>Внимание: проверьте адрес кошелька и сеть перед отправкой средств.
-//               После отправки полной суммы на указанный адрес нажмите кнопку «я оплатил(а)»
-//             </p>
-//           </div>
-//         </div>
-//       )}
-
-//       {hasSuccess && (
-//         <SuccessSection closeHandler={closeHandler} />
-//       )}
-//     </>
-//   );
-// };
-
 import { useState } from 'react';
-import Tooltip from '@mui/material/Tooltip';
+import cn from 'classnames';
 
 import { HeaderSection, ModalMainButton, SuccessSection, ModalForm } from '../';
-import { createCopy } from '../../utils';
-import { MESSAGES } from '../../utils/constants';
 
 import styles from './WithdrawalModal.module.scss';
 
 import LoadingIcon from '../../assets/icons/loader-icon-white.svg?react';
 import InfoIcon from '../../assets/icons/info-grey.svg?react';
-
-////////////////////////////////
-
-const address = 'ADDRESS FROM SERVER';
-//////////////////////////////////////
+import { getRefillWithdrawalTitle } from '../../utils/services/getRefillWithdrawalTitle';
+import { MESSAGES, MIN_WITHDRAWAL_AMOUNT } from '../../utils/constants';
 
 export const WithdrawalModal = ({ setHasFooter }) => {
   const [hasForm, setHasForm] = useState(false);
   const [hasAddress, setHasAddress] = useState(false);
   const [hasSuccess, setHasSuccess] = useState(false);
-  const [isCopied, setIsCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [walletInputValue, setWalletInputValue] = useState('');
+  const [hasWalletInputError, setHasWalletInputError] = useState(false);
+
+  const walletInputHandler = (event) => {
+    setWalletInputValue(event.target.value);
+    setHasWalletInputError(false);
+  };
+
   setTimeout(() => {
-    setIsLoading(true)
+    setIsLoading(false)
   }, 3000);
 
-  const tooltipMessage = isCopied
-  ? MESSAGES.COPIED
-  : MESSAGES.TOOLTIP_COPY
-
   const setSuccessHandler = () => {
+    if (walletInputValue) {
+      //////send data to server, when loading setIsLoading(true), after: setIsLoading(false) setHasSuccess(true); setHasAddress(false);
 
-    //////send data to server, when loading setIsLoading(true), after: setIsLoading(false) setHasSuccess(true); setHasAddress(false);
+      setHasSuccess(true);
+      setHasAddress(false);
+    }
 
-    setHasSuccess(true);
-    setHasAddress(false);
+    if (!walletInputValue) {
+      setHasWalletInputError(true);
+      
+      return;
+    }
   };
 
   const closeHandler = () => {
@@ -172,6 +62,7 @@ export const WithdrawalModal = ({ setHasFooter }) => {
           hasSuccess={hasSuccess}
           closeHandler={closeHandler}
           hasAddress={hasAddress}
+          getModalTitle={getRefillWithdrawalTitle}
       />
 
       {!hasForm && !hasSuccess && !hasAddress && (
@@ -182,27 +73,40 @@ export const WithdrawalModal = ({ setHasFooter }) => {
         <ModalForm
           setHasAddress={setHasAddress}
           setHasForm={setHasForm}
-          subtitle='Mинимальная сумма депозита 5$'
-          amount='Сумма пополнения в $'
-          buttonTitle='Пополнить'
+          subtitle='Mинимальная сумма вывода 10$'
+          amount='Сумма вывода в $'
+          buttonTitle='Вывод'
           sendDataToServer={sendDataToServer}
+          minAmount={MIN_WITHDRAWAL_AMOUNT}
+          amountError={MESSAGES.EMPTY_WITHDRAWAL_AMOUNT_INPUT}
         />
       )}
 
       {hasAddress && (
         <div>
-          <p className={`${styles.refill__subheader} ${styles['refill__address-subheader']}`}>
-            Адрес кошелька для пополнения
-          </p>
+          <div className={styles.withdrawal__section}>
+            <label
+              htmlFor="wallet"
+              className={styles.withdrawal__label}
+            >
+              Адрес кошелька для вывода
+            </label>
 
-          <div className={styles.refill__address}>
-            <Tooltip title={tooltipMessage} placement="top">
-              <p>
-                <span>{address}</span>
+            <input
+              className={styles.withdrawal__input}
+              id="wallet"
+              type="text"
+              value={walletInputValue}
+              onChange={walletInputHandler}
+            />
 
-                <button onClick={() => createCopy(address, setIsCopied)} />
-              </p>
-            </Tooltip>
+            {hasWalletInputError && (<p className={cn(
+              'animate__animated',
+              'animate__fadeInLeft',
+              { [styles.error__message]: hasWalletInputError }
+              )}>
+              {MESSAGES.EMPTY_WITHDRAWAL_INPUT}
+            </p>)}
           </div>
 
           <ModalMainButton
@@ -210,18 +114,18 @@ export const WithdrawalModal = ({ setHasFooter }) => {
             isDisabled={isLoading}
             content={
               isLoading
-                ? (<LoadingIcon className={styles.refill__loader} />)
-                : 'Я оплатил (а)'
+                ? (<LoadingIcon className={styles.withdrawal__loader} />)
+                : 'Вывод'
             }
           />
 
-          <div className={`${styles.refill__subheader} ${styles.refill__info}`}>
+          <div className={`${styles.withdrawal__subheader} ${styles.withdrawal__info}`}>
             <div>
               <InfoIcon />
             </div>
 
             <p>Внимание: проверьте адрес кошелька и сеть перед отправкой средств.
-              После отправки полной суммы на указанный адрес нажмите кнопку «я оплатил(а)»
+              После отправки полной суммы на указанный Вами адрес, нажмите кнопку «вывод»
             </p>
           </div>
         </div>

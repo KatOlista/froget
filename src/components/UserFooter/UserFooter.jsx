@@ -5,6 +5,7 @@ import { MODAL_TYPES } from '../../utils/constants';
 import { RefillModal } from '../RefillModal/RefillModal';
 import styles from './UserFooter.module.scss';
 import { useState } from 'react';
+import { WithdrawalModal } from '..';
 
 export const UserFooter = ({ setHasFooter, modalType }) => {
   const [isClose, setIsClose] = useState(false);
@@ -23,7 +24,7 @@ export const UserFooter = ({ setHasFooter, modalType }) => {
     switch(modalType) {
       case MODAL_TYPES.REFILL: content = (<RefillModal setHasFooter={setClose} />);
         break;
-      case MODAL_TYPES.WITHDRAWAL: content = (<></>);
+      case MODAL_TYPES.WITHDRAWAL: content = (<WithdrawalModal setHasFooter={setClose} />);
         break;
       default: return (<></>)
     }
