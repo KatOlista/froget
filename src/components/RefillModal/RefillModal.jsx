@@ -38,7 +38,7 @@ export const RefillModal = ({ setHasFooter }) => {
 
   const setSuccessHandler = () => {
 
-    //////send data to server, when loading setIsLoading(true), after setIsLoading(false)
+    //////send data to server, when loading setIsLoading(true), after:  setIsLoading(false) setHasSuccess(true); setHasAddress(false);
 
     setHasSuccess(true);
     setHasAddress(false);
