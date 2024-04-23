@@ -3,7 +3,8 @@ import Tooltip from '@mui/material/Tooltip';
 
 import { RefillForm } from '../RefillForm/RefillForm';
 import { HeaderSection, ModalMainButton, SuccessSection } from '../';
-import { createCopy, MESSAGES } from '../../utils';
+import { createCopy } from '../../utils';
+import { MESSAGES } from '../../utils/constants';
 
 import styles from './RefillModal.module.scss';
 

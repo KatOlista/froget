@@ -2,17 +2,15 @@ import { useState } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 
 import { RefillForm } from '../RefillForm/RefillForm';
+import { HeaderSection, ModalMainButton, SuccessSection } from '../';
+import { createCopy } from '../../utils';
+import { MESSAGES } from '../../utils/constants';
 
 import styles from './WithdrawalModal.module.scss';
 
-import { createCopy } from '../../utils/services/createCopy';
-import { MESSAGES } from '../../utils/constants';
 
 import LoadingIcon from '../../assets/icons/loader-icon-white.svg?react';
 import InfoIcon from '../../assets/icons/info-grey.svg?react';
-import { HeaderSection } from '../';
-import { ModalMainButton } from '../';
-import { SuccessSection } from '../';
 
 ////////////////////////////////
 
