@@ -6,7 +6,7 @@ import SupportIcon from '../../../assets/icons/message-question.svg?react';
 import FlagIcon from '../../../assets/icons/flag.svg?react';
 import ShevronIcon from '../../../assets/icons/chevron-right-grey.svg?react';
 
-import { iconTypes } from '../../../utils/constants';
+import { MODAL_TYPES, iconTypes } from '../../../utils/constants';
 
 import styles from './Option.module.scss';
 
@@ -19,30 +19,45 @@ const getIcon = (type) => {
   }
 };
 
-export const Option = ({ option, selectedOption, setSelectedOption }) => {
+export const Option = ({
+  option,
+  selectedOption,
+  setSelectedOption,
+  setModalType,
+  setHasFooter,
+}) => {
   const icon = getIcon(option.icon);
 
   const isSelected = selectedOption === option.title;
 
   const optionHandler = () => {
     setSelectedOption(option.title);
+
+    //////////////////
+    if (option.modalType === MODAL_TYPES.REFERAL) {
+      setModalType(option.modalType);
+      setHasFooter(true);
+    }
+    /////////////////////
   };
 
   return (
-    <li
-      className={cn(
-        styles.option,
-        { [styles.option__selected]: isSelected }
-      )}
-      onClick={() => optionHandler()}
-    >
-      <div className={styles.option__container}>
-        <span className={styles.option__icon}>{icon}</span>
+    <li>
+      <button
+        className={cn(
+          styles.option,
+          { [styles.option__selected]: isSelected }
+        )}
+        onClick={() => optionHandler()}
+      >
+        <div className={styles.option__container}>
+          <span className={styles.option__icon}>{icon}</span>
 
-        <span className={styles.option__title}>{option.title}</span>
-      </div>
+          <span className={styles.option__title}>{option.title}</span>
+        </div>
 
-      <ShevronIcon />
+        <ShevronIcon />
+      </button>
     </li>
   );
 };

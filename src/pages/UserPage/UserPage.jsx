@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Tooltip from '@mui/material/Tooltip';
 
-import { BALANCE_BUTTONS, MESSAGES, MIN_WITHDRAWAL_AMOUNT, USER_OPTIONS } from '../../utils/constants';
+import { BALANCE_BUTTONS, MESSAGES, MIN_WITHDRAWAL_AMOUNT, MODAL_TYPES, USER_OPTIONS } from '../../utils/constants';
 import { Avatar, BalanceButton, BalanceActionButton, FailWithdrawalModal } from '../../components';
 
 import styles from './UserPage.module.scss';
 import { Option } from '../../components/UI/Option/Option';
 import { UserFooter } from '../../components/UserFooter/UserFooter';
+import { createCopy } from '../../utils/services/createCopy';
 
 // import LoadIcon from '../../assets/icons/loader.svg?react';
 
@@ -17,9 +18,10 @@ export const UserPage = () => {
   const [selectedOption, setSelectedOption] = useState('');
   const [isCopied, setIsCopied] = useState(false);
   const [selectedButton, setSelectedButton] = useState(BALANCE_BUTTONS[0]);
-  // const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false);
   const [isFailWithdrawalModalOpen, setIsFailWithdrawalModalOpen] = useState(false);
+
   const [hasFooter, setHasFooter] = useState(false);
+  const [modalType, setModalType] = useState('');
 
   const selectBalanceHandler = (button) => {
     setSelectedButton(button);
@@ -29,20 +31,12 @@ export const UserPage = () => {
     ? MESSAGES.COPIED
     : MESSAGES.TOOLTIP_COPY
 
-  const createCopyHandler = () => {
-    navigator.clipboard.writeText(user.id);
-
-    setIsCopied(() => true);
-
-    setTimeout(() => {
-      setIsCopied(() => false);
-    }, 3000);
-  };
-
-  const depositHandler = () => {};
-
-  const withdrawalHandler = (event) => {
+  const buttonManipulate = (event, modalType) => {
     event.stopPropagation();
+
+    if (selectedButton.balance === 'bonusBalance') {
+      return;
+    }
 
     if (user[selectedButton.balance] < MIN_WITHDRAWAL_AMOUNT) {
       setIsFailWithdrawalModalOpen(true);
@@ -51,9 +45,30 @@ export const UserPage = () => {
     }
 
     setHasFooter(true);
-
-    // setIsWithdrawalModalOpen(true);
+    setModalType(modalType);
   };
+
+  // const depositHandler = (event) => {
+  //   buttonManipulate(event, MODAL_TYPES.REFILL);
+  // };
+
+  // const withdrawalHandler = (event) => {
+  //   buttonManipulate(event, MODAL_TYPES.WITHDRAWAL);
+  //   // event.stopPropagation();
+
+  //   // if (selectedButton.balance === 'bonusBalance') {
+  //   //   return;
+  //   // }
+
+  //   // if (user[selectedButton.balance] < MIN_WITHDRAWAL_AMOUNT) {
+  //   //   setIsFailWithdrawalModalOpen(true);
+
+  //   //   return;
+  //   // }
+
+  //   // setHasFooter(true);
+  //   // setModalType(MODAL_TYPES.WITHDRAWAL);
+  // };
 
   return (
     <>
@@ -63,7 +78,7 @@ export const UserPage = () => {
             <p>
               <span>ID {user.id}</span>
 
-              <button onClick={() => createCopyHandler()} />
+              <button onClick={() => createCopy(user.id, setIsCopied)} />
             </p>
           </Tooltip>
         </div>
@@ -95,13 +110,13 @@ export const UserPage = () => {
           <div className={styles['profile__balance-buttons']}>
             <BalanceActionButton
               text='Депозит'
-              onClick={() => depositHandler()}
+              onClick={(event) => buttonManipulate(event, MODAL_TYPES.REFILL)}
             />
 
             <BalanceActionButton
               text='Вывод'
               isArrow
-              onClick={withdrawalHandler}
+              onClick={(event) => buttonManipulate(event, MODAL_TYPES.WITHDRAWAL)}
             />
           </div>
         </div>
@@ -113,6 +128,8 @@ export const UserPage = () => {
               key={option.title}
               selectedOption={selectedOption}
               setSelectedOption={setSelectedOption}
+              setModalType={setModalType}
+              setHasFooter={setHasFooter}
             />
           ))}
         </ul>
@@ -129,7 +146,12 @@ export const UserPage = () => {
 
       </section>
 
-      {hasFooter && (<UserFooter setHasFooter={setHasFooter} />)}
+      {hasFooter && (
+        <UserFooter
+          setHasFooter={setHasFooter}
+          modalType={modalType}
+        />
+      )}
     </>
   )
 };

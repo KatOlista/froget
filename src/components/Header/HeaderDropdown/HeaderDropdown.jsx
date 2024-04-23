@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';import
 cn from 'classnames';
-// import 'animate.css';
 
 import { selectBalance } from '../../../redux/features/balanceSlice';
 

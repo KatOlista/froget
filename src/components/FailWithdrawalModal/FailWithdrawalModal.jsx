@@ -25,7 +25,6 @@ const customStyles = {
 export const FailWithdrawalModal = ({ setIsOpen, isModalOpen }) => {
   return (
     <Modal
-      customClassName='fail-withdrawal'
       customStyles={customStyles}
       isOpen={isModalOpen}
       toggleModal={() => {

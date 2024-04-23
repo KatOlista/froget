@@ -9,6 +9,7 @@ export const MIN_RATE_INPUT_VALUE = 0;
 export const MIN_MULTIPLIER_INPUT_VALUE = 1.1;
 export const INITIAL_RATE_VALUE = 2.5;
 export const MIN_WITHDRAWAL_AMOUNT = 10;
+export const MIN_REFILL_AMOUNT = 5;
 
 export const INCREASE = 'increase';
 export const DECREASE = 'decrease';
@@ -19,6 +20,15 @@ export const MAKE_MAX = 'make_max';
 export const SET_BY_USER = 'set_by_user';
 export const CHANGE_USER_BALANCE = 'change_user_balance';
 
+export const MODAL_TYPES = {
+  WITHDRAWAL: 'withdrawal',
+  REFILL: 'refill',
+  REFERAL: 'referal',
+  PROMOCODE: 'promocode',
+  SUPPORT: 'support',
+  LANGUAGE: 'language',
+}
+
 export const CUSTOM_MULTIPLY = 'custom_multiply';
 
 export const userDeviceWidth = window.innerWidth;
@@ -27,6 +37,9 @@ export const MESSAGES = {
   NO_BETS: 'Ставок еще не было',
   NO_SERVER_RESPONSE: 'Что-то пошло не так...',
   NOT_ENOUGH_MONEY: 'У вас недостаточно средств',
+  EMPTY_AMOUNT_INPUT: 'Сумма пополнения должна быть больше 5$',
+  EMPTY_CURRENCY: 'Выберите валюту',
+  EMPTY_NETWORK: 'Выберите сеть',
   WIN_TEXT: 'Вы выиграли',
   LOSE_TEXT: 'Вы проиграли',
   COPIED: 'Скопировано',
@@ -51,10 +64,10 @@ export const iconTypes = {
 };
 
 export const USER_OPTIONS = [
-  {title: 'Реферальная программа', icon: iconTypes.giftIcon},
-  {title: 'Введите промокод', icon: iconTypes.promocodeIcon},
-  {title: 'Поддержка', icon: iconTypes.supportIcon},
-  {title: 'Язык', icon: iconTypes.flagIcon},
+  {title: 'Реферальная программа', icon: iconTypes.giftIcon, modalType: MODAL_TYPES.REFERAL},
+  {title: 'Введите промокод', icon: iconTypes.promocodeIcon, modalType: MODAL_TYPES.PROMOCODE},
+  {title: 'Поддержка', icon: iconTypes.supportIcon, modalType: MODAL_TYPES.SUPPORT},
+  {title: 'Язык', icon: iconTypes.flagIcon, modalType: MODAL_TYPES.LANGUAGE},
 ];
 
 export const CURRENCY = [
@@ -68,6 +81,12 @@ export const NETWORK = [
   {id: 2, label: 'ERC20'},
   {id: 3, label: 'USDT'}
 ];
+
+export const REFILL_MODAL_TITLE = {
+  CHOOSE_METHOD: 'Выберите платежный метод',
+  REFILL: 'Пополнение баланса',
+  SUCCESS: 'Оплата прошла!',
+};
 
 
 

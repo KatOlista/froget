@@ -153,7 +153,7 @@ export const Footer = () => {
               <input
                 type="number"
                 value={multiplierInputValue}
-                onChange={(e) => setMultiplierInputValue(e.target.value)}
+                onChange={setMultiplierInputValue}
                 className={`${styles.footer__input} ${styles['footer__input-multiplier']}`}
               />
             </label>

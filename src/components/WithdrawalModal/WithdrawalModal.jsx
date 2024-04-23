@@ -32,7 +32,6 @@ const customStyles = {
 export const WithdrawalModal = ({ setIsOpen, isModalOpen }) => {
   return (
     <Modal
-      customClassName='fail-withdrawal'
       customStyles={customStyles}
       isOpen={isModalOpen}
       toggleModal={() => {
@@ -44,7 +43,7 @@ export const WithdrawalModal = ({ setIsOpen, isModalOpen }) => {
           <button
             className={styles.modal__close}
             type="button"
-            // onClick={}
+            // onClick={() => {}}
           >
             <ArrowIcon />
           </button>
