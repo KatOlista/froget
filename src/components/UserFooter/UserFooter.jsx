@@ -38,11 +38,17 @@ export const UserFooter = ({ setHasFooter, modalType }) => {
     <footer className={cn(
       styles.overlay,
       'animate__animated',
-      'animate__fadeInUp',
-      { 'animate__fadeOutDown': isClose }
+      'animate__fadeIn',
+      { 'animate__fadeOut': isClose }
     )}
     >
-      <div className={styles.footer}>
+
+      <div className={cn(
+        styles.footer,
+        'animate__animated',
+        'animate__fadeInUp',
+        { 'animate__fadeOutDown': isClose }
+      )}>
         {actualContent()}
       </div>
     </footer>
