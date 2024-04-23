@@ -23,6 +23,12 @@
     color: #efeff4;
   }
 
+  &__frog {
+    flex: auto;
+    display: flex;
+    background: center / 50% no-repeat url('../../assets/img/froget.gif');
+  }
+
   &__circle-container {
     margin: 0 auto;
     flex: auto;

@@ -12,8 +12,9 @@ import styles from './GameItem.module.scss';
 export const GameItem = () => {
   const ratio = 1.02;
   const [isGameInfoVisible, setIsGameInfoVisible] = useState(false);
-  const [isCircleVisible, setIsCircleVisible] = useState(true);
+  const [isCircleVisible, setIsCircleVisible] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isFroget, setIsFroget] = useState(true);
 
   // const { startGame } = useSelector(state => state.startGame);
   const { endGame } = useSelector(state => state.endGame);
@@ -27,6 +28,10 @@ export const GameItem = () => {
             <span>x</span>
           </p>
         </div>
+      )}
+
+      {isFroget && (
+        <div className={styles.game__frog} />
       )}
 
       {isCircleVisible && (
