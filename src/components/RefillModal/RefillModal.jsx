@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 
-import { HeaderSection, ModalMainButton, SuccessSection, ModalForm } from '../';
+import { HeaderSection, ModalMainButton, SuccessSection, ModalForm, Overlay } from '../';
 import { createCopy, getRefillModalTitle } from '../../utils';
 import { MESSAGES, MIN_REFILL_AMOUNT } from '../../utils/constants';
 
@@ -23,8 +23,16 @@ export const RefillModal = ({ setHasFooter }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   setTimeout(() => {
-    setIsLoading(true)
+    setIsLoading(false)
   }, 3000);
+
+  // const setClose = () => {
+  //   setIsClose(true);
+
+  //   setTimeout(() => {
+  //     setHasFooter(false);
+  //   }, 400);
+  // };
 
   const tooltipMessage = isCopied
   ? MESSAGES.COPIED
@@ -35,7 +43,7 @@ export const RefillModal = ({ setHasFooter }) => {
     //////send data to server, when loading setIsLoading(true), after: setIsLoading(false) setHasSuccess(true); setHasAddress(false);
 
     setHasSuccess(true);
-    setHasAddress(false);
+    // setHasAddress(false);
   };
 
   const closeHandler = () => {
@@ -51,34 +59,54 @@ export const RefillModal = ({ setHasFooter }) => {
 
   return (
     <>
-      <HeaderSection
+      <>
+        <HeaderSection
           hasForm={hasForm}
           setHasForm={setHasForm}
-          hasSuccess={hasSuccess}
+          // hasSuccess={hasSuccess}
           closeHandler={closeHandler}
-          hasAddress={hasAddress}
+          // hasAddress={hasAddress}
           getModalTitle={getRefillModalTitle}
-      />
+        />
 
-      {!hasForm && !hasSuccess && !hasAddress && (
         <ModalMainButton onClick={setHasForm} />
-      )}
+      </>
 
       {hasForm && (
-        <ModalForm
-          setHasAddress={setHasAddress}
-          setHasForm={setHasForm}
-          subtitle='Mинимальная сумма депозита 5$'
-          amount='Сумма пополнения в $'
-          buttonTitle='Пополнить'
-          sendDataToServer={sendDataToServer}
-          minAmount={MIN_REFILL_AMOUNT}
-          amountError={MESSAGES.EMPTY_REFIL_AMOUNT_INPUT}
-        />
+        <Overlay>
+          <HeaderSection
+            hasForm={hasForm}
+            setHasThisModal={setHasForm}
+            hasSuccess={hasSuccess}
+            closeHandler={closeHandler}
+            hasAddress={hasAddress}
+            getModalTitle={getRefillModalTitle}
+          />
+
+          <ModalForm
+            setHasAddress={setHasAddress}
+            setHasForm={setHasForm}
+            subtitle='Mинимальная сумма депозита 5$'
+            amount='Сумма пополнения в $'
+            buttonTitle='Пополнить'
+            sendDataToServer={sendDataToServer}
+            minAmount={MIN_REFILL_AMOUNT}
+            amountError={MESSAGES.EMPTY_REFIL_AMOUNT_INPUT}
+          />
+        </Overlay>
       )}
 
       {hasAddress && (
-        <div>
+        <Overlay>
+          <HeaderSection
+            hasForm={hasForm}
+            setHasThisModal={setHasAddress}
+            hasSuccess={hasSuccess}
+            closeHandler={closeHandler}
+            hasAddress={hasAddress}
+            getModalTitle={getRefillModalTitle}
+          />
+
           <p className={`${styles.refill__subheader} ${styles['refill__address-subheader']}`}>
             Адрес кошелька для пополнения
           </p>
@@ -112,14 +140,25 @@ export const RefillModal = ({ setHasFooter }) => {
               После отправки полной суммы на указанный адрес нажмите кнопку «я оплатил(а)»
             </p>
           </div>
-        </div>
+        </Overlay>
       )}
 
       {hasSuccess && (
-        <SuccessSection
-          closeHandler={closeHandler}
-          content='Баланс пополнится в течении 5 минут.'
-        />
+        <Overlay>
+          <HeaderSection
+            hasForm={hasForm}
+            setHasForm={setHasForm}
+            hasSuccess={hasSuccess}
+            closeHandler={closeHandler}
+            hasAddress={hasAddress}
+            getModalTitle={getRefillModalTitle}
+          />
+
+          <SuccessSection
+            closeHandler={closeHandler}
+            content='Баланс пополнится в течении 5 минут.'
+          />
+        </Overlay>
       )}
     </>
   );

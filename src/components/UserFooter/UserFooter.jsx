@@ -1,11 +1,7 @@
 import { useState } from 'react';
-import cn from 'classnames';
-import 'animate.css';
 
-import { ReferalModal, WithdrawalModal, RefillModal } from '..';
+import { ReferalModal, WithdrawalModal, RefillModal, Overlay } from '..';
 import { MODAL_TYPES } from '../../utils/constants';
-
-import styles from './UserFooter.module.scss';
 
 export const UserFooter = ({ setHasFooter, modalType }) => {
   const [isClose, setIsClose] = useState(false);
@@ -16,7 +12,7 @@ export const UserFooter = ({ setHasFooter, modalType }) => {
     setTimeout(() => {
       setHasFooter(false);
     }, 400);
-  }
+  };
 
   const actualContent = () => {
     let content = '';
@@ -35,22 +31,10 @@ export const UserFooter = ({ setHasFooter, modalType }) => {
   };
 
   return (
-    <footer className={cn(
-      styles.overlay,
-      'animate__animated',
-      'animate__fadeIn',
-      { 'animate__fadeOut': isClose }
-    )}
-    >
-
-      <div className={cn(
-        styles.footer,
-        'animate__animated',
-        'animate__fadeInUp',
-        { 'animate__fadeOutDown': isClose }
-      )}>
+    <footer>
+      <Overlay isClose={isClose}>
         {actualContent()}
-      </div>
+      </Overlay>
     </footer>
   );
 };

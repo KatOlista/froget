@@ -10,6 +10,7 @@ export { FailWithdrawalModal } from './FailWithdrawalModal/FailWithdrawalModal';
 
 export { Avatar } from './UI/Avatar/Avatar';
 export { Circle } from './UI/Circle/Circle';
+export { Overlay } from './UI/Overlay/Overlay';
 export { ModalForm } from './UI/ModalForm/ModalForm';
 export { UserSlider } from './UI/UserSlider/UserSlider';
 export { RoundButton } from './UI/RoundButton/RoundButton';

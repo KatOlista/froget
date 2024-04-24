@@ -7,7 +7,7 @@ import ArrowIcon from '../../../assets/icons/arrow-left.svg?react';
 
 export const HeaderSection = ({
   hasForm,
-  setHasForm,
+  setHasThisModal,
   hasSuccess,
   closeHandler,
   hasAddress,
@@ -20,11 +20,11 @@ export const HeaderSection = ({
         <button
           className={cn(
             styles.header__close,
-            { [styles.hide]: !hasForm}
+            { [styles.hide]: !hasForm && !hasAddress}
           )}
           type="button"
-          onClick={() => setHasForm(false)}
-          disabled={!hasForm}
+          onClick={() => setHasThisModal(false)}
+          disabled={!hasForm && !hasAddress}
         >
           <ArrowIcon />
         </button>
