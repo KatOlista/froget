@@ -12,7 +12,7 @@ import InfoIcon from '../../../assets/icons/info-grey.svg?react';
 
 export const ModalForm = ({
   setHasAddress,
-  setHasForm,
+  // setHasForm,
   subtitle,
   amount,
   buttonTitle,
@@ -60,7 +60,7 @@ export const ModalForm = ({
 
       sendDataToServer(data);
 
-      setHasForm(false);
+      // setHasForm(false);
       setHasAddress(true);
     }
 
