@@ -2,12 +2,12 @@ import styles from './ModalMainButton.module.scss';
 
 import WhiteArrowIcon from '../../../assets/icons/arrow-right.svg?react';
 
-export const ModalMainButton = ({ onClick, content, isDisabled }) => {
+export const ModalMainButton = ({ onClick, content, isDisabled, setHasNext }) => {
   return (
     <button
       className={styles.button}
       type="button"
-      onClick={() => onClick(true)}
+      onClick={() => onClick(setHasNext)}
       disabled={isDisabled}
     >
       {content

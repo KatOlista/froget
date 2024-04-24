@@ -17,22 +17,36 @@ const address = 'ADDRESS FROM SERVER';
 
 export const RefillModal = ({ setHasFooter }) => {
   const [hasForm, setHasForm] = useState(false);
+  const [isFormClose, setIsFormClose] = useState(false);
+
   const [hasAddress, setHasAddress] = useState(false);
+  const [isAddressClose, setIsAddressClose] = useState(false);
+
   const [hasSuccess, setHasSuccess] = useState(false);
+  const [isSuccessClose, setIsSuccessClose] = useState(false);
+
   const [isCopied, setIsCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   setTimeout(() => {
-    setIsLoading(false)
+    setIsLoading(false);
   }, 3000);
 
-  // const setClose = () => {
-  //   setIsClose(true);
+  const setOnClose = (setIsClose, setHasElement) => {
+    setIsClose(true);
 
-  //   setTimeout(() => {
-  //     setHasFooter(false);
-  //   }, 400);
-  // };
+    setTimeout(() => {
+      setHasElement(false);
+    }, 400);
+  };
+
+  const setOnOpen = (setHasElement) => {
+    setIsFormClose(false);
+    setIsAddressClose(false);
+    setIsSuccessClose(false);
+
+    setHasElement(true);
+  };
 
   const tooltipMessage = isCopied
   ? MESSAGES.COPIED
@@ -42,14 +56,7 @@ export const RefillModal = ({ setHasFooter }) => {
 
     //////send data to server, when loading setIsLoading(true), after: setIsLoading(false) setHasSuccess(true); setHasAddress(false);
 
-    setHasSuccess(true);
-    // setHasAddress(false);
-  };
-
-  const closeHandler = () => {
-    setHasFooter(false);
-    setHasForm(false);
-    setHasSuccess(false);
+    setOnOpen(setHasSuccess);
   };
 
   const sendDataToServer = () => {
@@ -61,29 +68,29 @@ export const RefillModal = ({ setHasFooter }) => {
     <>
       <>
         <HeaderSection
-          hasForm={hasForm}
-          setHasForm={setHasForm}
-          // hasSuccess={hasSuccess}
-          closeHandler={closeHandler}
-          // hasAddress={hasAddress}
+          closeHandler={setHasFooter}
           getModalTitle={getRefillModalTitle}
         />
 
-        <ModalMainButton onClick={setHasForm} />
+        <ModalMainButton
+          onClick={setOnOpen}
+          setHasNext={setHasForm}
+        />
       </>
 
       {hasForm && (
-        <Overlay>
+        <Overlay isClose={isFormClose}>
           <HeaderSection
+            setOnClose={setOnClose}
             hasForm={hasForm}
+            setIsThisModalClose={setIsFormClose}
             setHasThisModal={setHasForm}
-            hasSuccess={hasSuccess}
-            closeHandler={closeHandler}
-            hasAddress={hasAddress}
+            closeHandler={setHasFooter}
             getModalTitle={getRefillModalTitle}
           />
 
           <ModalForm
+            setOnOpen={setOnOpen}
             setHasAddress={setHasAddress}
             setHasForm={setHasForm}
             subtitle='Mинимальная сумма депозита 5$'
@@ -97,12 +104,12 @@ export const RefillModal = ({ setHasFooter }) => {
       )}
 
       {hasAddress && (
-        <Overlay>
+        <Overlay isClose={isAddressClose}>
           <HeaderSection
-            hasForm={hasForm}
+            setOnClose={setOnClose}
+            setIsThisModalClose={setIsAddressClose}
             setHasThisModal={setHasAddress}
-            hasSuccess={hasSuccess}
-            closeHandler={closeHandler}
+            closeHandler={setHasFooter}
             hasAddress={hasAddress}
             getModalTitle={getRefillModalTitle}
           />
@@ -144,18 +151,18 @@ export const RefillModal = ({ setHasFooter }) => {
       )}
 
       {hasSuccess && (
-        <Overlay>
+        <Overlay isClose={isSuccessClose}>
           <HeaderSection
-            hasForm={hasForm}
+            setOnClose={setOnClose}
+            setIsThisModalClose={setIsSuccessClose}
             setHasForm={setHasForm}
             hasSuccess={hasSuccess}
-            closeHandler={closeHandler}
-            hasAddress={hasAddress}
+            closeHandler={setHasFooter}
             getModalTitle={getRefillModalTitle}
           />
 
           <SuccessSection
-            closeHandler={closeHandler}
+            closeHandler={setHasFooter}
             content='Баланс пополнится в течении 5 минут.'
           />
         </Overlay>

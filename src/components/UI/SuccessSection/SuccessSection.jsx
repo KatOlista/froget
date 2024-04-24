@@ -8,7 +8,11 @@ export const SuccessSection = ({ closeHandler, content }) => {
         {content}
       </h5>
 
-      <ModalMainButton onClick={closeHandler} content='Закрыть' />
+      <ModalMainButton
+        onClick={closeHandler}
+        content='Закрыть'
+        setHasNext={false}
+      />
     </>
   );
 };

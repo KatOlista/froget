@@ -9,6 +9,7 @@ export const Overlay = ({ children, isClose }) => {
         styles.overlay,
         'animate__animated',
         'animate__fadeIn',
+        'animate__faster',
         { 'animate__fadeOut': isClose }
       )}
     >
@@ -16,6 +17,7 @@ export const Overlay = ({ children, isClose }) => {
         styles.wrapper,
         'animate__animated',
         'animate__fadeInUp',
+        'animate__faster',
         { 'animate__fadeOutDown': isClose }
       )}>
         {children}

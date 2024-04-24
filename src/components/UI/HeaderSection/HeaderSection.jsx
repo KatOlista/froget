@@ -6,8 +6,10 @@ import CloseIcon from '../../../assets/icons/close.svg?react';
 import ArrowIcon from '../../../assets/icons/arrow-left.svg?react';
 
 export const HeaderSection = ({
+  setOnClose,
   hasForm,
   setHasThisModal,
+  setIsThisModalClose,
   hasSuccess,
   closeHandler,
   hasAddress,
@@ -23,7 +25,7 @@ export const HeaderSection = ({
             { [styles.hide]: !hasForm && !hasAddress}
           )}
           type="button"
-          onClick={() => setHasThisModal(false)}
+          onClick={() => setOnClose(setIsThisModalClose, setHasThisModal)}
           disabled={!hasForm && !hasAddress}
         >
           <ArrowIcon />
@@ -35,7 +37,7 @@ export const HeaderSection = ({
             { [styles.hide]: hasSuccess}
           )}
           type="button"
-          onClick={closeHandler}
+          onClick={() => closeHandler(false)}
         >
           <CloseIcon />
         </button>

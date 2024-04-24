@@ -11,8 +11,8 @@ import styles from './ModalForm.module.scss';
 import InfoIcon from '../../../assets/icons/info-grey.svg?react';
 
 export const ModalForm = ({
+  setOnOpen,
   setHasAddress,
-  // setHasForm,
   subtitle,
   amount,
   buttonTitle,
@@ -59,9 +59,7 @@ export const ModalForm = ({
       };
 
       sendDataToServer(data);
-
-      // setHasForm(false);
-      setHasAddress(true);
+      setOnOpen(setHasAddress);
     }
 
     setHasAmountInputError( !amountInputValue || Number(amountInputValue) < minAmount);
