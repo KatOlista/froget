@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import cn from 'classnames';
 
-import { HeaderSection, ModalMainButton, SuccessSection, ModalForm } from '../';
+import { HeaderSection, ModalMainButton, SuccessSection, ModalForm, Overlay } from '../';
 
 import styles from './WithdrawalModal.module.scss';
 
@@ -9,11 +9,18 @@ import LoadingIcon from '../../assets/icons/loader-icon-white.svg?react';
 import InfoIcon from '../../assets/icons/info-grey.svg?react';
 import { getRefillWithdrawalTitle } from '../../utils/services/getRefillWithdrawalTitle';
 import { MESSAGES, MIN_WITHDRAWAL_AMOUNT } from '../../utils/constants';
+import { setOnClose } from '../../utils';
 
 export const WithdrawalModal = ({ setHasFooter }) => {
   const [hasForm, setHasForm] = useState(false);
+  const [isFormClose, setIsFormClose] = useState(false);
+
   const [hasAddress, setHasAddress] = useState(false);
+  const [isAddressClose, setIsAddressClose] = useState(false);
+
   const [hasSuccess, setHasSuccess] = useState(false);
+  const [isSuccessClose, setIsSuccessClose] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [walletInputValue, setWalletInputValue] = useState('');
@@ -25,28 +32,29 @@ export const WithdrawalModal = ({ setHasFooter }) => {
   };
 
   setTimeout(() => {
-    setIsLoading(false)
+    setIsLoading(false);
   }, 3000);
+
+  const setOnOpen = (setHasElement) => {
+    setIsFormClose(false);
+    setIsAddressClose(false);
+    setIsSuccessClose(false);
+
+    setHasElement(true);
+  };
 
   const setSuccessHandler = () => {
     if (walletInputValue) {
       //////send data to server, when loading setIsLoading(true), after: setIsLoading(false) setHasSuccess(true); setHasAddress(false);
 
-      setHasSuccess(true);
-      setHasAddress(false);
+      setOnOpen(setHasSuccess);
     }
 
     if (!walletInputValue) {
       setHasWalletInputError(true);
-      
+
       return;
     }
-  };
-
-  const closeHandler = () => {
-    setHasFooter(false);
-    setHasForm(false);
-    setHasSuccess(false);
   };
 
   const sendDataToServer = () => {
@@ -56,34 +64,54 @@ export const WithdrawalModal = ({ setHasFooter }) => {
 
   return (
     <>
-      <HeaderSection
-          hasForm={hasForm}
-          setHasForm={setHasForm}
-          hasSuccess={hasSuccess}
-          closeHandler={closeHandler}
-          hasAddress={hasAddress}
+      <>
+        <HeaderSection
+          closeHandler={setHasFooter}
           getModalTitle={getRefillWithdrawalTitle}
-      />
+        />
 
-      {!hasForm && !hasSuccess && !hasAddress && (
-        <ModalMainButton onClick={setHasForm} />
-      )}
+        <ModalMainButton
+          onClick={setOnOpen}
+          setHasNext={setHasForm}
+        />
+      </>
 
       {hasForm && (
-        <ModalForm
-          setHasAddress={setHasAddress}
-          setHasForm={setHasForm}
-          subtitle='Mинимальная сумма вывода 10$'
-          amount='Сумма вывода в $'
-          buttonTitle='Вывод'
-          sendDataToServer={sendDataToServer}
-          minAmount={MIN_WITHDRAWAL_AMOUNT}
-          amountError={MESSAGES.EMPTY_WITHDRAWAL_AMOUNT_INPUT}
-        />
+        <Overlay isClose={isFormClose}>
+          <HeaderSection
+            setOnClose={setOnClose}
+            hasForm={hasForm}
+            setIsThisModalClose={setIsFormClose}
+            setHasThisModal={setHasForm}
+            closeHandler={setHasFooter}
+            getModalTitle={getRefillWithdrawalTitle}
+          />
+
+          <ModalForm
+            setOnOpen={setOnOpen}
+            setHasAddress={setHasAddress}
+            setHasForm={setHasForm}
+            subtitle='Mинимальная сумма вывода 10$'
+            amount='Сумма вывода в $'
+            buttonTitle='Вывод'
+            sendDataToServer={sendDataToServer}
+            minAmount={MIN_WITHDRAWAL_AMOUNT}
+            amountError={MESSAGES.EMPTY_WITHDRAWAL_AMOUNT_INPUT}
+          />
+        </Overlay>
       )}
 
       {hasAddress && (
-        <div>
+        <Overlay isClose={isAddressClose}>
+          <HeaderSection
+            setOnClose={setOnClose}
+            setIsThisModalClose={setIsAddressClose}
+            setHasThisModal={setHasAddress}
+            closeHandler={setHasFooter}
+            hasAddress={hasAddress}
+            getModalTitle={getRefillWithdrawalTitle}
+          />
+
           <div className={styles.withdrawal__section}>
             <label
               htmlFor="wallet"
@@ -125,14 +153,24 @@ export const WithdrawalModal = ({ setHasFooter }) => {
             </div>
 
             <p>Внимание: проверьте адрес кошелька и сеть перед отправкой средств.
-              После отправки полной суммы на указанный Вами адрес, нажмите кнопку «вывод»
             </p>
           </div>
-        </div>
+        </Overlay>
       )}
 
       {hasSuccess && (
-        <SuccessSection closeHandler={closeHandler} />
+        <Overlay isClose={isSuccessClose}>
+          <HeaderSection
+            setOnClose={setOnClose}
+            setIsThisModalClose={setIsSuccessClose}
+            setHasForm={setHasForm}
+            hasSuccess={hasSuccess}
+            closeHandler={setHasFooter}
+            getModalTitle={getRefillWithdrawalTitle}
+          />
+
+          <SuccessSection closeHandler={setHasFooter} />
+        </Overlay>
       )}
     </>
   );

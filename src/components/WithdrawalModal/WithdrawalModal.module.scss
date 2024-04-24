@@ -15,7 +15,9 @@
   }
 
   &__section {
+    margin: 44px 0 12px;
     position: relative;
+    color: var(--modalSubtitleTextColor);
   }
 
   &__label {

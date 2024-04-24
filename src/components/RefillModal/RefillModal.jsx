@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 
 import { HeaderSection, ModalMainButton, SuccessSection, ModalForm, Overlay } from '../';
-import { createCopy, getRefillModalTitle } from '../../utils';
+import { createCopy, getRefillModalTitle, setOnClose } from '../../utils';
 import { MESSAGES, MIN_REFILL_AMOUNT } from '../../utils/constants';
 
 import styles from './RefillModal.module.scss';
@@ -31,14 +31,6 @@ export const RefillModal = ({ setHasFooter }) => {
   setTimeout(() => {
     setIsLoading(false);
   }, 3000);
-
-  const setOnClose = (setIsClose, setHasElement) => {
-    setIsClose(true);
-
-    setTimeout(() => {
-      setHasElement(false);
-    }, 400);
-  };
 
   const setOnOpen = (setHasElement) => {
     setIsFormClose(false);
