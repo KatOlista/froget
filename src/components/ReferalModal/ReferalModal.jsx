@@ -35,7 +35,7 @@ export const ReferalModal = ({ setHasFooter }) => {
 
       <div>
         <p className={`${styles.referal__subheader} ${styles['referal__address-subheader']}`}>
-          {/* Адрес кошелька для пополнения */}
+          Ваша реферальная ссылка
         </p>
 
         <div className={styles.referal__address}>
