@@ -10,9 +10,7 @@
     align-items: center;
     font-weight: 700;
     font-size: 20px;
-    background-color: var(--success200Color);
-
-    animation: attention 1.5s ease-in-out 2s 2;
+    background-color: var(--primary300Color);
   }
 
   &__subheader {
@@ -79,34 +77,8 @@
         padding: 0 5px;
         font-size: 16px;
         font-weight: 700;
-        color: var(--success200Color);
+        color: var(--primary300Color);
       }
     }
-  }
-}
-
-@keyframes attention {
-  0% {
-    background-color: var(--success200Color);
-  }
-
-  10% {
-    background-color: var(--success100Color);
-  }
-
-  40% {
-    background-color: var(--success200Color);
-  }
-
-  50% {
-    background-color: var(--success100Color);
-  }
-
-  90% {
-    background-color: var(--success200Color);
-  }
-
-  100% {
-    background-color: var(--success200Color);
   }
 }
