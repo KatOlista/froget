@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
+// import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import cn from 'classnames';
 import 'animate.css';
@@ -120,6 +121,9 @@ export const ModalForm = ({
           className={styles.form__autocomplete}
           options={CURRENCY}
           sx={{ width: 300 }}
+          // PaperComponent={({ children }) => (
+          //   <Paper style={{ background: "yellow" }}>{children}</Paper>
+          // )}
           inputValue={currencyInputValue}
           onChange={currencyInputHandler}
           renderInput={(params) => <TextField {...params} label="" />}
