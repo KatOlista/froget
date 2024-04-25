@@ -10,16 +10,19 @@ import { CURRENCY, MESSAGES, NETWORK } from '../../../utils/constants';
 import styles from './ModalForm.module.scss';
 
 import InfoIcon from '../../../assets/icons/info-grey.svg?react';
+import { setOnClose } from '../../../utils';
 
 export const ModalForm = ({
   setOnOpen,
   setHasAddress,
+  setHasForm,
   subtitle,
   amount,
   buttonTitle,
   sendDataToServer,
   minAmount,
   amountError,
+  setIsCloseCurrent,
 }) => {
   const [amountInputValue, setAmountInputValue] = useState('');
   const [currencyInputValue, setCurrencyInputValue] = useState('');
@@ -61,6 +64,7 @@ export const ModalForm = ({
 
       sendDataToServer(data);
       setOnOpen(setHasAddress);
+      setOnClose(setIsCloseCurrent, setHasForm);
     }
 
     setHasAmountInputError( !amountInputValue || Number(amountInputValue) < minAmount);
@@ -121,9 +125,6 @@ export const ModalForm = ({
           className={styles.form__autocomplete}
           options={CURRENCY}
           sx={{ width: 300 }}
-          // PaperComponent={({ children }) => (
-          //   <Paper style={{ background: "yellow" }}>{children}</Paper>
-          // )}
           inputValue={currencyInputValue}
           onChange={currencyInputHandler}
           renderInput={(params) => <TextField {...params} label="" />}

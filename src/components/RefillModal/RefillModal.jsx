@@ -16,6 +16,9 @@ const address = 'ADDRESS FROM SERVER';
 //////////////////////////////////////
 
 export const RefillModal = ({ setHasFooter }) => {
+  // const [hasPaymentMethod, setHasPaymentMethod] = useState(true);
+  // const [isPaymentMethodClose, setIsPaymentMethodClose] = useState(false);
+
   const [hasForm, setHasForm] = useState(false);
   const [isFormClose, setIsFormClose] = useState(false);
 
@@ -65,7 +68,7 @@ export const RefillModal = ({ setHasFooter }) => {
         />
 
         <ModalMainButton
-          onClick={setOnOpen}
+          setOnOpen={setOnOpen}
           setHasNext={setHasForm}
         />
       </>
@@ -91,6 +94,7 @@ export const RefillModal = ({ setHasFooter }) => {
             sendDataToServer={sendDataToServer}
             minAmount={MIN_REFILL_AMOUNT}
             amountError={MESSAGES.EMPTY_REFIL_AMOUNT_INPUT}
+            setIsCloseCurrent={setIsFormClose}
           />
         </Overlay>
       )}
@@ -98,7 +102,8 @@ export const RefillModal = ({ setHasFooter }) => {
       {hasAddress && (
         <Overlay isClose={isAddressClose}>
           <HeaderSection
-            setOnClose={setOnClose}
+            setOnOpen={setOnOpen}
+            setHasPrev={setHasForm}
             setIsThisModalClose={setIsAddressClose}
             setHasThisModal={setHasAddress}
             closeHandler={setHasFooter}
@@ -121,7 +126,10 @@ export const RefillModal = ({ setHasFooter }) => {
           </div>
 
           <ModalMainButton
-            onClick={setSuccessHandler}
+            setOnOpen={setOnOpen}
+            setIsCloseCurrent={setIsAddressClose}
+            setHasNext={setSuccessHandler}
+            setHasCurrent={setHasAddress}
             isDisabled={isLoading}
             content={
               isLoading

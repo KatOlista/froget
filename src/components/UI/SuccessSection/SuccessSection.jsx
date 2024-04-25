@@ -9,7 +9,7 @@ export const SuccessSection = ({ closeHandler, content }) => {
       </h5>
 
       <ModalMainButton
-        onClick={closeHandler}
+        setHasFooter={closeHandler}
         content='Закрыть'
         setHasNext={false}
       />

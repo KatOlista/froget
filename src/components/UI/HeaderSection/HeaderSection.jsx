@@ -4,11 +4,13 @@ import styles from './HeaderSection.module.scss';
 
 import CloseIcon from '../../../assets/icons/close.svg?react';
 import ArrowIcon from '../../../assets/icons/arrow-left.svg?react';
+import { setOnClose } from '../../../utils';
 
 export const HeaderSection = ({
-  setOnClose,
   hasForm,
   setHasThisModal,
+  setHasPrev,
+  setOnOpen,
   setIsThisModalClose,
   hasSuccess,
   closeHandler,
@@ -16,6 +18,11 @@ export const HeaderSection = ({
   getModalTitle,
   title,
 }) => {
+  const getBack = () => {
+    setOnClose(setIsThisModalClose, setHasThisModal);
+    setOnOpen(setHasPrev);
+  };
+
   return (
     <header>
       <div className={styles.header__buttons}>
@@ -25,7 +32,7 @@ export const HeaderSection = ({
             { [styles.hide]: !hasForm && !hasAddress}
           )}
           type="button"
-          onClick={() => setOnClose(setIsThisModalClose, setHasThisModal)}
+          onClick={() => getBack()}
           disabled={!hasForm && !hasAddress}
         >
           <ArrowIcon />

@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 
-import { MESSAGES, REFERAL_MODAL_TITLE } from '../../utils/constants';
-import { HeaderSection } from '../UI/HeaderSection/HeaderSection';
-import { ModalMainButton } from '../UI/ModalMainButton/ModalMainButton';
-import { USER } from '../../utils/constants';
+import { MESSAGES, REFERAL_MODAL_TITLE, USER } from '../../utils/constants';
+import { HeaderSection } from '../';
+import { ModalMainButton } from '../';
 import { createCopy } from '../../utils';
 
 import styles from './ReferalModal.module.scss';

@@ -1,13 +1,33 @@
 import styles from './ModalMainButton.module.scss';
 
 import WhiteArrowIcon from '../../../assets/icons/arrow-right.svg?react';
+import { setOnClose } from '../../../utils';
 
-export const ModalMainButton = ({ onClick, content, isDisabled, setHasNext }) => {
+export const ModalMainButton = ({
+  setOnOpen,
+  content,
+  isDisabled,
+  setHasNext,
+  setHasCurrent,
+  setIsCloseCurrent,
+  setHasFooter
+}) => {
+
+  const buttonHandler = () => {
+    if (setHasFooter) {
+      setHasFooter(true);
+    }
+    
+    setOnOpen(setHasNext);
+
+    setOnClose(setIsCloseCurrent, setHasCurrent);
+  };
+
   return (
     <button
       className={styles.button}
       type="button"
-      onClick={() => onClick(setHasNext)}
+      onClick={() => buttonHandler()}
       disabled={isDisabled}
     >
       {content

@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  --webkit-appearance: none;
+  --webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 html,
@@ -31,4 +33,10 @@ a {
 
 button {
   border: none;
+}
+
+input {
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none; appearance: none;
 }
