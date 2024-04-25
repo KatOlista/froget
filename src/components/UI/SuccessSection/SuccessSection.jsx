@@ -11,7 +11,6 @@ export const SuccessSection = ({ closeHandler, content }) => {
       <ModalMainButton
         setHasFooter={closeHandler}
         content='Закрыть'
-        setHasNext={false}
       />
     </>
   );

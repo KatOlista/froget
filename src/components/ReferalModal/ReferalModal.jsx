@@ -47,7 +47,10 @@ export const ReferalModal = ({ setHasFooter }) => {
           </Tooltip>
         </div>
 
-        <ModalMainButton content='Ясно' onClick={() => setHasFooter(false)} />
+        <ModalMainButton
+          content='Ясно'
+          setHasFooter={closeHandler}
+        />
 
         <div className={`${styles.referal__subheader} ${styles.referal__info}`}>
           <div>
