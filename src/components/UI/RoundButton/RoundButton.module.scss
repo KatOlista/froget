@@ -25,4 +25,20 @@
   &__minus {
     background-image: url(../../../assets/icons/minus-icon.svg);
   }
+
+  &:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+
+    --webkit-tap-highlight-color: transparent;
+  }
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+
+    --webkit-tap-highlight-color: transparent;
+  }
 }
