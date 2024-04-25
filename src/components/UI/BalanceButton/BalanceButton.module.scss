@@ -5,9 +5,19 @@
   border-radius: 16px;
   color: #60717e;
   background-color: transparent;
+  border: none;
+  outline: none;
+
+  -webkit-transition: all 0.3s ease;
+
+  -o-transition: all 0.3s ease;
+
+  transition: all 0.3s ease;
 
   &__selected {
     background-color: var(--balanceButtonBgColor);
     color: #0a2737;
+    border: none;
+    outline: none;
   }
 }
