@@ -20,4 +20,10 @@
     border: none;
     outline: none;
   }
+
+  &:active {
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
 }
