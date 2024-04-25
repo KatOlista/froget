@@ -4,20 +4,20 @@ import WhiteArrowIcon from '../../../assets/icons/arrow-right.svg?react';
 import { setOnClose } from '../../../utils';
 
 export const ModalMainButton = ({
-  setOnOpen,
+  setOnOpen = () => {},
   content,
   isDisabled,
-  setHasNext,
-  setHasCurrent,
-  setIsCloseCurrent,
-  setHasFooter
+  setHasNext = () => {},
+  setHasCurrent = () => {},
+  setIsCloseCurrent = () => {},
+  setHasFooter = () => {},
 }) => {
 
   const buttonHandler = () => {
     if (setHasFooter) {
       setHasFooter(true);
     }
-    
+
     setOnOpen(setHasNext);
 
     setOnClose(setIsCloseCurrent, setHasCurrent);

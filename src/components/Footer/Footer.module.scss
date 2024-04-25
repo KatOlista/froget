@@ -149,20 +149,9 @@
   }
 
   &__checked {
-    background-image: url('../../assets/icons/checkbox-icon.svg');
-    background-repeat: no-repeat;
-    background-position: center;
+    background: center / cover url('../../assets/icons/checkbox-icon.svg') no-repeat;
+    border: none;
   }
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .error {

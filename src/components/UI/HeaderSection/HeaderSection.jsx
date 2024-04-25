@@ -8,14 +8,14 @@ import { setOnClose } from '../../../utils';
 
 export const HeaderSection = ({
   hasForm,
-  setHasThisModal,
-  setHasPrev,
-  setOnOpen,
-  setIsThisModalClose,
+  setHasThisModal = () => {},
+  setHasPrev = () => {},
+  setOnOpen = () => {},
+  setIsThisModalClose = () => {},
   hasSuccess,
-  closeHandler,
+  closeHandler = () => {},
   hasAddress,
-  getModalTitle,
+  getModalTitle = () => {},
   title,
 }) => {
   const getBack = () => {
