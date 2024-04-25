@@ -15,8 +15,6 @@ export const BalanceActionButton = ({ text, isArrow, onClick }) => {
     >
       {text}
 
-      {/* {icon} */}
-
       <span />
     </button>
   );

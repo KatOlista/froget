@@ -32,10 +32,6 @@ export const UserPage = () => {
   const buttonManipulate = (event, modalType) => {
     event.stopPropagation();
 
-    if (selectedButton.balance === 'bonusBalance') {
-      return;
-    }
-
     if (user[selectedButton.balance] < MIN_WITHDRAWAL_AMOUNT) {
       setIsFailWithdrawalModalOpen(true);
 
@@ -83,18 +79,20 @@ export const UserPage = () => {
             </p>
           </h3>
 
-          <div className={styles['profile__balance-buttons']}>
-            <BalanceActionButton
-              text='Депозит'
-              onClick={(event) => buttonManipulate(event, MODAL_TYPES.REFILL)}
-            />
+          {selectedButton.balance !== 'bonusBalance' && (
+            <div className={styles['profile__balance-buttons']}>
+              <BalanceActionButton
+                text='Депозит'
+                onClick={(event) => buttonManipulate(event, MODAL_TYPES.REFILL)}
+              />
 
-            <BalanceActionButton
-              text='Вывод'
-              isArrow
-              onClick={(event) => buttonManipulate(event, MODAL_TYPES.WITHDRAWAL)}
-            />
-          </div>
+              <BalanceActionButton
+                text='Вывод'
+                isArrow
+                onClick={(event) => buttonManipulate(event, MODAL_TYPES.WITHDRAWAL)}
+              />
+            </div>
+          )}
         </div>
 
         <ul className={styles.profile__options}>
