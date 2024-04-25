@@ -4,9 +4,9 @@
   display: inline-block;
   border-radius: 16px;
   color: #60717e;
-  background-color: #fff;
-  border: #fff;
-  outline: #fff;
+  background-color: var(--balanceButtonWrapperBgColor);
+  border: var(--balanceButtonWrapperBgColor);
+  outline: var(--balanceButtonWrapperBgColor);
 
   -webkit-transition: all 0.3s ease;
 
@@ -22,8 +22,8 @@
   }
 
   &:active {
-    background-color: #fff;
-    border: #fff;
-    outline: #fff;
+    background-color: var(--balanceButtonWrapperBgColor);
+    border: var(--balanceButtonWrapperBgColor);
+    outline: var(--balanceButtonWrapperBgColor);
   }
 }
