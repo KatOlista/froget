@@ -8,12 +8,6 @@
   border: var(--balanceButtonWrapperBgColor);
   outline: var(--balanceButtonWrapperBgColor);
 
-  -webkit-transition: all 0.3s ease;
-
-  -o-transition: all 0.3s ease;
-
-  transition: all 0.3s ease;
-
   &__selected {
     background-color: var(--balanceButtonBgColor);
     color: #0a2737;
