@@ -61,6 +61,15 @@ button::-moz-focus-inner {
   border: 0;
 }
 
+button:focus-visible, button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  background: none;
+  border: none;
+  
+  --webkit-tap-highlight-color: transparent;
+}
+
 button:focus, a:focus, input[type="submit"]:focus {
   outline: none;
 }
@@ -79,4 +88,5 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
   --webkit-appearance: none;
   --webkit-tap-highlight-color: rgba(0,0,0,0);
+  --webkit-tap-highlight-color: transparent;
 }

@@ -32,6 +32,7 @@ export const UserPage = () => {
   const buttonManipulate = (event, modalType) => {
     event.stopPropagation();
 
+
     if (user[selectedButton.balance] < MIN_WITHDRAWAL_AMOUNT) {
       setIsFailWithdrawalModalOpen(true);
 
