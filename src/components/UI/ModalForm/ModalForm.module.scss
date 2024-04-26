@@ -77,73 +77,13 @@
     }
   }
 
-  &__autocomplete {
+  &__dropdown {
     margin-bottom: 24px;
-    padding: 0;
-    width: 100% !important;
-
-    &:focus-visible {
-      outline: none;
-    }
-
-      div {
-
-        &:focus-visible {
-          outline: none;
-        }
-
-        label {
-          // color: #1976d2;
-          color: #8a94ae;
-        }
-
-        div {
-          padding: 0 !important;
-          border-radius: 16px;
-          // overflow: hidden;
-          border: none;
-          font-family: inherit;
-          // font-size: 16px;
-          // font-weight: 500;
-          // letter-spacing: normal;
-          // color: #202329;
-
-          &:focus-visible {
-            outline: none;
-            border: none !important;
-          }
-
-          &:hover {
-            border: none !important;
-            outline: none;
-          }
-
-          input {
-            padding: 14px 16px !important;
-            border-radius: 16px;
-            background-color: #f0f2f7;
-            border: 2px solid #f0f2f7;
-
-            font-family: inherit;
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: normal;
-            color: #202329;
-
-            &:focus-visible {
-              background-color: #fff;
-              border: 2px solid #f0f2f7;
-              outline: none;
-            }
-          }
-        }
-      }
-    }
+  }
 
 
   &__submit {
     margin-top: 54px;
-    // margin-top: 63px;
     padding: 22px 16px;
     width: 100%;
     display: flex;
@@ -174,10 +114,6 @@
     left: 5px;
     font-size: 10px;
     color: var(--danger200Color);
-  }
-
-  &__autocomplete {
-    top: 105%;
   }
 }
 

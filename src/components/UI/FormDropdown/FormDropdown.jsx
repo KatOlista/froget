@@ -1,21 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
-import ShevronIcon from '../../../assets/icons/chevron-right-white.svg?react';
+import ChevronIcon from '../../../assets/icons/chevron-right-grey.svg?react';
 
 import styles from './FormDropdown.module.scss';
 
 export const FormDropdown = ({ options, onChange }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const dropdownRef = useRef();
 
   const toggleDropdown = () => {
+    event.preventDefault();
+
     setIsDropdownOpen(prev => !prev);
   };
 
-  const selectOptionHandler = (option) => {
+  const selectOptionHandler = (event, option) => {
+    event.preventDefault();
+
     setSelectedOption(option);
     onChange(option);
 
@@ -44,13 +48,13 @@ export const FormDropdown = ({ options, onChange }) => {
           styles.dropdown__button,
           { [styles['active-btn']]: isDropdownOpen }
         )}
-        onClick={toggleDropdown}
+        onClick={(event) => toggleDropdown(event)}
       >
         <p>
           <span>{selectedOption}</span>
         </p>
 
-        {<ShevronIcon className={cn(
+        {<ChevronIcon className={cn(
             styles.dropdown__icon,
             { [styles.dropdown__open]: isDropdownOpen },
           )}
@@ -63,18 +67,17 @@ export const FormDropdown = ({ options, onChange }) => {
           { [styles.active]: isDropdownOpen }
         )}
       >
-        {options.map(option => {
-          return (
+        {options.map(option => (
           <li key={option.id}>
             <button
               type='button'
-              onClick={() => selectOptionHandler(option)}
+              onClick={(event) => selectOptionHandler(event, option.label)}
               className={styles.dropdown__option}
             >
               <span>{option.label}</span>
             </button>
           </li>
-        )})}
+        ))}
       </ul>
     </div>
   );

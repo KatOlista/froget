@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import Autocomplete from '@mui/material/Autocomplete';
-// import Paper from '@mui/material/Paper';
-import TextField from '@mui/material/TextField';
 import cn from 'classnames';
 import 'animate.css';
 
@@ -38,18 +35,13 @@ export const ModalForm = ({
     setHasAmountInputError(false);
   };
 
-  // const currencyInputHandler = (event, value) => {
-  //   setCurrencyInputValue(value.label);
-  //   setHasCurrencyInputError(false);
-  // };
-
   const currencyInputHandler = (value) => {
-    setCurrencyInputValue(value.label);
+    setCurrencyInputValue(value);
     setHasCurrencyInputError(false);
   };
 
-  const networkInputHandler = (event, value) => {
-    setNetworkInputValue(value.label);
+  const networkInputHandler = (value) => {
+    setNetworkInputValue(value);
     setHasNetworkInputError(false);
   };
 
@@ -124,23 +116,13 @@ export const ModalForm = ({
           Валюта
         </label>
 
-        {/* <Autocomplete
-          disablePortal
-          id="currency"
-          clearIcon={null}
-          className={styles.form__autocomplete}
-          options={CURRENCY}
-          sx={{ width: 300 }}
-          inputValue={currencyInputValue}
-          onChange={currencyInputHandler}
-          renderInput={(params) => <TextField {...params} label="" />}
-        /> */}
-
-        <FormDropdown
-          inputValue={currencyInputValue}
-          onChange={currencyInputHandler}
-          options={CURRENCY}
-        />
+        <div className={styles.form__dropdown}>
+          <FormDropdown
+            inputValue={currencyInputValue}
+            onChange={currencyInputHandler}
+            options={CURRENCY}
+          />
+        </div>
 
         {hasCurrencyInputError && (<p className={cn(
           'animate__animated',
@@ -160,17 +142,14 @@ export const ModalForm = ({
           Сеть
         </label>
 
-        <Autocomplete
-          disablePortal
-          id="network"
-          clearIcon={null}
-          className={styles.form__autocomplete}
-          options={NETWORK}
-          inputValue={networkInputValue}
-          onChange={networkInputHandler}
-          sx={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="" />}
-        />
+        <div className={styles.form__dropdown}>
+          <FormDropdown
+            inputValue={networkInputValue}
+            onChange={networkInputHandler}
+            options={NETWORK}
+          />
+        </div>
+
 
         {hasNetworkInputError && (<p className={cn(
           'animate__animated',
@@ -185,6 +164,7 @@ export const ModalForm = ({
       <button
         type='submit'
         className={styles.form__submit}
+        onClick={formSubmitHandler}
       >
         {buttonTitle}
       </button>
