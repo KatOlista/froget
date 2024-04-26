@@ -1,9 +1,12 @@
 .home {
+  height: 100vh;
   display: flex;
   flex-direction: column;
 
   &__main {
     flex: auto;
     padding: 0 6px 15px;
+    display: flex;
+    flex-direction: column;
   }
 }

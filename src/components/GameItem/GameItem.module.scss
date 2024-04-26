@@ -1,6 +1,7 @@
 .game {
   min-height: 360px;
   width: 100%;
+  flex: auto;
   display: flex;
   flex-direction: column;
   border-radius: 36px;
