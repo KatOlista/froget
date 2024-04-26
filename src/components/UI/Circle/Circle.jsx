@@ -4,7 +4,7 @@ export const Circle = () => {
   return (
     <div>
       <div className={styles.circle}>
-        <div className={styles.number}>%</div>
+        <div id='number' className={styles.number}>%</div>
       </div>
 
       <div className={styles.container}>

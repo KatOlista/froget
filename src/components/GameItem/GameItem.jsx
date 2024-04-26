@@ -17,7 +17,30 @@ export const GameItem = () => {
   const [isFroget, setIsFroget] = useState(false);
 
   // const { startGame } = useSelector(state => state.startGame);
+
   const { endGame } = useSelector(state => state.endGame);
+
+  // const duration = 4;
+  // const maxNum = 100;
+  // const step = 1000 * duration / maxNum;
+  // let num = 0;
+  // let actualDuration = 0;
+
+  // const createAnimationOnLoading = () => {
+  //   const timerId = setInterval(() => {
+  //     if (num < maxNum || actualDuration >= duration) {
+  //       num++;
+  //       actualDuration += step;
+  //       console.log(num);
+  //     } else {
+  //       clearInterval(timerId);
+  //     }
+  //   }, step);
+  // };
+
+  // if (isCircleVisible) {
+  //   createAnimationOnLoading();
+  // }
 
   return (
     <section className={styles.game}>
