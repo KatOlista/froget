@@ -68,9 +68,9 @@ button, button:visited, button:focus-visible, button:target {
 }
 
 button:focus, button:focus-within, button:active, a:focus, input[type="submit"]:focus {
-  outline: none;
-  box-shadow: none;
-  border: none;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
   --webkit-tap-highlight-color: transparent;
 }
 
