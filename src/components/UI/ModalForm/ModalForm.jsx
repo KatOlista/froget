@@ -11,6 +11,7 @@ import styles from './ModalForm.module.scss';
 
 import InfoIcon from '../../../assets/icons/info-grey.svg?react';
 import { setOnClose } from '../../../utils';
+import { FormDropdown } from '../FormDropdown/FormDropdown';
 
 export const ModalForm = ({
   setOnOpen,
@@ -129,6 +130,8 @@ export const ModalForm = ({
           onChange={currencyInputHandler}
           renderInput={(params) => <TextField {...params} label="" />}
         />
+
+        {/* <FormDropdown options={CURRENCY} /> */}
 
         {hasCurrencyInputError && (<p className={cn(
           'animate__animated',

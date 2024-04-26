@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';import
-cn from 'classnames';
-
-import { selectBalance } from '../../../redux/features/balanceSlice';
+import cn from 'classnames';
 
 import ShevronIcon from '../../../assets/icons/chevron-right-white.svg?react';
 
@@ -10,9 +7,7 @@ import styles from './FormDropdown.module.scss';
 
 export const FormDropdown = ({ options }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const { selectedBalance } = useSelector(state => state.selectedBalance);
-  const dispatch = useDispatch();
+  const [selectedOption, setSelectedOption] = useState('');
 
   const dropdownRef = useRef();
 
@@ -21,7 +16,7 @@ export const FormDropdown = ({ options }) => {
   };
 
   const selectOptionHandler = (option) => {
-    dispatch(selectBalance(option));
+    setSelectedOption(option);
 
     toggleDropdown();
   }
@@ -50,6 +45,10 @@ export const FormDropdown = ({ options }) => {
         )}
         onClick={toggleDropdown}
       >
+        <p>
+          <span>{selectedOption}</span>
+        </p>
+
         {<ShevronIcon className={cn(
             styles.dropdown__icon,
             { [styles.dropdown__open]: isDropdownOpen },
@@ -64,19 +63,14 @@ export const FormDropdown = ({ options }) => {
         )}
       >
         {options.map(option => {
-          const isSelected = option.balance === selectedBalance.balance;
-
           return (
-          <li key={option.balance}>
-            <button
+          <li key={option.id}>
+            <div
               onClick={() => selectOptionHandler(option)}
-              className={cn(
-                styles.dropdown__option,
-                { [styles.dropdown__selected]: isSelected },
-              )}
+              className={styles.dropdown__option}
             >
-              <span>{option.title}</span>
-            </button>
+              <span>{option.label}</span>
+            </div>
           </li>
         )})}
       </ul>

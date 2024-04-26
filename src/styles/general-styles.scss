@@ -44,3 +44,7 @@ body {
   font-family: inherit !important;
   border-radius: 16px !important;
 }
+
+.MuiAutocomplete-input {
+  pointer-events: none;
+}
