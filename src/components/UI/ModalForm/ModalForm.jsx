@@ -38,7 +38,12 @@ export const ModalForm = ({
     setHasAmountInputError(false);
   };
 
-  const currencyInputHandler = (event, value) => {
+  // const currencyInputHandler = (event, value) => {
+  //   setCurrencyInputValue(value.label);
+  //   setHasCurrencyInputError(false);
+  // };
+
+  const currencyInputHandler = (value) => {
     setCurrencyInputValue(value.label);
     setHasCurrencyInputError(false);
   };
@@ -119,7 +124,7 @@ export const ModalForm = ({
           Валюта
         </label>
 
-        <Autocomplete
+        {/* <Autocomplete
           disablePortal
           id="currency"
           clearIcon={null}
@@ -129,9 +134,13 @@ export const ModalForm = ({
           inputValue={currencyInputValue}
           onChange={currencyInputHandler}
           renderInput={(params) => <TextField {...params} label="" />}
-        />
+        /> */}
 
-        {/* <FormDropdown options={CURRENCY} /> */}
+        <FormDropdown
+          inputValue={currencyInputValue}
+          onChange={currencyInputHandler}
+          options={CURRENCY}
+        />
 
         {hasCurrencyInputError && (<p className={cn(
           'animate__animated',

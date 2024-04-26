@@ -5,7 +5,7 @@ import ShevronIcon from '../../../assets/icons/chevron-right-white.svg?react';
 
 import styles from './FormDropdown.module.scss';
 
-export const FormDropdown = ({ options }) => {
+export const FormDropdown = ({ options, onChange }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -17,6 +17,7 @@ export const FormDropdown = ({ options }) => {
 
   const selectOptionHandler = (option) => {
     setSelectedOption(option);
+    onChange(option);
 
     toggleDropdown();
   }
@@ -65,12 +66,13 @@ export const FormDropdown = ({ options }) => {
         {options.map(option => {
           return (
           <li key={option.id}>
-            <div
+            <button
+              type='button'
               onClick={() => selectOptionHandler(option)}
               className={styles.dropdown__option}
             >
               <span>{option.label}</span>
-            </div>
+            </button>
           </li>
         )})}
       </ul>
