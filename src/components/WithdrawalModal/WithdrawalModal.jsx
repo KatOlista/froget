@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import cn from 'classnames';
 
-import { HeaderSection, ModalMainButton, SuccessSection, ModalForm, Overlay } from '../';
+import { getRefillWithdrawalTitle, setOnClose } from '../../utils';
+import { MESSAGES, MIN_WITHDRAWAL_AMOUNT } from '../../utils/constants';
+import { HeaderSection,
+  ModalMainButton,
+  SuccessSection,
+  ModalForm,
+  Overlay,
+} from '../';
 
 import styles from './WithdrawalModal.module.scss';
 
 import LoadingIcon from '../../assets/icons/loader-icon-white.svg?react';
 import InfoIcon from '../../assets/icons/info-grey.svg?react';
-import { getRefillWithdrawalTitle } from '../../utils/services/getRefillWithdrawalTitle';
-import { MESSAGES, MIN_WITHDRAWAL_AMOUNT } from '../../utils/constants';
-import { setOnClose } from '../../utils';
 
 export const WithdrawalModal = ({ setHasFooter }) => {
   const [hasForm, setHasForm] = useState(false);
@@ -48,6 +52,7 @@ export const WithdrawalModal = ({ setHasFooter }) => {
       //////send data to server, when loading setIsLoading(true), after: setIsLoading(false) setHasSuccess(true); setHasAddress(false);
 
       setOnOpen(setHasSuccess);
+      setOnClose(setIsAddressClose, setHasAddress);
     }
 
     if (!walletInputValue) {
@@ -71,7 +76,7 @@ export const WithdrawalModal = ({ setHasFooter }) => {
         />
 
         <ModalMainButton
-          onClick={setOnOpen}
+          setOnOpen={setOnOpen}
           setHasNext={setHasForm}
         />
       </>
@@ -97,6 +102,7 @@ export const WithdrawalModal = ({ setHasFooter }) => {
             sendDataToServer={sendDataToServer}
             minAmount={MIN_WITHDRAWAL_AMOUNT}
             amountError={MESSAGES.EMPTY_WITHDRAWAL_AMOUNT_INPUT}
+            setIsCloseCurrent={setIsFormClose}
           />
         </Overlay>
       )}
@@ -104,7 +110,8 @@ export const WithdrawalModal = ({ setHasFooter }) => {
       {hasAddress && (
         <Overlay isClose={isAddressClose}>
           <HeaderSection
-            setOnClose={setOnClose}
+            setOnOpen={setOnOpen}
+            setHasPrev={setHasForm}
             setIsThisModalClose={setIsAddressClose}
             setHasThisModal={setHasAddress}
             closeHandler={setHasFooter}
@@ -138,7 +145,8 @@ export const WithdrawalModal = ({ setHasFooter }) => {
           </div>
 
           <ModalMainButton
-            onClick={setSuccessHandler}
+            setOnOpen={setOnOpen}
+            setHasNext={setSuccessHandler}
             isDisabled={isLoading}
             content={
               isLoading
@@ -161,7 +169,6 @@ export const WithdrawalModal = ({ setHasFooter }) => {
       {hasSuccess && (
         <Overlay isClose={isSuccessClose}>
           <HeaderSection
-            setOnClose={setOnClose}
             setIsThisModalClose={setIsSuccessClose}
             setHasForm={setHasForm}
             hasSuccess={hasSuccess}

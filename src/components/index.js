@@ -2,6 +2,7 @@ export { Modal } from './Modal/Modal';
 export { Footer } from './Footer/Footer';
 export { Header } from './Header/Header';
 export { GameItem } from './GameItem/GameItem';
+export { UserFooter } from './UserFooter/UserFooter';
 export { RefillModal } from './RefillModal/RefillModal';
 export { ReferalModal } from './ReferalModal/ReferalModal';
 export { WinLoseBoard } from './WinLoseBoard/WinLoseBoard';
@@ -9,6 +10,7 @@ export { WithdrawalModal } from './WithdrawalModal/WithdrawalModal';
 export { FailWithdrawalModal } from './FailWithdrawalModal/FailWithdrawalModal';
 
 export { Avatar } from './UI/Avatar/Avatar';
+export { Option } from './UI/Option/Option';
 export { Circle } from './UI/Circle/Circle';
 export { Overlay } from './UI/Overlay/Overlay';
 export { ModalForm } from './UI/ModalForm/ModalForm';

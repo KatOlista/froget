@@ -2,13 +2,23 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Tooltip from '@mui/material/Tooltip';
 
-import { BALANCE_BUTTONS, MESSAGES, MIN_WITHDRAWAL_AMOUNT, MODAL_TYPES, USER_OPTIONS } from '../../utils/constants';
-import { Avatar, BalanceButton, BalanceActionButton, FailWithdrawalModal } from '../../components';
+import { createCopy } from '../../utils';
+import { BALANCE_BUTTONS,
+  MESSAGES,
+  MIN_WITHDRAWAL_AMOUNT,
+  MODAL_TYPES,
+  USER_OPTIONS,
+} from '../../utils/constants';
+
+import { Avatar,
+  BalanceButton,
+  BalanceActionButton,
+  FailWithdrawalModal,
+  Option,
+  UserFooter,
+} from '../../components';
 
 import styles from './UserPage.module.scss';
-import { Option } from '../../components/UI/Option/Option';
-import { UserFooter } from '../../components/UserFooter/UserFooter';
-import { createCopy } from '../../utils/services/createCopy';
 
 export const UserPage = () => {
   const { user } = useSelector(state => state.user);

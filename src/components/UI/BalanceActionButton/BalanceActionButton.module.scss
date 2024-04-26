@@ -5,31 +5,41 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   font-size: 14px;
   color: var(--primeTextColor);
+  background-color: var(--primary300Color);
 
   -webkit-transition: all 0.3s ease;
 
   -o-transition: all 0.3s ease;
 
   transition: all 0.3s ease;
+
+  span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:active {
+    color: var(--primary300Color);
+    background-color: #fff;
+
+    .plus {
+      background: 75% center / 12px 12px url('../../../assets/icons/blue-plus-icon.svg') no-repeat;
+    }
+
+    .arrow {
+      background: 75% center / auto url('../../../assets/icons/blue-arrow-up.svg') no-repeat;
+    }
+  }
 }
 
 .plus {
-  background: 75% center / 12px 12px url('../../../assets/icons/plus-icon.svg') no-repeat, var(--primary300Color);
-
-  &:active {
-    color: var(--primary300Color);
-    background: 75% center / 12px 12px url('../../../assets/icons/blue-plus-icon.svg') no-repeat, #fff;
-  }
+  background: 75% center / 12px 12px url('../../../assets/icons/plus-icon.svg') no-repeat;
 }
 
 .arrow {
-  background: 75% center / auto url('../../../assets/icons/white-arrow-up.svg') no-repeat, var(--primary300Color);
-
-  &:active {
-    color: var(--primary300Color);
-    background: 75% center / auto url('../../../assets/icons/blue-arrow-up.svg') no-repeat, #fff;
-  }
+  background: 75% center / auto url('../../../assets/icons/white-arrow-up.svg') no-repeat;
 }

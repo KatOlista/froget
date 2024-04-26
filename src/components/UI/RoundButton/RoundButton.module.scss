@@ -1,4 +1,9 @@
 .round {
+  outline: none;
+  box-shadow: none;
+  border: none;
+
+  --webkit-tap-highlight-color: transparent;
   padding: 13px;
   border-radius: 50%;
   background-color: var(--primary400Color);
@@ -26,19 +31,19 @@
     background-image: url(../../../assets/icons/minus-icon.svg);
   }
 
-  &:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
-    border: none !important;
+  // &:focus-visible {
+  //   outline: none !important;
+  //   box-shadow: none !important;
+  //   border: none !important;
 
-    --webkit-tap-highlight-color: transparent;
-  }
+  //   --webkit-tap-highlight-color: transparent;
+  // }
 
-  &:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    border: none !important;
+  // &:focus {
+  //   outline: none !important;
+  //   box-shadow: none !important;
+  //   border: none !important;
 
-    --webkit-tap-highlight-color: transparent;
-  }
+  //   --webkit-tap-highlight-color: transparent;
+  // }
 }

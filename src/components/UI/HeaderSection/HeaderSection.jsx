@@ -1,10 +1,11 @@
 import cn from 'classnames';
 
+import { setOnClose } from '../../../utils';
+
 import styles from './HeaderSection.module.scss';
 
 import CloseIcon from '../../../assets/icons/close.svg?react';
 import ArrowIcon from '../../../assets/icons/arrow-left.svg?react';
-import { setOnClose } from '../../../utils';
 
 export const HeaderSection = ({
   hasForm,
