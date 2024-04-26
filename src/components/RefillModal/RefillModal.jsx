@@ -153,7 +153,7 @@ export const RefillModal = ({ setHasFooter }) => {
       {hasSuccess && (
         <Overlay isClose={isSuccessClose}>
           <HeaderSection
-            // setOnClose={setOnClose}
+            setOnClose={setOnClose}
             setIsThisModalClose={setIsSuccessClose}
             setHasForm={setHasForm}
             hasSuccess={hasSuccess}

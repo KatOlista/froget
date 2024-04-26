@@ -24,6 +24,11 @@ export const HeaderSection = ({
     setOnOpen(setHasPrev);
   };
 
+  const setClose = () => {
+    setOnClose(setIsThisModalClose, setHasThisModal);
+    closeHandler(false)
+  };
+
   return (
     <header>
       <div className={styles.header__buttons}>
@@ -45,7 +50,7 @@ export const HeaderSection = ({
             { [styles.hide]: hasSuccess}
           )}
           type="button"
-          onClick={() => closeHandler(false)}
+          onClick={() => setClose()}
         >
           <CloseIcon />
         </button>

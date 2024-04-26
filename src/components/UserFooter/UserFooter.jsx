@@ -44,7 +44,7 @@ export const UserFooter = ({ setHasFooter, modalType }) => {
           styles.overlay,
           'animate__animated',
           'animate__fadeIn',
-          'animate__faster',
+          'animate__fast',
           { 'animate__fadeOut': isClose }
         )}
       />
