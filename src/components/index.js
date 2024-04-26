@@ -9,6 +9,7 @@ export { WinLoseBoard } from './WinLoseBoard/WinLoseBoard';
 export { WithdrawalModal } from './WithdrawalModal/WithdrawalModal';
 export { FailWithdrawalModal } from './FailWithdrawalModal/FailWithdrawalModal';
 
+export { Button } from './UI/Button/Button';
 export { Avatar } from './UI/Avatar/Avatar';
 export { Option } from './UI/Option/Option';
 export { Circle } from './UI/Circle/Circle';

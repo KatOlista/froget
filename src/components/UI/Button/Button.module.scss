@@ -1,0 +1,108 @@
+.button {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  background: none !important;
+  border: none !important;
+  --webkit-appearance: none !important;
+  --webkit-tap-highlight-color: transparent !important;
+  cursor: none;
+
+  &:active {
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    --webkit-appearance: none !important;
+    --webkit-tap-highlight-color: transparent !important;
+  }
+
+  &:focus {
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    --webkit-appearance: none !important;
+    --webkit-tap-highlight-color: transparent !important;
+  }
+
+  &:focus-visible {
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    --webkit-appearance: none !important;
+    --webkit-tap-highlight-color: transparent !important;
+  }
+
+  &:focus-within {
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    --webkit-appearance: none !important;
+    --webkit-tap-highlight-color: transparent !important;
+  }
+
+  &:visited {
+      outline: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    --webkit-appearance: none !important;
+    --webkit-tap-highlight-color: transparent !important;
+  }
+
+  &:target {
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    --webkit-appearance: none !important;
+    --webkit-tap-highlight-color: transparent !important;
+  }
+
+  &:target-within {
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    --webkit-appearance: none !important;
+    --webkit-tap-highlight-color: transparent !important;
+  }
+
+  &:hover {
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    --webkit-appearance: none !important;
+    --webkit-tap-highlight-color: transparent !important;
+  }
+}
+
+// button,
+// button:active,
+// button:focus,
+// button:focus-visible,
+// button:focus-within,
+// button:visited,
+// button:target,
+// button:target-within,
+// button:hover {
+//   outline: none !important;
+//   -webkit-box-shadow: none !important;
+//           box-shadow: none !important;
+//   background: none !important;
+//   border: none !important;
+//   --webkit-appearance: none !important;
+//   --webkit-tap-highlight-color: transparent !important;
+// }

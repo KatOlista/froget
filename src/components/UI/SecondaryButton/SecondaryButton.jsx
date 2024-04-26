@@ -1,14 +1,22 @@
+import { Button } from '../Button/Button';
+
 import styles from './SecondaryButton.module.scss';
 
 export const SecondaryButton = ({ content, onClick, isDisabled }) => {
   return (
-    <button
-      className={styles['secondary-button']}
+    <Button
       onClick={onClick}
       disabled={isDisabled}
-      type='button'
+      style={styles.wrapper}
     >
-      {content}
-    </button>
+      <div
+        className={styles['secondary-button']}
+        // onClick={onClick}
+        // disabled={isDisabled}
+        // type='button'
+      >
+        {content}
+      </div>
+    </Button>
   );
 };
