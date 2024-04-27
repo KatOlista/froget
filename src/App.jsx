@@ -68,7 +68,16 @@ export const App = () => {
   //     socket.off('foo', onFooEvent);
   //   };
   // }, []);
-
+const buttonStyle = {
+  background: 'red', width: '100px', height: '200px', display: 'block', margin: '0 auto' ,
+    outline: 'none',
+    boxShadow: 'none',
+    border: 'none',
+    WebkitAppearance: 'none',
+    MozAppearance: 'none',
+    appearance: 'none',
+    WebkitTapHighlightColor: 'transparent'
+  };
   return (
     <div className='app'>
       {!isConnected
@@ -77,7 +86,7 @@ export const App = () => {
             <>
               <Header />
 
-              <button style={{ background: 'red', width: '100px', height: '200px', display: 'block', margin: '0 auto' }}></button>
+              <button style={buttonStyle}></button>
 
               <main className='main'>
                 {!hasUserPage
