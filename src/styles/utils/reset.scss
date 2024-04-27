@@ -71,6 +71,10 @@ button:focus, button:focus-within, button:active, a:focus, input[type="submit"]:
   box-shadow: none !important;
   border: none !important;
 
+  -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+        appearance: none !important;
+
   --webkit-tap-highlight-color: transparent !important;
 }
 
