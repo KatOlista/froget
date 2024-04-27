@@ -8,7 +8,6 @@ import { HomePage, Screensaver, UserPage } from './pages';
 /////////////////////////
 import { USER } from './utils/constants';
 import { setUser } from './redux/features/userSlice';
-import { colors } from '@mui/material';
 
 ////////////////////////
 
