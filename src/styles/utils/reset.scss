@@ -53,10 +53,10 @@
 //   margin: 0;
 // }
 
-// button::-moz-focus-inner {
-//   padding: 0;
-//   border: 0;
-// }
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
 
 button, button:visited, button:focus-visible, button:target {
   outline: none !important;

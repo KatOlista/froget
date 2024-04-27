@@ -12,11 +12,11 @@ import { setUser } from './redux/features/userSlice';
 ////////////////////////
 
 export const App = () => {
-  // document.querySelectorAll('button').forEach(function(button) {
-  //   button.addEventListener('click', function() {
-  //       this.blur();
-  //   });
-  // });
+  document.querySelectorAll('button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        this.blur();
+    });
+  });
 
   const [isConnected, setIsConnected] = useState(false);
 
