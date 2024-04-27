@@ -71,45 +71,51 @@
 }
 
 .number {
-  transition: --num 4s;
-  counter-set: num var(--num);
   font-weight: 700;
   font-size: 36px;
   color: var(--primeTextColor);
-
-  &:before {
-    content: counter(num);
-  }
-
-  animation: count 4s linear;
 }
 
-@property --num {
-  syntax: "<integer>";
+// .number {
+//   transition: --num 4s;
+//   counter-set: num var(--num);
+//   font-weight: 700;
+//   font-size: 36px;
+//   color: var(--primeTextColor);
 
-  initial-value: 100;
-  inherits: false;
-}
+//   &:before {
+//     content: counter(num);
+//   }
 
-@-webkit-keyframes count {
-  0% {
-    --num: 0;
-  }
+//   animation: count 4s linear;
+// }
 
-  100% {
-    --num: 100;
-  }
-}
+// @property --num {
+//   syntax: "<integer>";
 
-@keyframes count {
-  0% {
-    --num: 0;
-  }
+//   initial-value: 100;
+//   inherits: false;
+// }
 
-  100% {
-    --num: 100;
-  }
-}
+// @-webkit-keyframes count {
+//   0% {
+//     --num: 0;
+//   }
+
+//   100% {
+//     --num: 100;
+//   }
+// }
+
+// @keyframes count {
+//   0% {
+//     --num: 0;
+//   }
+
+//   100% {
+//     --num: 100;
+//   }
+// }
 
 @keyframes rotation {
   from {
