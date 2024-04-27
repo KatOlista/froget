@@ -8,6 +8,7 @@ import { HomePage, Screensaver, UserPage } from './pages';
 /////////////////////////
 import { USER } from './utils/constants';
 import { setUser } from './redux/features/userSlice';
+import { colors } from '@mui/material';
 
 ////////////////////////
 
@@ -75,6 +76,8 @@ export const App = () => {
         : (
             <>
               <Header />
+
+              <button style={{ background: 'red', width: '100px', height: '200px', display: 'block', margin: '0 auto' }}></button>
 
               <main className='main'>
                 {!hasUserPage
